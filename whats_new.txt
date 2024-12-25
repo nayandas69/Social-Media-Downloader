@@ -1,0 +1,38 @@
+# What's New in Social Media Downloader v1.0.0  
+
+Welcome to the **first release** of Social Media Downloader! Here's what you can expect in this version:  
+
+### 🚀 Features  
+- **YouTube and TikTok Downloads**:  
+  - Download videos in your preferred format.  
+  - Option to extract audio and save it as MP3.  
+
+- **Instagram Post Support**:  
+  - Download Instagram posts easily with just the URL.  
+
+- **Facebook Video Downloads**:  
+  - Automatically detect and download videos from Facebook links.  
+
+- **Batch Downloads**:  
+  - Save time by downloading multiple URLs listed in a text file.  
+
+- **Update Checker**:  
+  - Automatically check for the latest version and update with a single confirmation.  
+
+### 🛠️ Improvements  
+- **Cross-Platform CLI**:  
+  - Windows `.exe` and Linux binary for seamless compatibility.  
+  - PyPI installation for Python users.  
+
+- **Configurable Settings**:  
+  - Customizable download directory and format preferences via `config.json`.  
+
+- **Logs and History**:  
+  - All activities logged in `downloader.log`.  
+  - Download history saved in `download_history.csv`.  
+
+### 💡 Additional Notes  
+- **FFmpeg Required**: Ensure FFmpeg is installed for video/audio processing.  
+- **Disclaimer**: For **personal use only**. Respect content creators' copyrights.  
+
+Enjoy using Social Media Downloader and let us know your feedback!

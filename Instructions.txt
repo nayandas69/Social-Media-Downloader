@@ -1,0 +1,150 @@
+## Social Media Downloader Using Instructions for User & Developers
+
+### For Normal Users
+
+1. **Download and Installation**:
+   - Visit the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
+   - Choose one of the following installation methods:
+     - **Option 1: Install via PyPI**:
+       - Ensure that you have Python 3.7 or later installed.
+       - Open your command line or terminal and run:
+         ```bash
+         pip install social-media-downloader
+         ```
+     - **Option 2: Download Executable for Windows**:
+       - Download the `.exe` file from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
+       - Double-click the `.exe` file to launch the tool.
+     - **Option 3: Use on Linux**:
+       - Download the Linux binary from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
+       - Extract the downloaded archive:
+         ```bash
+         unzip SocialMediaDownloader_latest_Linux.zip
+         ```
+         or
+         ```bash
+         tar -xzvf SocialMediaDownloader_latest_Linux.tar.gz
+         ```
+       - Run the binary:
+         ```bash
+         ./SocialMediaDownloader_latest
+         ```
+
+2. **Requirements**:
+   - **FFmpeg** is required for video/audio conversion.
+     - On Linux, install FFmpeg:
+       ```bash
+       sudo apt update
+       sudo apt install ffmpeg
+       ```
+     - On Windows, download FFmpeg from [ffmpeg.org](https://ffmpeg.org/) and add it to your system's PATH.
+
+3. **Usage**:
+   - Open the tool by running:
+     ```bash
+     social-media-downloader
+     ```
+     For Windows users, double-click the `.exe` file or run from the command prompt:
+     ```bash
+     SocialMediaDownloader_latest.exe
+     ```
+
+4. **Download Media**:
+   - **For YouTube/TikTok Videos**: Enter the video URL to download in your preferred format.
+   - **For Facebook Videos**: Provide the video URL to download.
+   - **For Instagram Posts**: Input the Instagram post URL to download.
+   - **Batch Download**: You can provide a text file with multiple URLs (one per line) for batch downloading.
+
+5. **Logs and History**:
+   - All download activities are logged in the `downloader.log` file.
+   - The download history is saved in `download_history.csv`.
+
+6. **Update Checker**:
+   - The tool checks for updates. Ensure you're using the latest version by visiting the **[releases page](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)**.
+
+7. **Support and Issues**:
+   - For support, feature requests, or bug reports, contact the author:
+     - **Author**: Nayan Das
+     - **Email**: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
+     - **Website**: [https://socialportal.nayanchandradas.com](https://socialportal.nayanchandradas.com)
+     - **GitHub Issues**: [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues)
+
+---
+
+### For Developers
+
+1. **Clone the Repository**:
+   - Clone the project repository to your local machine:
+     ```bash
+     git clone https://github.com/nayandas69/Social-Media-Downloader.git
+     cd Social-Media-Downloader
+     ```
+
+2. **Setting Up the Development Environment**:
+   - Install the required dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Optionally, set up a virtual environment for isolated development:
+     ```bash
+     python -m venv venv
+     source venv/bin/activate  # For Linux/macOS
+     venv\Scripts\activate     # For Windows
+     pip install -r requirements.txt
+     ```
+
+3. **Running the Application Locally**:
+   - To run the tool locally, execute:
+     ```bash
+     python downloader.py
+     ```
+
+4. **Contributing to the Project**:
+   - Fork the repository and clone your fork.
+   - Create a new branch for your feature or bug fix:
+     ```bash
+     git checkout -b feature/your-feature-name
+     ```
+   - After making changes, commit them:
+     ```bash
+     git add .
+     git commit -m "Your commit message"
+     git push origin feature/your-feature-name
+     ```
+   - Open a pull request to merge your changes into the main branch.
+
+5. **Running Tests**:
+   - If you have added any tests, you can run them using:
+     ```bash
+     pytest
+     ```
+   - Ensure that your code passes all tests before submitting a pull request.
+
+6. **Publishing to PyPI**:
+   - To release a new version to PyPI, update the version in `setup.py` and then:
+     - Build the distribution:
+       ```bash
+       python setup.py sdist bdist_wheel
+       ```
+     - Upload to PyPI:
+       ```bash
+       twine upload dist/*
+       ```
+
+7. **FFmpeg Requirement**:
+   - For handling video/audio content, make sure FFmpeg is installed and configured on your system.
+
+8. **Creating a New Release**:
+   - Once you've made changes, update the `CHANGELOG.md` and `whats_new.txt` to reflect new features or bug fixes.
+   - Push a new tag for the release:
+     ```bash
+     git tag -a v1.*.* -m "Release message"
+     git push origin v1.*.0*
+     ```
+
+9. **Contact Information**:
+   - For any issues, contact the project maintainer:
+     - **Author**: Nayan Das
+     - **Email**: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
+     - **Website**: [https://socialportal.nayanchandradas.com](https://socialportal.nayanchandradas.com)
+
+---
