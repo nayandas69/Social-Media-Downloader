@@ -1,7 +1,7 @@
 # Social Media Downloader
 
 ## Overview  
-**Social Media Downloader** is a versatile tool designed to download videos and posts from popular platforms like YouTube, TikTok, Instagram, and Facebook. It provides an intuitive CLI interface for Windows and Linux users and is also available on PyPI for easy installation via `pip`.  
+**Social Media Downloader** is a versatile tool designed to download videos and posts from popular platforms like YouTube, TikTok, Instagram, and Facebook. It provides an intuitive CLI interface for Windows, and Linux users and is also available on PyPI for easy installation via `pip`.  
 
 This tool is intended for **personal use only**. Unauthorized downloading of copyrighted material is prohibited.  
 
@@ -34,14 +34,14 @@ pip install social-media-downloader
 3. Run the executable directly via command prompt or double-click to start.  
 
 ### Option 3: Use on Linux  
-1. Download the Linux binary from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.  
+1. Download the appropriate binary from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.  
 2. Extract the downloaded archive:  
    ```bash
-   unzip SocialMediaDownloader_latest_Linux.zip  
-   ``` 
-   or
-   ```bash  
-   tar -xzvf SocialMediaDownloader_latest_Linux.tar.gz  
+   unzip SocialMediaDownloader_latest_Linux.zip # Linux
+   ```
+   Or
+   ```bash
+   tar -xzvf SocialMediaDownloader_latest_Linux.tar.gz  # Linux
    ```  
 3. Run the binary:  
    ```bash
@@ -51,13 +51,54 @@ pip install social-media-downloader
 ---
 
 ## Requirements  
-- **FFmpeg**: Required for video/audio conversion.  
-  - Install on Linux:  
-    ```bash
-    sudo apt update
-    sudo apt install ffmpeg
-    ```  
-  - Install on Windows: Download FFmpeg from [ffmpeg.org](https://ffmpeg.org/), add it to your PATH.  
+
+### FFmpeg Installation  
+FFmpeg is required for video/audio conversion. Below are the platform-specific installation instructions:  
+
+#### **Windows**  
+1. Download FFmpeg from the official website: [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html).  
+2. Extract the downloaded zip file to a folder (e.g., `C:\ffmpeg`).  
+3. Add FFmpeg to your system PATH:  
+   - Open "Environment Variables" from System Properties.  
+   - Under "System Variables", find `Path`, click "Edit", and add the path to the `bin` folder (e.g., `C:\ffmpeg\bin`).  
+4. Verify the installation by running:  
+   ```cmd
+   ffmpeg -version
+   ```  
+
+#### **Linux**  
+Install FFmpeg using your distribution's package manager:  
+- **Ubuntu/Debian**:  
+  ```bash
+  sudo apt update
+  sudo apt install ffmpeg
+  ```  
+- **Fedora/RHEL**:  
+  ```bash
+  sudo dnf install ffmpeg
+  ```  
+- **Arch Linux**:  
+  ```bash
+  sudo pacman -S ffmpeg
+  ```  
+
+#### **macOS**  
+Use Homebrew to install FFmpeg:  
+1. Install Homebrew if not already installed:  
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```  
+2. Install FFmpeg:  
+   ```bash
+   brew install ffmpeg
+   ```  
+3. Verify the installation:  
+   ```bash
+   ffmpeg -version
+   ```  
+
+### Verifying FFmpeg in the Tool  
+The downloader will check for FFmpeg during runtime. If it is missing, the tool will display a prompt with platform-specific installation instructions.  
 
 ---
 
@@ -89,22 +130,6 @@ Modify the `config.json` file to customize:
 - **Default Download Directory**  
 - **Default History File**  
 - **Default Format Behavior**  
-
----
-
-## Example Commands  
-
-### Download YouTube/TikTok Video  
-```bash
-social-media-downloader
-# Select Option 1 and enter the URL
-```
-
-### Batch Download  
-```bash
-social-media-downloader
-# Select Option 4 and provide the text file path
-```
 
 ---
 
