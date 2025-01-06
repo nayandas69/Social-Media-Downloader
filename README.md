@@ -1,154 +1,173 @@
-# Social Media Downloader
+<div align="center">  
+  <h1>🌟 Social Media Downloader 🌟</h1>  
+  <p>Download 🔥 viral videos and epic posts from your fave platforms like YouTube, TikTok, Instagram, and Facebook in just seconds! ⚡</p>  
 
-## Overview  
-**Social Media Downloader** is a versatile tool designed to download videos and posts from popular platforms like YouTube, TikTok, Instagram, and Facebook. It provides an intuitive CLI interface for Windows, and Linux users and is also available on PyPI for easy installation via `pip`.  
+![GitHub Issues](https://img.shields.io/github/issues/nayandas69/Social-Media-Downloader?style=for-the-badge&color=red&logo=github) 
+![GitHub Stars](https://img.shields.io/github/stars/nayandas69/Social-Media-Downloader?style=for-the-badge&color=yellow&logo=star) 
+![GitHub Forks](https://img.shields.io/github/forks/nayandas69/Social-Media-Downloader?style=for-the-badge&color=green&logo=github) 
+![Discussions](https://img.shields.io/github/discussions/nayandas69/Social-Media-Downloader?style=for-the-badge&color=blue&logo=discourse) 
+![Python](https://img.shields.io/pypi/pyversions/social-media-downloader?style=for-the-badge&logo=python)
+  
 
-This tool is intended for **personal use only**. Unauthorized downloading of copyrighted material is prohibited.  
-
----
-
-## Key Features  
-- **Platform Support**:  
-  - Download videos from **YouTube**, **TikTok**, and **Facebook**.  
-  - Download posts from **Instagram**.  
-- **Batch Download**: Download multiple URLs in one go using a text file.  
-- **Update Checker**: Keep the software updated with the latest features and fixes.  
-- **Customizable**: Configure download directory and format preferences.  
-- **Platform Compatibility**:  
-  - Windows CLI support with `.exe` file.  
-  - Linux CLI support via terminal commands.  
-  - Python users can install it using `pip`.  
+</div>  
 
 ---
 
-## Installation  
+## 🌈 What’s This?  
+**Social Media Downloader** is a 🛠️ tool designed to download your favorite posts and videos hassle-free. Save memories, memes, and more from:  
+- **YouTube** 🎥  
+- **TikTok** 🎶  
+- **Instagram** 📸  
+- **Facebook** 🤳  
 
-### Option 1: Install via PyPI (Python 3.7+ required)  
-```bash
-pip install social-media-downloader
-```
+---
 
-### Option 2: Download Executable for Windows  
-1. Visit the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.  
-2. Download the `.exe` file.  
-3. Run the executable directly via command prompt or double-click to start.  
+## 🔥 Features  
+💡 **It’s a vibe:**  
+- Download your fave vids from major platforms.  
+- Batch mode 🗂️—Paste all your links into a file, and we’ll handle it.  
+- Keep it fresh 💾—Automatically checks for updates.  
+- You’re the boss 💼—Customize download directories and file formats.  
+- Works on **Windows**, **Linux**, and **Pythonistas** 🐍!  
 
-### Option 3: Use on Linux  
-1. Download the appropriate binary from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.  
-2. Extract the downloaded archive:  
-   ```bash
-   unzip SocialMediaDownloader_latest_Linux.zip # Linux
-   ```
-   Or
-   ```bash
-   tar -xzvf SocialMediaDownloader_latest_Linux.tar.gz  # Linux
+---
+
+## 🚀 Install Guide  
+
+### 🖥️ For Windows Users  
+1. **Get Python**: Download it from [here](https://www.python.org/downloads/) 🐍.  
+   - Check “Add Python to PATH” during setup.  
+   - Verify install:  
+     ```cmd  
+     python --version  
+     ```  
+
+2. **Install the Tool**:  
+   ```cmd  
+   pip install social-media-downloader  
    ```  
-3. Run the binary:  
-   ```bash
-   ./SocialMediaDownloader_latest
+
+3. **Run It**:  
+   ```cmd  
+   social-media-downloader  
+   ```  
+
+OR, download the `.exe` directly from the [releases page](https://github.com/nayandas69/Social-Media-Downloader/releases/latest).  
+
+---
+
+### 🐧 Linux Folks  
+1. Make sure Python3 and pip are installed:  
+   ```bash  
+   sudo apt install python3 python3-pip  # Ubuntu/Debian  
+   sudo dnf install python3 python3-pip  # Fedora/RHEL  
+   sudo pacman -S python python-pip  # Arch  
+   ```  
+
+2. Install the tool:  
+   ```bash  
+   pip install social-media-downloader  
+   ```  
+
+3. Run it like a boss:  
+   ```bash  
+   social-media-downloader  
    ```  
 
 ---
 
-## Requirements  
-
-### FFmpeg Installation  
-FFmpeg is required for video/audio conversion. Below are the platform-specific installation instructions:  
-
-#### **Windows**  
-1. Download FFmpeg from the official website: [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html).  
-2. Extract the downloaded zip file to a folder (e.g., `C:\ffmpeg`).  
-3. Add FFmpeg to your system PATH:  
-   - Open "Environment Variables" from System Properties.  
-   - Under "System Variables", find `Path`, click "Edit", and add the path to the `bin` folder (e.g., `C:\ffmpeg\bin`).  
-4. Verify the installation by running:  
-   ```cmd
-   ffmpeg -version
+### 🍎 Mac Squad  
+1. Install Python using Homebrew:  
+   ```bash  
+   brew install python  
    ```  
 
-#### **Linux**  
-Install FFmpeg using your distribution's package manager:  
-- **Ubuntu/Debian**:  
-  ```bash
-  sudo apt update
-  sudo apt install ffmpeg
+2. Install the tool:  
+   ```bash  
+   pip install social-media-downloader  
+   ```  
+
+3. You’re ready:  
+   ```bash  
+   social-media-downloader  
+   ```  
+
+---
+
+## 🛠️ Pro Tips: FFmpeg Setup  
+🎧 **Why FFmpeg?** Needed for converting and combining audio/video files.  
+
+- **Windows**: [Download here](https://ffmpeg.org/download.html). Add `bin` folder to your PATH.  
+- **Linux**: Install via your package manager:  
+  ```bash  
+  sudo apt install ffmpeg  # Ubuntu/Debian  
+  sudo dnf install ffmpeg  # Fedora/RHEL  
+  sudo pacman -S ffmpeg  # Arch  
   ```  
-- **Fedora/RHEL**:  
-  ```bash
-  sudo dnf install ffmpeg
-  ```  
-- **Arch Linux**:  
-  ```bash
-  sudo pacman -S ffmpeg
+- **macOS**:  
+  ```bash  
+  brew install ffmpeg  
   ```  
 
-#### **macOS**  
-Use Homebrew to install FFmpeg:  
-1. Install Homebrew if not already installed:  
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+---
+
+## 💻 How to Use  
+
+**Basic Commands:**  
+1. **YouTube/TikTok/Facebook**:  
+   ```bash  
+   social-media-downloader  
    ```  
-2. Install FFmpeg:  
-   ```bash
-   brew install ffmpeg
+   Paste the video URL. Done. ✅  
+
+2. **Instagram Posts**: Same as above, but fancy 💁.  
+
+3. **Batch Mode**: Prepare a text file with one URL per line:  
+   ```bash  
+   social-media-downloader -batch my_urls.txt  
    ```  
-3. Verify the installation:  
-   ```bash
-   ffmpeg -version
-   ```  
-
-### Verifying FFmpeg in the Tool  
-The downloader will check for FFmpeg during runtime. If it is missing, the tool will display a prompt with platform-specific installation instructions.  
 
 ---
 
-## Usage  
-
-### Running the Tool  
-For all platforms:  
-```bash
-social-media-downloader
-```  
-
-Alternatively, on Windows:  
-```bash
-SocialMediaDownloader_latest.exe
-```  
-
-### Features and Options  
-1. **Download YouTube/TikTok Video**: Provide the video URL to download in your desired format.  
-2. **Download Facebook Video**: Enter the video URL to download directly.  
-3. **Download Instagram Post**: Provide the Instagram post URL to save it locally.  
-4. **Batch Download**: Provide a text file containing URLs (one per line).  
-5. **Check for Updates**: Ensure you are using the latest version.  
-6. **Help**: Learn more about using the tool.  
+## 🎨 Customize It!  
+Modify `config.json` to:  
+- Set default download directories.  
+- Change file formats.  
+- Control batch settings.  
 
 ---
 
-## Configuration  
-Modify the `config.json` file to customize:  
-- **Default Download Directory**  
-- **Default History File**  
-- **Default Format Behavior**  
+## 📜 Logs & Receipts  
+- Logs saved to `downloader.log`.  
+- All download history stored in `download_history.csv`.  
 
 ---
 
-## Logs and History  
-- All downloads are logged in `downloader.log`.  
-- A detailed history of downloads is saved in `download_history.csv`.  
+## ⚡ Legal Disclaimer  
+> 🛑 **Heads Up!**  
+This tool is for **personal use only**. Downloading content without the creator’s permission might break copyright laws. Play it safe! 😇  
 
 ---
 
-## Disclaimer  
-This software is intended for **personal use only**. Downloading content without the permission of the content owner may violate copyright laws. The developer is not responsible for any misuse of this tool.  
+## 🧑‍💻 Wanna Contribute?  
+- Spot an issue? [Report it here](https://github.com/nayandas69/Social-Media-Downloader/issues).  
+- Wanna vibe with the code? Fork it, tweak it, and PR it.  
+- Hang out in our [Discussions tab](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
 
 ---
 
-## Troubleshooting and Support  
-If you encounter any issues or have feature requests:  
-- Contact the author: **Nayan Das**  
-- Email: **nayanchandradas@hotmail.com**  
-- Website: [https://socialportal.nayanchandradas.com](https://socialportal.nayanchandradas.com)  
-- Report issues on [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues).  
+## 💌 Support & Chill  
 
-Enjoy using Social Media Downloader! 🎉  
+- **Author**: Nayan Das  
+- **Email**: nayanchandradas@hotmail.com  
+- **Website**: [Social Portal](https://socialportal.nayanchandradas.com)  
+- **GitHub Repo**: [Social Media Downloader](https://github.com/nayandas69/Social-Media-Downloader)  
+
+---
+
+<div align="center">  
+  <h3>💾 Save the Internet, One Video at a Time! 💾</h3>  
+  <p>✨ Let’s make downloading cool again! ✨</p>  
+</div>  
+
+---  
