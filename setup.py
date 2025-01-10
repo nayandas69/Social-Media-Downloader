@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # Read the README for long description
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -6,11 +6,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="social-media-downloader",
-    version="1.0.0",
+    version="1.0.1",
     author="Nayan Das",
     author_email="nayanchandradas@hotmail.com",
-    author_portfolio="https://socialportal.nayanchandradas.com",
-    description="A versatile downloader for YouTube, TikTok, Instagram, and Facebook.",
+    description="An all-in-one downloader for YouTube, TikTok, Insta, and FB—get your content effortlessly and stay plugged in!",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/nayandas69/Social-Media-Downloader",
@@ -28,11 +27,11 @@ setup(
         "Topic :: Internet",
     ],
     keywords=[
-        "downloader", "social media downloader", "youtube", "tiktok", "instagram", "facebook",
-        "video downloader", "cli downloader"
+        "downloader", "social media downloader", "youtube", "tiktok", 
+        "instagram", "facebook", "video downloader", "cli downloader"
     ],
-    packages=[""],  # Empty string for top-level scripts like `downloader.py`
-    py_modules=["downloader"],  # Name of Python script
+    packages=find_packages(),  # Automatically find sub-packages
+    py_modules=["downloader"],  # Include the main Python script
     python_requires=">=3.6",
     install_requires=[
         "yt-dlp>=2023.7.6",

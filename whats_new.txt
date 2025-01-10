@@ -1,38 +1,55 @@
-# What's New in Social Media Downloader v1.0.0  
+# 🔥 What's Poppin' in Social Media Downloader v1.0.1?  
 
-Welcome to the **first release** of Social Media Downloader! Here's what you can expect in this version:  
+Yo fam, welcome to **v1.0.1**, the *OG* drop of Social Media Downloader! Here's the tea on what's new and popping:  
 
-### 🚀 Features  
-- **YouTube and TikTok Downloads**:  
-  - Download videos in your preferred format.  
-  - Option to extract audio and save it as MP3.  
+---
 
-- **Instagram Post Support**:  
-  - Download Instagram posts easily with just the URL.  
+### 🌟 New Vibes & Features  
+🎥 **YouTube + TikTok Slay**:  
+- Download viral vids like a pro.  
+- Snatch just the audio? Yup, MP3s are a go.  
 
-- **Facebook Video Downloads**:  
-  - Automatically detect and download videos from Facebook links.  
+📸 **Insta-Ready**:  
+- Grab those 🔥 posts from Instagram—easy peasy.  
 
-- **Batch Downloads**:  
-  - Save time by downloading multiple URLs listed in a text file.  
+📹 **Facebook Flex**:  
+- Auto-detect and save vids from your FB feed. No cap.  
 
-- **Update Checker**:  
-  - Automatically check for the latest version and update with a single confirmation.  
+🗂️ **Batch Mode = Big Brain Energy**:  
+- Paste a whole list of links into a file. Boom 💥, we handle the rest.  
 
-### 🛠️ Improvements  
-- **Cross-Platform CLI**:  
-  - Windows `.exe` and Linux binary for seamless compatibility.  
-  - PyPI installation for Python users.  
+---
 
-- **Configurable Settings**:  
-  - Customizable download directory and format preferences via `config.json`.  
+### ⚡ Upgraded for the Real Ones  
+💻 **All Platforms, All Day**:  
+- Windows `.exe`? Gotcha.  
+- Linux love? 💯.  
+- Pythonistas? Pip it up!  
 
-- **Logs and History**:  
-  - All activities logged in `downloader.log`.  
-  - Download history saved in `download_history.csv`.  
+🎛️ **DIY Your Downloads**:  
+- Customize directories + file formats with `config.json`.  
 
-### 💡 Additional Notes  
-- **FFmpeg Required**: Ensure FFmpeg is installed for video/audio processing.  
-- **Disclaimer**: For **personal use only**. Respect content creators' copyrights.  
+🕵️ **Logs & Receipts**:  
+- **Logs**: Peep what’s happening in `downloader.log`.  
+- **History**: Track all your action in `download_history.csv`.  
 
-Enjoy using Social Media Downloader and let us know your feedback!
+---
+
+### 🔧 Pro Tips & Tweaks  
+🎧 **FFmpeg is Your BFF**:  
+- Needed for converting or merging audio+video. Don’t skip it!  
+
+---
+
+### 🛑 Friendly Reminder  
+🚨 **Keep it Legal, Homie**:  
+This tool’s for **personal vibes ONLY**. Always respect creators and copyright. 🙏  
+
+---
+
+### 💬 Spill the Tea  
+Tried it out? Found a bug? Got ideas? Slide into our [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues) or hang in our [Discussions tab](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
+
+---
+
+✨ *Your downloads just got a glow-up.* Keep slaying the content game! 💅  
