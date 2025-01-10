@@ -1,5 +1,5 @@
 {
-    "default_format": "show_all",   
+    "default_format": "show_all",
     "download_directory": "media",
     "history_file": "download_history.csv"
 }

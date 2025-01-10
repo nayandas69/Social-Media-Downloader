@@ -1,55 +1,64 @@
-# Security Policy  
+# 🛡️ SECURITY.md  
 
-## Supported Versions  
+## 🔒 Supported Versions  
+We’ve got your back with security updates for the following versions of **Social Media Downloader**:  
 
-The following versions of `Social Media Downloader` are currently supported with security updates:  
+| 🚀 Version  | 🔥 Supported?       |  
+| ----------- | ------------------ |  
+| v1.0.1      | ✅ Always, bestie! |  
+| v1.0.0      | ✅ Yup, still!      |  
 
-| Version   | Supported          |  
-| --------- | ------------------ |  
-| v1.0.0    | ✅ Yes             |  
+Stay updated, stay safe! 🌟  
 
-## Reporting a Vulnerability  
+---
 
-If you discover a security vulnerability in this project, please **do not disclose it publicly** until the issue has been addressed. Instead, follow the steps below to report the vulnerability securely.  
+## 📢 Reporting a Vulnerability  
+Yo, found a bug? A sketchy issue? First of all, thanks for looking out! 🫶 **Don’t go tweeting it out or dropping it in the DMs just yet.** Let’s fix it together, low-key.  
 
-### Steps to Report  
+### 🚨 How to Spill the Tea (Securely):  
+1. **Slide into our inbox**: Drop an email at **[nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)** with the subject:  
+   **🔥 [Security Alert] Vulnerability in Social Media Downloader 🔥**  
 
-1. **Contact Information**:  
-   Send an email to **[nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)** with the subject line: **[Security Report] Vulnerability in Social Media Downloader**.  
+2. **Deets, please!** Include:  
+   - 📋 **What’s the issue?** Spill all the juicy details.  
+   - 🛠️ **How to recreate it?** Step-by-step receipts, please.  
+   - 💻 **Proof of Concept (optional)**: If you’re feeling fancy, attach code snippets.  
+   - 🎯 **Why care?** Tell us how it could hurt users or the vibe.  
 
-2. **Include the Following Details**:  
-   - **Detailed Description**: Provide a clear and concise explanation of the vulnerability, including potential security risks.  
-   - **Steps to Reproduce**: Include exact instructions for replicating the issue.  
-   - **Proof of Concept (Optional)**: If possible, provide code snippets or examples demonstrating the vulnerability.  
-   - **Impact Assessment**: Explain how the vulnerability might affect users or the software's functionality.  
+3. **Patience is a virtue**: We’ll hit you back within **48 hours** (promise ✋).  
 
-3. **Wait for Response**: The author will acknowledge your report within **48 hours** and provide updates on the progress of the investigation and resolution.  
+---
 
-## Response Process  
+## 🛠️ The Fix Process  
+Here’s how we roll when you tell us something’s up:  
 
-When a vulnerability is reported:  
-1. **Acknowledgment**: You will receive confirmation that your report has been received.  
-2. **Analysis**: The issue will be thoroughly reviewed and validated.  
-3. **Resolution**: If confirmed, a fix or patch will be developed.  
-4. **Update Release**: A new version of `Social Media Downloader` will be released with the necessary security updates.  
-5. **Notification**: You will be informed once the issue has been resolved and the fix is live.  
+1. **📬 Got it!** You’ll get a reply ASAP so you know we’re on it.  
+2. **🔍 Detective mode**: We’ll investigate and confirm the issue. 🕵️‍♀️  
+3. **💡 Lightbulb moment**: If it’s valid, we’ll patch that bad boy.  
+4. **🚀 New drop**: A fresh, secure version will be released.  
+5. **👏 Shoutout!** You’ll hear back from us with all the fixes.  
 
-## Security Best Practices for Users  
+---
 
-To ensure a secure and safe experience while using `Social Media Downloader`:  
+## 👑 Safety First, Always  
+Keep your downloads smooth and your vibes secure with these tips:  
 
-- **Use Trusted Sources**: Only download media from legitimate and authorized sources.  
-- **Run as a Standard User**: Avoid running the application with elevated or administrative privileges.  
-- **Keep the Software Updated**: Always use the latest version of `Social Media Downloader` to benefit from security fixes and improvements.  
-- **Install FFmpeg Securely**: Ensure you download FFmpeg from its official site or verified sources to avoid malicious software.  
+- **✨ Download Wisely**: Stick to legit content and authorized platforms.  
+- **👩‍💻 No Admin Drama**: Don’t run as admin unless you’re a coding wizard (and even then, maybe don’t).  
+- **🔄 Update Game Strong**: Always roll with the latest version. It’s where the magic (and security fixes) live.  
+- **🎵 FFmpeg Safety**: Grab FFmpeg only from [official sources](https://ffmpeg.org) to keep it clean.  
 
-## General Security Guidelines  
+---
 
-- **Monitor Dependencies**: Regularly update any external tools (like FFmpeg) to their latest versions.  
-- **Avoid Sharing Modified Versions**: Do not distribute altered copies of the software, as they may introduce security risks.  
-- **Check for Malware**: Use antivirus software to scan downloaded media for potential threats.  
-- **Respect Copyright**: Download content only for personal use and ensure you have the necessary permissions.  
+## 🔐 General Security Glow-Up  
+- **📦 Dependencies Matter**: Update tools like FFmpeg regularly.  
+- **🛑 Say No to Sketchy Mods**: Avoid using modified versions of the app. They’re just bad vibes.  
+- **🦠 Stay Virus-Free**: Scan downloaded files with antivirus software if you’re feeling cautious.  
+- **❤️ Be a Content Queen/King**: Download responsibly and respect creators.  
 
-## Thank You!  
+---
 
-Thank you for helping to keep `Social Media Downloader` secure. Your contributions ensure a safe and trustworthy experience for all users. Together, we can create a better, safer tool for everyone.
+## 🌟 Thank You!  
+Big hugs for keeping **Social Media Downloader** safe and vibey for everyone. 💜 Your care makes this tool a better space for all. If you ever have questions, issues, or ideas, we’re here for you.  
+
+**Stay awesome, stay secure, and keep downloading cool stuff. ✨**  

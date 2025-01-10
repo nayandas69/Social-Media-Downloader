@@ -9,7 +9,6 @@ import time
 import shutil
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
-from subprocess import Popen
 import logging
 import json
 from tqdm import tqdm
@@ -17,9 +16,10 @@ from tqdm import tqdm
 # ---------------------------------
 # Version and Update Variables
 # ---------------------------------
-CURRENT_VERSION = "1.0.0"
+CURRENT_VERSION = "1.0.1"
 UPDATE_URL = "https://api.github.com/repos/nayandas69/Social-Media-Downloader/releases/latest"
 WHATS_NEW_FILE = "whats_new.txt"
+GITHUB_REPO_URL = "https://github.com/nayandas69/Social-Media-Downloader"
 
 # ---------------------------------
 # Logging Setup
@@ -35,9 +35,9 @@ logging.basicConfig(
 # ---------------------------------
 config_file = 'config.json'
 default_config = {
-    "default_format": "show_all",  # Default format behavior
-    "download_directory": "media",  # Default download directory
-    "history_file": "download_history.csv"  # Default history file
+    "default_format": "show_all",
+    "download_directory": "media",
+    "history_file": "download_history.csv"
 }
 
 def load_config():
@@ -79,14 +79,6 @@ display_author_details()
 # ---------------------------------
 # Helper Functions
 # ---------------------------------
-def is_windows():
-    """Check if the operating system is Windows."""
-    return sys.platform.startswith('win')
-
-def is_linux():
-    """Check if the operating system is Linux."""
-    return sys.platform.startswith('linux')
-
 def log_download(url, status, timestamp=None):
     """
     Log the download status in both history and log file.
@@ -109,7 +101,7 @@ def progress_bar(iterable, description="Processing"):
 # ---------------------------------
 def check_for_updates():
     """
-    Check for and apply updates if a newer version is available.
+    Check for and inform users about updates if available.
     """
     print(f"Current version: {CURRENT_VERSION}")
     print("Checking for updates...")
@@ -119,19 +111,9 @@ def check_for_updates():
         data = response.json()
 
         latest_version = data.get('tag_name')
-        download_link = None
-        if 'assets' in data and data['assets']:
-            for asset in data['assets']:
-                if is_linux() and 'linux' in asset['name'].lower():
-                    download_link = asset.get('browser_download_url')
-                    break
-                elif is_windows() and asset['name'].lower().endswith('.exe'):
-                    download_link = asset.get('browser_download_url')
-
         if latest_version:
             if latest_version > CURRENT_VERSION:
                 print(f"\nNew version available: {latest_version}")
-                print(f"Current version: {CURRENT_VERSION}")
 
                 # Display contents of whats_new.txt if available
                 print("\n\033[1;34mWhat's New in This Version:\033[0m")
@@ -147,11 +129,12 @@ def check_for_updates():
                     print("No 'what's new' information found.")
 
                 # Prompt user for confirmation
-                confirm = input("\nDo you want to update to the latest version? (y/n): ")
-                if confirm.lower() == 'y':
-                    download_update(download_link, latest_version)
+                confirm = input("\nDo you want to update to the latest version? (y/n): ").lower()
+                if confirm == 'y':
+                    print(f"Visit the repository and download the latest version: {GITHUB_REPO_URL}")
+                    print(f"If you are using pip, run the following command: \n\033[1;32mpip install social-media-downloader --upgrade\033[0m\n")
                 else:
-                    print("You can update anytime when you want.\n")
+                    print("You can update anytime at your convenience.\n")
             else:
                 print("You are already using the latest version.\n")
         else:
@@ -160,66 +143,36 @@ def check_for_updates():
         print(f"Error checking for updates: {str(e)}")
         logging.error(f"Update check failed: {str(e)}")
 
-def download_update(download_link, latest_version):
-    """
-    Download and apply updates.
-    """
-    if not download_link:
-        print("Error: No download link available for the update.")
-        return
-
-    print("Downloading update...")
-    update_file = "SocialMediaDownloader_latest"
-    if is_windows():
-        update_file += ".exe"
-
-    try:
-        response = requests.get(download_link, stream=True)
-        with open(update_file, 'wb') as file:
-            for chunk in progress_bar(response.iter_content(chunk_size=8192), description="Downloading"):
-                file.write(chunk)
-
-        print("Update downloaded successfully.")
-        old_exe = sys.argv[0]
-        new_exe = os.path.abspath(update_file)
-        shutil.move(new_exe, old_exe)
-        print("Old version replaced with the updated version.")
-        print("Restarting with the latest version...\n")
-        time.sleep(2)
-        if is_windows():
-            Popen([old_exe])
-        else:
-            os.chmod(old_exe, 0o755)
-            Popen(["./" + old_exe])
-        sys.exit()
-    except Exception as e:
-        print(f"Failed to update: {str(e)}")
-        logging.error(f"Update failed: {str(e)}")
-
 # ---------------------------------
-# YouTube and TikTok download with format selection
+# YouTube and TikTok download with format selection and info display
 # ---------------------------------
 def download_youtube_or_tiktok_video(url):
     """
-    Download a YouTube or TikTok video with format selection or MP3 option.
+    Download a YouTube or TikTok video with details display and format selection.
     """
     try:
         ydl_opts = {'listformats': True}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
-            formats = info['formats']
-            print("\nAvailable formats:")
-            for i, format in enumerate(formats):
-                format_id = format['format_id']
-                ext = format['ext']
-                height = format.get('height', 'Unknown')
-                fps = format.get('fps', 'Unknown')
-                vcodec = format.get('vcodec', 'none')
-                acodec = format.get('acodec', 'none')
-                format_note = format.get('format_note', '')
-                print(f"{i + 1}. {format_id} - {ext} - {height}p - {fps}fps - {vcodec} - {acodec} - {format_note}")
 
-        choice = input("\nEnter the format ID to download (or type 'mp3' for best audio): ").strip()
+            # Display video details
+            title = info.get('title', 'Unknown Title')
+            uploader = info.get('uploader', 'Unknown Uploader')
+            upload_date = info.get('upload_date', 'Unknown Date')
+            upload_date_formatted = datetime.strptime(upload_date, '%Y%m%d').strftime('%B %d, %Y') if upload_date != 'Unknown Date' else upload_date
+            print("\nVideo Details:")
+            print(f"Title: {title}")
+            print(f"Uploader: {uploader}")
+            print(f"Upload Date: {upload_date_formatted}\n")
+
+            # Display format options
+            formats = info['formats']
+            print("Available formats:")
+            for fmt in formats:
+                print(f"ID: {fmt['format_id']} | Ext: {fmt['ext']} | Resolution: {fmt.get('height', 'N/A')}p | Note: {fmt.get('format_note', '')}")
+
+        # Format selection
+        choice = input("\nEnter the format ID to download (or type 'mp3' for audio-only): ").strip()
         if choice.lower() == 'mp3':
             ydl_opts = {
                 'format': 'bestaudio/best',
@@ -233,13 +186,12 @@ def download_youtube_or_tiktok_video(url):
         else:
             ydl_opts = {
                 'format': f'{choice}+bestaudio/best',
-                'merge_output_format': 'mp4',
                 'outtmpl': os.path.join(download_directory, '%(title)s.%(ext)s'),
+                'merge_output_format': 'mp4',
             }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
-            title = info.get("title", "video")
             log_download(url, "Success")
             print(f"\nDownloaded video: {title}.")
     except Exception as e:
@@ -288,6 +240,9 @@ def download_facebook_video(url):
         print(f"Error: {str(e)}")
         logging.error(f"Facebook download error for {url}: {str(e)}")
 
+# ---------------------------------
+# Unified media downloader function
+# ---------------------------------
 def download_media(url):
     """Download media based on the platform."""
     if "youtube.com" in url or "tiktok.com" in url:
@@ -345,12 +300,37 @@ def main():
         choice = input("\nEnter your choice: ").strip().lower()
         if choice == "1":
             url = input("Enter the video URL: ").strip()
-            download_youtube_or_tiktok_video(url)
+            if not url:
+                print("URL cannot be empty. Please try again.")
+                continue
+            try:
+                ydl_opts = {'quiet': True}
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    info = ydl.extract_info(url, download=False)
+                    title = info.get("title", "Unknown Title")
+                    uploader = info.get("uploader", "Unknown Uploader")
+                    upload_date = info.get("upload_date", "Unknown Date")
+                    duration = info.get("duration", "Unknown Duration")
+                    print("\nVideo Details:")
+                    print(f"Title: {title}")
+                    print(f"Uploader: {uploader}")
+                    print(f"Upload Date: {upload_date}")
+                    print(f"Duration: {duration}s")
+                download_youtube_or_tiktok_video(url)
+            except Exception as e:
+                print(f"Error retrieving video details: {str(e)}")
+
         elif choice == "2":
             url = input("Enter the Facebook video URL: ").strip()
+            if not url:
+                print("URL cannot be empty. Please try again.")
+                continue
             download_facebook_video(url)
         elif choice == "3":
             url = input("Enter the Instagram post URL: ").strip()
+            if not url:
+                print("URL cannot be empty. Please try again.")
+                continue
             download_instagram_post(url)
         elif choice == "4":
             file_path = input("Enter the path to the text file with URLs: ").strip()
@@ -361,15 +341,31 @@ def main():
             else:
                 print("File not found. Please provide a valid file path.")
         elif choice == "5":
-            check_for_updates()
+            print(f"Current version: {CURRENT_VERSION}")
+            print("Checking for updates...")
+            try:
+                response = requests.get(UPDATE_URL)
+                response.raise_for_status()
+                data = response.json()
+                latest_version = data.get('tag_name', "Unknown Version")
+                print(f"Latest version available: {latest_version}")
+                print("\nWhat's New:")
+                print(data.get('body', "No update notes available."))
+                confirm = input("\nDo you want to update? (y/n): ").strip().lower()
+                if confirm == 'y':
+                    print("Visit our GitHub repository to download the latest version: https://github.com/nayandas69/Social-Media-Downloader/releases")
+                    print("For pip users, run: pip install social-media-downloader --upgrade")
+                else:
+                    print("You can update anytime at your convenience. Thank you!")
+            except requests.RequestException as e:
+                print(f"Failed to check updates: {str(e)}")
+
         elif choice == "6":
             show_help()
-            continue  # Skip the "Download complete!" message for help
-        elif choice in {"7", "q"}:
+        elif choice == "7":
             print("Exiting the program. Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
-
 if __name__ == "__main__":
     main()
