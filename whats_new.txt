@@ -1,0 +1,55 @@
+# 🔥 What's Poppin' in Social Media Downloader v1.0.1?  
+
+Yo fam, welcome to **v1.0.1**, the *OG* drop of Social Media Downloader! Here's the tea on what's new and popping:  
+
+---
+
+### 🌟 New Vibes & Features  
+🎥 **YouTube + TikTok Slay**:  
+- Download viral vids like a pro.  
+- Snatch just the audio? Yup, MP3s are a go.  
+
+📸 **Insta-Ready**:  
+- Grab those 🔥 posts from Instagram—easy peasy.  
+
+📹 **Facebook Flex**:  
+- Auto-detect and save vids from your FB feed. No cap.  
+
+🗂️ **Batch Mode = Big Brain Energy**:  
+- Paste a whole list of links into a file. Boom 💥, we handle the rest.  
+
+---
+
+### ⚡ Upgraded for the Real Ones  
+💻 **All Platforms, All Day**:  
+- Windows `.exe`? Gotcha.  
+- Linux love? 💯.  
+- Pythonistas? Pip it up!  
+
+🎛️ **DIY Your Downloads**:  
+- Customize directories + file formats with `config.json`.  
+
+🕵️ **Logs & Receipts**:  
+- **Logs**: Peep what’s happening in `downloader.log`.  
+- **History**: Track all your action in `download_history.csv`.  
+
+---
+
+### 🔧 Pro Tips & Tweaks  
+🎧 **FFmpeg is Your BFF**:  
+- Needed for converting or merging audio+video. Don’t skip it!  
+
+---
+
+### 🛑 Friendly Reminder  
+🚨 **Keep it Legal, Homie**:  
+This tool’s for **personal vibes ONLY**. Always respect creators and copyright. 🙏  
+
+---
+
+### 💬 Spill the Tea  
+Tried it out? Found a bug? Got ideas? Slide into our [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues) or hang in our [Discussions tab](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
+
+---
+
+✨ *Your downloads just got a glow-up.* Keep slaying the content game! 💅  
