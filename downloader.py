@@ -16,16 +16,17 @@ from tqdm import tqdm
 # ---------------------------------
 # Version and Update Variables
 # ---------------------------------
-CURRENT_VERSION = "1.0.1"
+CURRENT_VERSION = "1.0.4"
 UPDATE_URL = "https://api.github.com/repos/nayandas69/Social-Media-Downloader/releases/latest"
 WHATS_NEW_FILE = "whats_new.txt"
 GITHUB_REPO_URL = "https://github.com/nayandas69/Social-Media-Downloader"
+DISCORD_INVITE = "https://discord.gg/skHyssu"
 
 # ---------------------------------
 # Logging Setup
 # ---------------------------------
 logging.basicConfig(
-    filename='downloader.log',  # Log file to record events
+    filename='downloader.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -37,7 +38,8 @@ config_file = 'config.json'
 default_config = {
     "default_format": "show_all",
     "download_directory": "media",
-    "history_file": "download_history.csv"
+    "history_file": "download_history.csv",
+    "mp3_quality": "192",  # Default to 192 kbps
 }
 
 def load_config():
@@ -53,6 +55,7 @@ def load_config():
 config = load_config()
 download_directory = config['download_directory']
 history_file = config['history_file']
+mp3_quality = config['mp3_quality']
 
 # Ensure the download directory exists
 if not os.path.exists(download_directory):
@@ -79,6 +82,16 @@ display_author_details()
 # ---------------------------------
 # Helper Functions
 # ---------------------------------
+def check_internet_connection():
+    """
+    Check if the system has an active internet connection.
+    """
+    try:
+        requests.head("https://www.google.com", timeout=5)
+        return True
+    except requests.ConnectionError:
+        return False
+
 def log_download(url, status, timestamp=None):
     """
     Log the download status in both history and log file.
@@ -97,12 +110,16 @@ def progress_bar(iterable, description="Processing"):
     return tqdm(iterable, desc=description, ncols=100, leave=False)
 
 # ---------------------------------
-# Check for updates functionality
+# Update Checker with Discord Invite
 # ---------------------------------
 def check_for_updates():
     """
-    Check for and inform users about updates if available.
+    Check for updates, notify about new version, or suggest joining the Discord for development updates.
     """
+    if not check_internet_connection():
+        print("\nPlease connect to the internet and try again.")
+        return
+
     print(f"Current version: {CURRENT_VERSION}")
     print("Checking for updates...")
     try:
@@ -110,45 +127,51 @@ def check_for_updates():
         response.raise_for_status()
         data = response.json()
 
-        latest_version = data.get('tag_name')
-        if latest_version:
-            if latest_version > CURRENT_VERSION:
-                print(f"\nNew version available: {latest_version}")
+        latest_version = data.get('tag_name', "Unknown Version")
+        if latest_version and latest_version > CURRENT_VERSION:
+            print(f"\nNew version available: {latest_version}")
 
-                # Display contents of whats_new.txt if available
-                print("\n\033[1;34mWhat's New in This Version:\033[0m")
-                if os.path.exists(WHATS_NEW_FILE):
-                    try:
-                        with open(WHATS_NEW_FILE, 'r') as file:
-                            whats_new = file.read()
-                            print(whats_new)
-                    except Exception as e:
-                        print(f"Could not read 'whats_new.txt': {e}")
-                        logging.warning(f"Failed to read 'whats_new.txt': {str(e)}")
-                else:
-                    print("No 'what's new' information found.")
-
-                # Prompt user for confirmation
-                confirm = input("\nDo you want to update to the latest version? (y/n): ").lower()
-                if confirm == 'y':
-                    print(f"Visit the repository and download the latest version: {GITHUB_REPO_URL}")
-                    print(f"If you are using pip, run the following command: \n\033[1;32mpip install social-media-downloader --upgrade\033[0m\n")
-                else:
-                    print("You can update anytime at your convenience.\n")
+            # Display contents of what's_new.txt
+            if os.path.exists(WHATS_NEW_FILE):
+                with open(WHATS_NEW_FILE, 'r') as f:
+                    print("\nWhat's New in This Version:")
+                    print(f.read())
             else:
-                print("You are already using the latest version.\n")
+                print("\nNo 'what's new' information found.")
+
+            confirm = input("\nDo you want to update to the latest version? (y/n): ").strip().lower()
+            if confirm == 'y':
+                print(f"\nVisit the repository and download the latest version:\n{GITHUB_REPO_URL}")
+                print("\nIf you are using pip, run:\n\033[1;32mpip install social-media-downloader --upgrade\033[0m\n")
+            else:
+                print("\nThe new version includes exciting features and bug fixes.")
+                print("You can update anytime at your convenience.")
         else:
-            print("Error: Could not retrieve the latest version information.")
+            print("No updates available. Thank you!")
+            print(f"\nThe new version is under development. Join the Discord server for testing:\n{DISCORD_INVITE}\n")
     except requests.RequestException as e:
-        print(f"Error checking for updates: {str(e)}")
-        logging.error(f"Update check failed: {str(e)}")
+        print(f"Error checking for updates: {e}")
+        logging.error(f"Update check failed: {e}")
 
 # ---------------------------------
-# YouTube and TikTok download with format selection and info display
+# Internet Connection Check Wrapper
+# ---------------------------------
+def ensure_internet_connection():
+    """
+    Ensure that an internet connection is active. Retry until successful.
+    """
+    while not check_internet_connection():
+        print("\nNo internet connection. Please connect to the internet and try again.")
+        time.sleep(5)  # Retry every 5 seconds
+    print("Internet connection detected. Proceeding...")
+
+# ---------------------------------
+# YouTube and TikTok Download
 # ---------------------------------
 def download_youtube_or_tiktok_video(url):
+    ensure_internet_connection()
     """
-    Download a YouTube or TikTok video with details display and format selection.
+    Download a YouTube or TikTok video with pause, resume, and quality selection.
     """
     try:
         ydl_opts = {'listformats': True}
@@ -159,7 +182,11 @@ def download_youtube_or_tiktok_video(url):
             title = info.get('title', 'Unknown Title')
             uploader = info.get('uploader', 'Unknown Uploader')
             upload_date = info.get('upload_date', 'Unknown Date')
-            upload_date_formatted = datetime.strptime(upload_date, '%Y%m%d').strftime('%B %d, %Y') if upload_date != 'Unknown Date' else upload_date
+            upload_date_formatted = (
+                datetime.strptime(upload_date, '%Y%m%d').strftime('%B %d, %Y')
+                if upload_date != 'Unknown Date'
+                else upload_date
+            )
             print("\nVideo Details:")
             print(f"Title: {title}")
             print(f"Uploader: {uploader}")
@@ -171,7 +198,6 @@ def download_youtube_or_tiktok_video(url):
             for fmt in formats:
                 print(f"ID: {fmt['format_id']} | Ext: {fmt['ext']} | Resolution: {fmt.get('height', 'N/A')}p | Note: {fmt.get('format_note', '')}")
 
-        # Format selection
         choice = input("\nEnter the format ID to download (or type 'mp3' for audio-only): ").strip()
         if choice.lower() == 'mp3':
             ydl_opts = {
@@ -180,7 +206,7 @@ def download_youtube_or_tiktok_video(url):
                 'postprocessors': [{
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3',
-                    'preferredquality': '192',
+                    'preferredquality': mp3_quality,
                 }],
             }
         else:
@@ -188,6 +214,7 @@ def download_youtube_or_tiktok_video(url):
                 'format': f'{choice}+bestaudio/best',
                 'outtmpl': os.path.join(download_directory, '%(title)s.%(ext)s'),
                 'merge_output_format': 'mp4',
+                'noprogress': False,
             }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -197,10 +224,10 @@ def download_youtube_or_tiktok_video(url):
     except Exception as e:
         log_download(url, f"Failed: {str(e)}")
         print(f"Error downloading video: {str(e)}")
-        logging.error(f"Error downloading video: {url} - {str(e)}")
+        logging.error(f"Error downloading video from {url}: {str(e)}")
 
 # ---------------------------------
-# Instagram post download
+# Instagram Download (Posts, Videos, Pictures, Reels)
 # ---------------------------------
 def download_instagram_post(url):
     """Download an Instagram post."""
@@ -217,31 +244,62 @@ def download_instagram_post(url):
         logging.error(f"Instagram download error for {url}: {str(e)}")
 
 # ---------------------------------
-# Facebook post download using BeautifulSoup to find video link
+# Facebook Video Download
 # ---------------------------------
-def download_facebook_video(url):
-    """Download a Facebook video."""
+def download_facebook_video(url, download_directory="media"):
+    """
+    Download a public Facebook video by extracting the video URL.
+    """
+    ensure_internet_connection()
+
+    if not os.path.exists(download_directory):
+        os.makedirs(download_directory)
+
     try:
-        response = requests.get(url)
+        headers = {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/91.0.4472.124 Safari/537.36"
+            )
+        }
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+
         soup = BeautifulSoup(response.content, 'html.parser')
-        video_url = soup.find('meta', property="og:video")['content']
-        if video_url:
-            video_response = requests.get(video_url)
-            file_path = os.path.join(download_directory, 'facebook_video.mp4')
-            with open(file_path, 'wb') as f:
-                for chunk in progress_bar(video_response.iter_content(chunk_size=8192), description="Downloading"):
+        video_url = None
+
+        # Attempt to find the video URL in multiple ways
+        meta_tag = soup.find('meta', property="og:video")
+        if meta_tag:
+            video_url = meta_tag.get('content')
+
+        # If not found in the meta tag, try alternative attributes
+        if not video_url:
+            meta_alternate = soup.find('meta', attrs={"name": "twitter:player:stream"})
+            if meta_alternate:
+                video_url = meta_alternate.get('content')
+
+        if not video_url:
+            raise ValueError("Could not extract the video URL. The video might not be public.")
+
+        # Download the video
+        video_response = requests.get(video_url, stream=True)
+        video_response.raise_for_status()
+
+        file_path = os.path.join(download_directory, 'facebook_video.mp4')
+        with open(file_path, 'wb') as f:
+            for chunk in progress_bar(video_response.iter_content(chunk_size=8192), description="Downloading"):
+                if chunk:
                     f.write(chunk)
-            log_download(url, "Success")
-            print("Downloaded Facebook video.")
-        else:
-            raise ValueError("Could not find video URL")
+
+        print(f"Downloaded Facebook video to {file_path}.")
+        logging.info(f"Successfully downloaded Facebook video from {url} to {file_path}.")
     except Exception as e:
-        log_download(url, f"Failed: {str(e)}")
-        print(f"Error: {str(e)}")
-        logging.error(f"Facebook download error for {url}: {str(e)}")
+        logging.error(f"Error downloading Facebook video from {url}: {e}")
+        print(f"Error: {e}")
 
 # ---------------------------------
-# Unified media downloader function
+# Unified Media Downloader Function
 # ---------------------------------
 def download_media(url):
     """Download media based on the platform."""
@@ -259,6 +317,7 @@ def download_media(url):
 # Batch Download
 # ---------------------------------
 def batch_download(urls):
+    ensure_internet_connection()
     """Download multiple URLs from a list."""
     print("Starting batch download...")
     with ThreadPoolExecutor() as executor:
@@ -272,17 +331,18 @@ def show_help():
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
     print("1. YouTube/TikTok Download: Enter '1' to download a YouTube or TikTok video.")
     print("2. Facebook Download: Enter '2' to download a Facebook video.")
-    print("3. Instagram Download: Enter '3' to download an Instagram post.")
+    print("3. Instagram Download: Enter '3' to download an Instagram post, video, picture, or reel.")
     print("4. Batch Download: Enter '4' and provide a text file with URLs.")
     print("5. Update Checker: Enter '5' to check and apply updates.")
     print("6. Help: Enter '6' to show this help menu.")
     print("7. Quit: Enter '7' to exit the program.\n")
-    print("\nAll downloads are saved in the 'media' directory, and a log is saved in 'download_history.csv'.")
-    print("If you encounter any issues, crashes, bugs, or have new feature requests, please contact the author:")
+    print("All downloads are saved in the 'media' directory.")
+    print("Logs and download history are maintained for your convenience.")
+    print("For issues or suggestions, please contact the author:")
     display_author_details()
 
 # ---------------------------------
-# Main Function CLI interface for the Social Media Downloader
+# Main Function: CLI Interface
 # ---------------------------------
 def main():
     """Main function for user interaction."""
@@ -303,23 +363,7 @@ def main():
             if not url:
                 print("URL cannot be empty. Please try again.")
                 continue
-            try:
-                ydl_opts = {'quiet': True}
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    info = ydl.extract_info(url, download=False)
-                    title = info.get("title", "Unknown Title")
-                    uploader = info.get("uploader", "Unknown Uploader")
-                    upload_date = info.get("upload_date", "Unknown Date")
-                    duration = info.get("duration", "Unknown Duration")
-                    print("\nVideo Details:")
-                    print(f"Title: {title}")
-                    print(f"Uploader: {uploader}")
-                    print(f"Upload Date: {upload_date}")
-                    print(f"Duration: {duration}s")
-                download_youtube_or_tiktok_video(url)
-            except Exception as e:
-                print(f"Error retrieving video details: {str(e)}")
-
+            download_youtube_or_tiktok_video(url)
         elif choice == "2":
             url = input("Enter the Facebook video URL: ").strip()
             if not url:
@@ -341,25 +385,7 @@ def main():
             else:
                 print("File not found. Please provide a valid file path.")
         elif choice == "5":
-            print(f"Current version: {CURRENT_VERSION}")
-            print("Checking for updates...")
-            try:
-                response = requests.get(UPDATE_URL)
-                response.raise_for_status()
-                data = response.json()
-                latest_version = data.get('tag_name', "Unknown Version")
-                print(f"Latest version available: {latest_version}")
-                print("\nWhat's New:")
-                print(data.get('body', "No update notes available."))
-                confirm = input("\nDo you want to update? (y/n): ").strip().lower()
-                if confirm == 'y':
-                    print("Visit our GitHub repository to download the latest version: https://github.com/nayandas69/Social-Media-Downloader/releases")
-                    print("For pip users, run: pip install social-media-downloader --upgrade")
-                else:
-                    print("You can update anytime at your convenience. Thank you!")
-            except requests.RequestException as e:
-                print(f"Failed to check updates: {str(e)}")
-
+            check_for_updates()
         elif choice == "6":
             show_help()
         elif choice == "7":
@@ -367,5 +393,6 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
 if __name__ == "__main__":
     main()

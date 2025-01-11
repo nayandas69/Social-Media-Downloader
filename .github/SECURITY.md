@@ -1,64 +1,72 @@
-# 🛡️ SECURITY POLICY
+# 🛡️ SECURITY POLICY  
 
 ## 🔒 Supported Versions  
-We’ve got your back with security updates for the following versions of **Social Media Downloader**:  
 
-| 🚀 Version  | 🔥 Supported?       |  
-| ----------- | ------------------ |  
-| v1.0.1      | ✅ Always, bestie! |  
-| v1.0.0      | ✅ Yup, still!      |  
+We’re all about that safety net. Here’s what’s hot and supported right now for **Social Media Downloader**:  
 
-Stay updated, stay safe! 🌟  
+| 🚀 Version  | 🔥 Supported?            |  
+| ----------- | ---------------------- |  
+| v1.0.4      | ✅ Of course, bestie!    |  
+| v1.0.1      | ✅ Still holding it down |  
+| v1.0.0      | ❌ Sorry, it’s retired 😭 |  
+
+**Pro Tip**: Update regularly to keep things fresh and secure. 🌟  
 
 ---
 
 ## 📢 Reporting a Vulnerability  
-Yo, found a bug? A sketchy issue? First of all, thanks for looking out! 🫶 **Don’t go tweeting it out or dropping it in the DMs just yet.** Let’s fix it together, low-key.  
 
-### 🚨 How to Spill the Tea (Securely):  
-1. **Slide into our inbox**: Drop an email at **[nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)** with the subject:  
-   **🔥 [Security Alert] Vulnerability in Social Media Downloader 🔥**  
+Yo, got some drama? Found a sketchy bug or a sussy security hole? **First off, you’re a real MVP for spotting it.** 🫶 Let’s handle it like pros and keep the vibes safe for everyone.  
 
-2. **Deets, please!** Include:  
-   - 📋 **What’s the issue?** Spill all the juicy details.  
-   - 🛠️ **How to recreate it?** Step-by-step receipts, please.  
-   - 💻 **Proof of Concept (optional)**: If you’re feeling fancy, attach code snippets.  
-   - 🎯 **Why care?** Tell us how it could hurt users or the vibe.  
+### 🚨 Spilling the Tea (Securely):  
+1. **Slide into our email inbox**:  
+   - 📧 **[nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)**  
+   - Use this subject line for extra ✨:  
+     **🔥 [Security Alert] Found a Vulnerability in Social Media Downloader 🔥**  
 
-3. **Patience is a virtue**: We’ll hit you back within **48 hours** (promise ✋).  
+2. **Give us the deets**:  
+   - 📋 **What’s broken?** Break it down with all the juicy details.  
+   - 🛠️ **Recreate it**: Step-by-step receipts, please. Make it foolproof.  
+   - 💻 **Proof of Concept (optional)**: A code snippet = 👑.  
+   - 🎯 **Why it matters**: Show us how it could mess with the vibes.  
 
----
-
-## 🛠️ The Fix Process  
-Here’s how we roll when you tell us something’s up:  
-
-1. **📬 Got it!** You’ll get a reply ASAP so you know we’re on it.  
-2. **🔍 Detective mode**: We’ll investigate and confirm the issue. 🕵️‍♀️  
-3. **💡 Lightbulb moment**: If it’s valid, we’ll patch that bad boy.  
-4. **🚀 New drop**: A fresh, secure version will be released.  
-5. **👏 Shoutout!** You’ll hear back from us with all the fixes.  
+3. **Patience is key, boo**: We’ll hit you up within **48 hours**, no cap.  
 
 ---
 
-## 👑 Safety First, Always  
-Keep your downloads smooth and your vibes secure with these tips:  
+## 🛠️ How We Fix Stuff  
 
-- **✨ Download Wisely**: Stick to legit content and authorized platforms.  
-- **👩‍💻 No Admin Drama**: Don’t run as admin unless you’re a coding wizard (and even then, maybe don’t).  
-- **🔄 Update Game Strong**: Always roll with the latest version. It’s where the magic (and security fixes) live.  
-- **🎵 FFmpeg Safety**: Grab FFmpeg only from [official sources](https://ffmpeg.org) to keep it clean.  
+We don’t play when it comes to security. Here’s how we roll:  
 
----
-
-## 🔐 General Security Glow-Up  
-- **📦 Dependencies Matter**: Update tools like FFmpeg regularly.  
-- **🛑 Say No to Sketchy Mods**: Avoid using modified versions of the app. They’re just bad vibes.  
-- **🦠 Stay Virus-Free**: Scan downloaded files with antivirus software if you’re feeling cautious.  
-- **❤️ Be a Content Queen/King**: Download responsibly and respect creators.  
+1. **📬 Acknowledgment**: You’ll get a “we got it!” email.  
+2. **🔍 Full Detective Mode**: We investigate to confirm the issue. 🕵️‍♂️  
+3. **💡 Game Plan**: If valid, we’re already working on that patch.  
+4. **🚀 Secure Drop**: A shiny new, secure version gets released ASAP.  
+5. **👏 Thank You!** You’ll hear back with all the fix details.  
 
 ---
 
-## 🌟 Thank You!  
-Big hugs for keeping **Social Media Downloader** safe and vibey for everyone. 💜 Your care makes this tool a better space for all. If you ever have questions, issues, or ideas, we’re here for you.  
+## 👑 Safety Checklist for You  
 
-**Stay awesome, stay secure, and keep downloading cool stuff. ✨**  
+Keep your downloads smooth and vibes immaculate with these 🔑 tips:  
+- **✨ Download Smart**: Stick to legit platforms. Piracy = 🚩.  
+- **🛠️ No Admin Flexing**: Don’t run this tool as admin unless it’s really necessary (and even then, maybe don’t).  
+- **🔄 Update Always**: Updates = security magic. Don’t sleep on it.  
+- **🎵 FFmpeg Vibes**: Use FFmpeg only from [official sources](https://ffmpeg.org) to stay clean and safe.  
+
+---
+
+## 🔐 Extra Security Glow-Up  
+
+- **📦 Dependencies Check**: Tools like FFmpeg? Keep them updated to stay secure.  
+- **🛑 No Sketchy Mods**: Using modified versions of this app? That’s a no from us, dawg.  
+- **🦠 Antivirus Queen/King**: If you’re nervous, scan downloaded files for peace of mind.  
+- **❤️ Respect Creators**: Download responsibly. Let’s keep the creative ecosystem thriving.  
+
+---
+
+## 🌟 Thank You, Security Champs  
+
+Big hugs for making **Social Media Downloader v1.0.4** better, safer, and more iconic for everyone. 💜 Your effort = unmatched vibes. If you’ve got questions, ideas, or just wanna say hi, hit us up anytime.  
+
+**Stay secure, stay awesome, and keep downloading with good vibes. ✨**  

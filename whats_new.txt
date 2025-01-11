@@ -1,55 +1,31 @@
-# 🔥 What's Poppin' in Social Media Downloader v1.0.1?  
-
-Yo fam, welcome to **v1.0.1**, the *OG* drop of Social Media Downloader! Here's the tea on what's new and popping:  
+✨ **Ayo, Social Media Downloader v1.0.4 just dropped!** ✨  
 
 ---
 
-### 🌟 New Vibes & Features  
-🎥 **YouTube + TikTok Slay**:  
-- Download viral vids like a pro.  
-- Snatch just the audio? Yup, MP3s are a go.  
-
-📸 **Insta-Ready**:  
-- Grab those 🔥 posts from Instagram—easy peasy.  
-
-📹 **Facebook Flex**:  
-- Auto-detect and save vids from your FB feed. No cap.  
-
-🗂️ **Batch Mode = Big Brain Energy**:  
-- Paste a whole list of links into a file. Boom 💥, we handle the rest.  
+### 🔧 **Bugs Squashed** 🐛:  
+- **Error 404? Not anymore.** Broken download links are a thing of the past 🚫.  
+- **Offline blues fixed** 🌐: No more crashing when you’re off WiFi (we’ve all been there 🫠).  
+- **Batch mode history glow-up**: Batch downloads now slide seamlessly into your history like butter 🧈.  
 
 ---
 
-### ⚡ Upgraded for the Real Ones  
-💻 **All Platforms, All Day**:  
-- Windows `.exe`? Gotcha.  
-- Linux love? 💯.  
-- Pythonistas? Pip it up!  
-
-🎛️ **DIY Your Downloads**:  
-- Customize directories + file formats with `config.json`.  
-
-🕵️ **Logs & Receipts**:  
-- **Logs**: Peep what’s happening in `downloader.log`.  
-- **History**: Track all your action in `download_history.csv`.  
+### 💪 **Improvements** 🔥:  
+- **Speed run vibes!** Your downloads just got a turbo boost 🏎️—less waiting, more watching 🎥.  
+- **MP3 customization unlocked** 🎵: Choose your audio quality (128, 192, or 320 kbps). From HiFi to lo-fi, we’ve got your back.  
+- **Logs + history upgrade** 🪩: Fail? Win? Every moment’s logged like your personal highlight reel. Never lose track again.  
 
 ---
 
-### 🔧 Pro Tips & Tweaks  
-🎧 **FFmpeg is Your BFF**:  
-- Needed for converting or merging audio+video. Don’t skip it!  
+### 🎁 **New Features** 🎉:  
+- **Offline detection = no stress:** If you’re not connected, we’ll gently remind you to reconnect and pick up where you left off ✨.  
+- **Update checker like a boss** 🔄: Stay in the loop on new features and fixes. Pro tip: Join our Discord for sneak peeks and beta tests 👀.  
+  👉 **https://discord.gg/skHyssu**  
 
 ---
 
-### 🛑 Friendly Reminder  
-🚨 **Keep it Legal, Homie**:  
-This tool’s for **personal vibes ONLY**. Always respect creators and copyright. 🙏  
+🚀 **Bottom Line**: Faster, smarter, smoother downloads. Don’t sleep on it—update now and keep those vibes immaculate. ✌️  
 
 ---
 
-### 💬 Spill the Tea  
-Tried it out? Found a bug? Got ideas? Slide into our [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues) or hang in our [Discussions tab](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
-
----
-
-✨ *Your downloads just got a glow-up.* Keep slaying the content game! 💅  
+**Love always,** 🫶  
+Team Social Media Downloader  

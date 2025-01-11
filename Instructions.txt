@@ -1,150 +1,128 @@
-## Social Media Downloader Using Instructions for User & Developers
+#### 🌟 **Social Media Downloader v1.0.4**  
 
-### For Normal Users
-
-1. **Download and Installation**:
-   - Visit the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
-   - Choose one of the following installation methods:
-     - **Option 1: Install via PyPI**:
-       - Ensure that you have Python 3.7 or later installed.
-       - Open your command line or terminal and run:
-         ```bash
-         pip install social-media-downloader
-         ```
-     - **Option 2: Download Executable for Windows**:
-       - Download the `.exe` file from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
-       - Double-click the `.exe` file to launch the tool.
-     - **Option 3: Use on Linux**:
-       - Download the Linux binary from the **[Latest Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)** page.
-       - Extract the downloaded archive:
-         ```bash
-         unzip SocialMediaDownloader_latest_Linux.zip
-         ```
-         or
-         ```bash
-         tar -xzvf SocialMediaDownloader_latest_Linux.tar.gz
-         ```
-       - Run the binary:
-         ```bash
-         ./SocialMediaDownloader_latest
-         ```
-
-2. **Requirements**:
-   - **FFmpeg** is required for video/audio conversion.
-     - On Linux, install FFmpeg:
-       ```bash
-       sudo apt update
-       sudo apt install ffmpeg
-       ```
-     - On Windows, download FFmpeg from [ffmpeg.org](https://ffmpeg.org/) and add it to your system's PATH.
-
-3. **Usage**:
-   - Open the tool by running:
-     ```bash
-     social-media-downloader
-     ```
-     For Windows users, double-click the `.exe` file or run from the command prompt:
-     ```bash
-     SocialMediaDownloader_latest.exe
-     ```
-
-4. **Download Media**:
-   - **For YouTube/TikTok Videos**: Enter the video URL to download in your preferred format.
-   - **For Facebook Videos**: Provide the video URL to download.
-   - **For Instagram Posts**: Input the Instagram post URL to download.
-   - **Batch Download**: You can provide a text file with multiple URLs (one per line) for batch downloading.
-
-5. **Logs and History**:
-   - All download activities are logged in the `downloader.log` file.
-   - The download history is saved in `download_history.csv`.
-
-6. **Update Checker**:
-   - The tool checks for updates. Ensure you're using the latest version by visiting the **[releases page](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)**.
-
-7. **Support and Issues**:
-   - For support, feature requests, or bug reports, contact the author:
-     - **Author**: Nayan Das
-     - **Email**: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
-     - **Website**: [https://socialportal.nayanchandradas.com](https://socialportal.nayanchandradas.com)
-     - **GitHub Issues**: [GitHub Issues](https://github.com/nayandas69/Social-Media-Downloader/issues)
+Welcome, legend! Whether you're a user looking to download the *juiciest content* or a dev ready to level up this tool, here's your ultimate guide. 🚀✨  
 
 ---
 
-### For Developers
+### 🎥 **For Users**  
 
-1. **Clone the Repository**:
-   - Clone the project repository to your local machine:
-     ```bash
-     git clone https://github.com/nayandas69/Social-Media-Downloader.git
-     cd Social-Media-Downloader
-     ```
+#### 💻 **Getting Started**  
+1. **Install Python:**  
+   Grab it from [here](https://www.python.org/downloads/) if you haven’t already! Don’t forget to check **"Add Python to PATH"**—super important.  
 
-2. **Setting Up the Development Environment**:
-   - Install the required dependencies:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - Optionally, set up a virtual environment for isolated development:
-     ```bash
-     python -m venv venv
-     source venv/bin/activate  # For Linux/macOS
-     venv\Scripts\activate     # For Windows
-     pip install -r requirements.txt
-     ```
+2. **Install the Downloader:**  
+   Open your terminal or cmd, and type:  
+   ```bash  
+   pip install social-media-downloader  
+   ```  
+   OR grab the `.exe` from our [releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest).
 
-3. **Running the Application Locally**:
-   - To run the tool locally, execute:
-     ```bash
-     python downloader.py
-     ```
-
-4. **Contributing to the Project**:
-   - Fork the repository and clone your fork.
-   - Create a new branch for your feature or bug fix:
-     ```bash
-     git checkout -b feature/your-feature-name
-     ```
-   - After making changes, commit them:
-     ```bash
-     git add .
-     git commit -m "Your commit message"
-     git push origin feature/your-feature-name
-     ```
-   - Open a pull request to merge your changes into the main branch.
-
-5. **Running Tests**:
-   - If you have added any tests, you can run them using:
-     ```bash
-     pytest
-     ```
-   - Ensure that your code passes all tests before submitting a pull request.
-
-6. **Publishing to PyPI**:
-   - To release a new version to PyPI, update the version in `setup.py` and then:
-     - Build the distribution:
-       ```bash
-       python setup.py sdist bdist_wheel
-       ```
-     - Upload to PyPI:
-       ```bash
-       twine upload dist/*
-       ```
-
-7. **FFmpeg Requirement**:
-   - For handling video/audio content, make sure FFmpeg is installed and configured on your system.
-
-8. **Creating a New Release**:
-   - Once you've made changes, update the `CHANGELOG.md` and `whats_new.txt` to reflect new features or bug fixes.
-   - Push a new tag for the release:
-     ```bash
-     git tag -a v1.*.* -m "Release message"
-     git push origin v1.*.0*
-     ```
-
-9. **Contact Information**:
-   - For any issues, contact the project maintainer:
-     - **Author**: Nayan Das
-     - **Email**: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
-     - **Website**: [https://socialportal.nayanchandradas.com](https://socialportal.nayanchandradas.com)
+3. **Run the Tool:**  
+   ```bash  
+   social-media-downloader  
+   ```  
+   Paste your link, and BOOM! The magic begins. 🎩✨  
 
 ---
+
+#### 🔥 **What Can You Do?**  
+
+- **Snag individual vids & posts**: Paste any URL, and watch the tool work its charm. 💖  
+- **Batch Mode Boss**: Got tons of links? Dump them into a text file (one URL per line) and run:  
+  ```bash  
+  social-media-downloader -batch file_name.txt  
+  ```  
+
+---
+
+#### 🛠️ **Custom Vibes**  
+
+1. **Edit `config.json`:**  
+   🔧 Your gateway to total control! Open the file and tweak:  
+   - `download_directory`: Set your fave folder for downloads. 🎯  
+   - `mp3_quality`: Choose between `128`, `192`, or `320`. Customize your sound vibes! 🎧  
+   - `default_format`: Change format preferences.  
+
+2. **Logs & History:**  
+   - All the receipts for your downloads live in:  
+     - **Logs**: `downloader.log` 📜  
+     - **History**: `download_history.csv` 🗃️  
+   Check them out if you need details.  
+
+---
+
+#### ✨ **Pro Tips**  
+
+1. **Speed Hack:**  
+   Install [FFmpeg](https://ffmpeg.org/download.html) for smoother downloads and merging (you’re welcome 😉).  
+
+2. **Stuck Offline?**  
+   Relax! The tool will wait for you to connect and retry. No panics, just vibes. 🌐✨  
+
+---
+
+### 👨‍💻 **For Developers**  
+
+#### 💡 **Wanna Hack on This Project?**  
+
+- **Step 1:** Fork the repo from GitHub:  
+  👉 [Social Media Downloader Repo](https://github.com/nayandas69/Social-Media-Downloader)  
+
+- **Step 2:** Clone it locally:  
+  ```bash  
+  git clone https://github.com/nayandas69/Social-Media-Downloader.git  
+  cd Social-Media-Downloader  
+  ```  
+
+- **Step 3:** Set up a virtual environment (optional but classy):  
+  ```bash  
+  python -m venv venv  
+  source venv/bin/activate  # Linux/Mac  
+  venv\Scripts\activate  # Windows  
+  ```  
+
+- **Step 4:** Install dependencies:  
+  ```bash  
+  pip install -r requirements.txt  
+  ```  
+
+- **Step 5:** Run the magic:  
+  ```bash  
+  python downloader.py  
+  ```  
+
+---
+
+#### 🧩 **Contributing? Let’s Go!**  
+- Found bugs? Open an issue 👉 [Issues](https://github.com/nayandas69/Social-Media-Downloader/issues)  
+- Wanna flex your code skills? Fork, commit, and drop a PR. 🚀  
+- Join our [Discord server](https://discord.gg/skHyssu) to hang out with fellow devs.  
+
+---
+
+### ⚡ **FAQs**  
+
+1. **Q: What platforms are supported?**  
+   A: YouTube, TikTok, Instagram, and Facebook. 💃  
+
+2. **Q: My download isn’t working! What now?**  
+   A:  
+   - Check your internet. Offline? The tool will wait patiently for you to reconnect. 🌐  
+   - Make sure the URL is valid.  
+   - Still an issue? Peek at `downloader.log` or [raise an issue](https://github.com/nayandas69/Social-Media-Downloader/issues).  
+
+3. **Q: Can I use this without Python?**  
+   A: Absolutely! Download the `.exe` from our [releases page](https://github.com/nayandas69/Social-Media-Downloader/releases/latest).  
+
+4. **Q: Is this tool legal?**  
+   A: Only for **personal use**. Downloading copyrighted content without permission isn’t chill. Play it safe, fam. 🙏  
+
+---
+
+### 🙌 **You Made It!**  
+
+That’s everything you need to vibe with **Social Media Downloader v1.0.4**.  
+Snatch, save, and slay the internet’s hottest content responsibly. 🌍💎  
+
+Peace out,  
+**Team Social Media Downloader** ✌️💖

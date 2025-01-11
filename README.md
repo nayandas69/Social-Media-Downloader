@@ -1,67 +1,88 @@
 <div align="center">  
-  <h1>✨ Social Media Downloader ✨</h1>  
-  <p>Snatch viral vids & epic posts from YouTube, TikTok, Insta, and Facebook in seconds! 🚀✨</p>  
+  <h1>✨ Social Media Downloader v1.0.4 ✨</h1>  
+  <p>Your go-to tool for snagging viral vids, reels, and epic posts from YouTube, TikTok, Instagram, and Facebook. 🚀💖</p>  
 
-![Issues](https://img.shields.io/github/issues/nayandas69/Social-Media-Downloader?style=for-the-badge&color=ff5555&logo=github&logoColor=white)
-![Stars](https://img.shields.io/github/stars/nayandas69/Social-Media-Downloader?style=for-the-badge&color=ffd700&logo=github&logoColor=white)  
-![Forks](https://img.shields.io/github/forks/nayandas69/Social-Media-Downloader?style=for-the-badge&color=32cd32&logo=github&logoColor=white)
-![Discussions](https://img.shields.io/github/discussions/nayandas69/Social-Media-Downloader?style=for-the-badge&color=00bfff&logo=discourse&logoColor=white)
-![Python](https://img.shields.io/pypi/pyversions/social-media-downloader?style=for-the-badge&color=blueviolet&logo=python&logoColor=white)  
+![Issues](https://img.shields.io/github/issues/nayandas69/Social-Media-Downloader?style=flat-square&color=red&logo=github&logoColor=white)
+![Stars](https://img.shields.io/github/stars/nayandas69/Social-Media-Downloader?style=flat-square&color=yellow&logo=github&logoColor=white)
+![Forks](https://img.shields.io/github/forks/nayandas69/Social-Media-Downloader?style=flat-square&color=brightgreen&logo=github&logoColor=white)
+![Discussions](https://img.shields.io/github/discussions/nayandas69/Social-Media-Downloader?style=flat-square&color=cyan&logo=discourse&logoColor=white)
+![Python Version](https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white)
+![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)
+![Downloads](https://img.shields.io/pypi/dm/social-media-downloader?style=flat-square&color=orange&logo=pypi&logoColor=white)
+![Total Downloads](https://img.shields.io/pypi/dt/social-media-downloader.svg?style=flat-square&color=purple&logo=pypi&logoColor=white)
 </div>  
 
----  
+---
 
-## 🌟 What’s the Tea?  
-**Social Media Downloader** is your BFF for snagging the hottest content from:  
+## 🌟 What’s the 411?  
+**Social Media Downloader v1.0.4** lets you snatch the juiciest content from:  
 - **YouTube** 🎥  
 - **TikTok** 🎶  
 - **Instagram** 📸  
 - **Facebook** 📵  
 
-Whether it’s memes, inspo reels, or iconic vids—we’ve got you covered!  
+Whether it’s memes, inspo reels, or iconic videos, this tool is here to SERVE. ⚡
 
----  
+---
 
-## 🔥 Features
+## 🔥 Features  
 
-💡 **What makes us slay:**  
-- Easy downloads from major platforms (bye, ads 😜).  
-- Batch mode 🪑—Drop all your links in a file, and let’s gooo!  
-- Auto-updates 🔄—Stay ahead of the curve.  
-- Full control 💼—Customize directories, formats, and vibes.  
-- Works on **Windows**, **Linux**, and **MacOS** — Pythonistas included 🐍!  
+💡 **What’s poppin’ in v1.0.4:**  
+- **Smarter vibes only:** Auto-detects when you’re offline (and politely asks you to reconnect 🫡).   
+- **Turbo speed:** Faster downloads ‘cause nobody likes waiting. 🏎️💨  
+- **MP3 perfection:** Choose audio quality (128, 192, or 320 kbps) for music vibes that match your mood 🎧.  
+- **Batch download pro:** Queue up multiple links and let us do the heavy lifting 💪.  
+- **Logs/history glow-up:** Full transparency. Every win, every fail—documented like a boss 📝.  
 
----  
+---
 
-## 🚀 Install It Already!  
+## 🚀 How to Download  
 
-### 💻 Windows Besties  
-1. **Get Python:** Download it from [here](https://www.python.org/downloads/) 🐍.  
-   - Don’t skip “Add Python to PATH”. Trust.  
-   - Check it worked:  
+### 💻 Windows  
+1. **Get Python first:**  
+   Download it from [python.org](https://www.python.org/downloads/).  
+   - Don’t skip "Add Python to PATH." Check with:  
      ```cmd  
      python --version  
      ```  
 
-2. **Install the Downloader:**  
+2. **Install the downloader:**  
    ```cmd  
    pip install social-media-downloader  
    ```  
 
-3. **Run It:**  
+3. **Run it like a pro:**  
    ```cmd  
    social-media-downloader  
    ```  
-   OR, download the `.exe` from the [releases page](https://github.com/nayandas69/Social-Media-Downloader/releases/latest).  
+   OR grab the `.exe` from our [releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest).  
 
 ---  
 
-### 🪜 Linux Legends  
-1. Install Python & pip if you haven’t already:  
+### 🖥️ Linux  
+1. Install Python & pip:  
    ```bash  
-   sudo apt install python3 python3-pip  # Ubuntu/Debian  
-   sudo dnf install python3 python3-pip  # Fedora/RHEL  
-   sudo pacman -S python python-pip  # Arch  
+   sudo apt install python3 python3-pip  # For Ubuntu/Debian  
+   sudo dnf install python3 python3-pip  # For Fedora/RHEL  
+   sudo pacman -S python python-pip  # For Arch-based  
+   ```  
+
+2. Get the downloader:  
+   ```bash  
+   pip install social-media-downloader  
+   ```  
+
+3. Flex your skills:  
+   ```bash  
+   social-media-downloader  
+   ```  
+
+---  
+
+### 🍎 MacOS  
+1. Use Homebrew for Python (if not done yet):  
+   ```bash  
+   brew install python  
    ```  
 
 2. Install the tool:  
@@ -69,103 +90,79 @@ Whether it’s memes, inspo reels, or iconic vids—we’ve got you covered!
    pip install social-media-downloader  
    ```  
 
-3. Run the show:  
+3. Start the party:  
    ```bash  
    social-media-downloader  
    ```  
 
----  
+---
 
-### 🍏 Mac Fam  
-1. Use Homebrew for Python:  
-   ```bash  
-   brew install python  
-   ```  
+## 🎶 Pro Tip: FFmpeg Setup  
 
-2. Install the downloader:  
-   ```bash  
-   pip install social-media-downloader  
-   ```  
+🎧 **Why you need FFmpeg:** Merging, converting, and pure magic.  
 
-3. Flex it:  
-   ```bash  
-   social-media-downloader  
-   ```  
-
----  
-
-## 🎶 Pro Tips: Set Up FFmpeg
-
-🎧 **Why FFmpeg?** For merging, converting, and making magic happen.  
-
-- **Windows**: [Download here](https://ffmpeg.org/download.html) & add the `bin` folder to PATH.  
-- **Linux**: Use your package manager:  
+- **Windows:** [Download here](https://ffmpeg.org/download.html). Add the `bin` folder to PATH.  
+- **Linux:** Install via your package manager:  
   ```bash  
   sudo apt install ffmpeg  # Ubuntu/Debian  
   sudo dnf install ffmpeg  # Fedora/RHEL  
-  sudo pacman -S ffmpeg  # Arch  
+  sudo pacman -S ffmpeg  # Arch-based  
   ```  
-- **MacOS**:  
+- **MacOS:**  
   ```bash  
   brew install ffmpeg  
   ```  
 
----  
+---
 
-## 💎 How to Use It?  
+## 📋 Usage 101  
 
-**Basic Commands:**  
-1. **One Video at a Time:**  
-   ```bash  
-   social-media-downloader  
-   ```  
-   Paste your link and vibe. 🚀  
+### **One Download at a Time**:  
+Run the tool and drop your link:  
+```bash  
+social-media-downloader  
+```  
 
-2. **Batch Mode (Efficiency Queens):**  
-   Prep a text file with one URL per line:  
-   ```bash  
-   social-media-downloader -batch my_urls.txt  
-   ```  
+### **Batch Download (for the multitaskers 💼)**:  
+Add URLs (one per line) in a text file:  
+```bash  
+social-media-downloader -batch my_urls.txt  
+```  
 
----  
+---
 
-## 💜 Level Up: Customize It!  
+## 💡 Customize It  
 
-Tweak `config.json` to:  
-- Set default directories.  
-- Switch up formats.  
-- Adjust batch vibes.  
+Modify `config.json` to:  
+- Change default directories.  
+- Adjust MP3 download quality.  
+- Customize batch downloads.  
 
----  
+---
 
-## 🎤 Logs + Receipts  
-- Logs? Check `downloader.log`.  
-- Download history? It’s in `download_history.csv`.  
+## 📜 Logs + Receipts  
 
----  
+- Logs? Peep `downloader.log` for all the tea (successes AND errors).  
+- Download history? Check `download_history.csv`.   
 
-## ⚡ Legal Tea  
-> 🛑 **Warning:**  
-This tool is for **personal use only**. Downloading without permission might break laws. Play nice, fam. 🙏  
+---
 
----  
+## ⚡ Legal Disclaimer  
 
-## 🙌 Wanna Contribute?  
-- Got an issue? [Spill it here](https://github.com/nayandas69/Social-Media-Downloader/issues).  
-- Wanna collab? Fork it, slay it, PR it.  
-- Hang out in the [Discussions tab](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
+> 🛑 **Heads up:**  
+This tool is for **personal use only.** Download responsibly! Don’t break the law, fam. 🙏  
 
----  
+---
 
-## 🙋‍♂️ Connect with Me  
-- **Author**: Nayan Das  
-- **Email**: nayanchandradas@hotmail.com  
-- **Website**: [Social Portal](https://socialportal.nayanchandradas.com)  
-- **GitHub Repo**: [Social Media Downloader](https://github.com/nayandas69/Social-Media-Downloader)  
+## 🙌 Wanna Join the Squad?  
+
+- **Report issues**: [Log ‘em here](https://github.com/nayandas69/Social-Media-Downloader/issues).  
+- **Wanna code?** Fork it, slay it, and PR it.  
+- **Discuss with the fam**: [Hit us up here](https://github.com/nayandas69/Social-Media-Downloader/discussions).  
 
 ---  
 
 <div align="center">  
-  <h3>💾 Save the Internet, One Video at a Time! 💾</h3>  
-  <p>✨ Download it. Own it. Vibe with it. ✨</p>  
+  <h3>💾 Grab It. Save It. Flex It. 💾</h3>  
+  <p>✨ The internet’s greatest hits, all in your pocket. ✨</p>  
 </div>

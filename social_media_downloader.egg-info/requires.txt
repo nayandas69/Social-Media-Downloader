@@ -3,3 +3,8 @@ instaloader>=4.10.0
 beautifulsoup4>=4.12.2
 tqdm>=4.65.0
 requests>=2.31.0
+
+[dev]
+pytest>=7.0
+flake8>=6.0
+black>=23.1
