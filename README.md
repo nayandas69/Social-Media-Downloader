@@ -9,7 +9,7 @@
 ![Python Version](https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white)
 ![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)
 ![Downloads](https://img.shields.io/pypi/dm/social-media-downloader?style=flat-square&color=orange&logo=pypi&logoColor=white)
-![Total Downloads](https://img.shields.io/pypi/dt/social-media-downloader.svg?style=flat-square&color=purple&logo=pypi&logoColor=white)
+![Total Downloads](https://static.pepy.tech/badge/social-media-downloader)
 </div>  
 
 ---
