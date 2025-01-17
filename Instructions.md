@@ -8,7 +8,7 @@ Welcome, legend! Whether you're a user looking to download the *juiciest content
 
 #### 💻 **Getting Started**  
 1. **Install Python:**  
-   Grab it from [here](https://www.python.org/downloads/) if you haven’t already! Don’t forget to check **"Add Python to PATH"**—super important.  
+   Grab it from [here](https://www.python.org/downloads) if you haven’t already! Don’t forget to check **"Add Python to PATH"**—super important.  
 
 2. **Install the Downloader:**  
    Open your terminal or cmd, and type:  
