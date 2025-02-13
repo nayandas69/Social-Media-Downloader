@@ -1,0 +1,4 @@
+yt-dlp>=2023.7.6
+instaloader>=4.10.0
+tqdm>=4.65.0
+requests>=2.31.0
