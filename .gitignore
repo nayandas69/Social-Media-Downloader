@@ -1,0 +1,26 @@
+# Ignore build directory
+build/
+
+# Ignore dist directory
+dist/
+
+# Ignore virtual environment directories
+.venv/
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore IDE configuration files
+.vscode/
+
+# Ignore log files
+*.log
+
+# my other
+PyInstaller
+note
+10.txt
+smd-token.txt

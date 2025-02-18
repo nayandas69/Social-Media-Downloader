@@ -1,0 +1,8 @@
+1.0.0
+1.0.1
+1.0.2 # not supported
+1.0.3 # not supported
+1.0.4
+1.0.5
+1.0.6 # never exists
+1.0.7
