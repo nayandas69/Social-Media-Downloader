@@ -1,13 +1,17 @@
 name: Python Package CI and Publish
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+      - cron: "0 0 1 1,7 *"
 
+permissions:
+  contents: read
+  packages: write
+  
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
