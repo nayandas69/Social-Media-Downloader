@@ -1,8 +1,8 @@
-# 🎉 Welcome to Social Media Downloader!
+# Welcome to Social Media Downloader!
 
-🚀 **A powerful CLI tool to download public videos from YouTube/TikTok (Video & Audio Only what you want), Instagram (Post, Reels, Pictures, Videos also Batch Support), and Facebook (Videos) with ease.** Built for efficiency, no unnecessary steps—just grab your fave content in a snap. 🖱️✨
+**A powerful CLI tool to download public videos from YouTube/TikTok (Video & Audio Only what you want), Instagram (Post, Reels, Pictures, Videos also Batch Support), and Facebook (Videos) with ease.** Built for efficiency, no unnecessary steps—just grab your fave content in a snap. 🖱️✨
 
-## 🤩 About This Tool
+## About This Tool
 
 - Works on **Windows, macOS, and Linux** (Even has an EXE for non-tech users! 🤯)
 - Fully **open-source & community-driven**. [Contribute here!](https://github.com/nayandas69/Social-Media-Downloader)
@@ -16,9 +16,9 @@
 
 ---
 
-## 📦 Installation
+## Installation
 
-### 🐍 For Python Users:
+### For Python Users:
 ```sh
 pip install social-media-downloader
 ```
@@ -40,7 +40,7 @@ or Download the Pre-Binary from [Releases](https://github.com/nayandas69/Social-
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 Run it from the terminal:
 ```sh
@@ -62,10 +62,10 @@ And follow the on-screen prompts to get started! 🔥
 
 ## 🛠️ Requirements
 
-### 📌 **FFmpeg is REQUIRED**
+### **FFmpeg is REQUIRED**
 To download **audio & video together**, you **MUST** install FFmpeg.
 
-#### 🛠️ How to Install FFmpeg:
+#### How to Install FFmpeg:
 
 ### **Windows**
 1. Download FFmpeg from [here](https://ffmpeg.org/download.html)
@@ -93,9 +93,9 @@ If you want to guide the installation of ffmpeg then check out this discussion [
 
 ---
 
-## ⚖️ Legal & Ethical Use ⚠️
+## Legal & Ethical Use ⚠️
 
-🔴 **READ THIS BEFORE USING!**
+**READ THIS BEFORE USING!**
 
 This tool is for **PERSONAL USE ONLY** and only works with **public** videos. You **CANNOT** use it to:
 - Download **private, copyrighted, or restricted** content 🚫
@@ -106,18 +106,18 @@ I’m not responsible if you break the rules. **Use this ethically!** 💀
 
 ---
 
-## 🛠️ Contributing & Support 💖
+## Contributing & Support 💖
 
 Love the tool? Help improve it! Open an issue or PR on [GitHub](https://github.com/nayandas69/Social-Media-Downloader).
 
-### 📧 Contact Me:
+### Contact Me:
 - Made by [Nayan Das](https://socialportal.nayanchandradas.com)
 - Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
 - Discord: [Join here!](https://discord.gg/skHyssu)
 
 ---
 
-## ⭐ Thank You, 3K+ Users! 🚀
+## Thank You, 3K+ Users! 🚀
 
 This project is powered by **[Nayan Das](https://github.com/nayandas69)**. Thanks for downloading & supporting! Share your reviews and feedback. **Y'all are the real MVPs!** 💙💯
 
