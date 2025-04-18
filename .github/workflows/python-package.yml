@@ -1,13 +1,12 @@
-name: Python Package Publish
+name: Build and Publish to PyPI
 
 on:
-  workflow_dispatch:
   push:
     branches:
-      - main
+      - main  # Runs on every push to main
 
 permissions:
-  id-token: write  # Needed for Trusted Publishing
+  id-token: write
   contents: read
 
 jobs:
@@ -15,24 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          python -m pip install build
-
-      - name: Clean previous builds
-        run: rm -rf dist build *.egg-info
+          pip install build
 
       - name: Build package
         run: python -m build
 
-      - name: Publish package to PyPI (Trusted Publishing)
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
