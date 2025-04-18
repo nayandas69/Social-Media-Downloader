@@ -1,0 +1,6 @@
+{
+    "default_format": "show_all",
+    "download_directory": "media",
+    "history_file": "download_history.csv",
+    "mp3_quality": "192"
+}

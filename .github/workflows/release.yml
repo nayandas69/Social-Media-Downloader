@@ -1,0 +1,74 @@
+name: Tag & Release
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'downloader.py'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  tag-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Extract version from setup.py
+        id: get_version
+        run: |
+          VERSION=$(python setup.py --version)
+          echo "Project version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if tag exists
+        id: tag_check
+        run: |
+          if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
+            echo "Tag already exists. Skipping."
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Git tag
+        if: steps.tag_check.outputs.tag_exists == 'false'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag -a "${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
+          git push origin "${{ steps.get_version.outputs.version }}"
+
+      - name: Create GitHub Release
+        if: steps.tag_check.outputs.tag_exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ steps.get_version.outputs.version }}"
+          name: "Release v${{ steps.get_version.outputs.version }}"
+          body: |
+            We made new changes. Download the executable/binary or source code from the assets below.
+
+            Use this command for installation:
+            ```bash
+            pip install social-media-downloader
+            ```
+            or already installed? Use this command to upgrade:
+            ```bash
+            pip install --upgrade social-media-downloader
+            ```
+            👉 [What's New](whats_new.md) — highlights of this version
+            📜 [Change Log](CHANGELOG.md) — full commit history
+            🤔 [FAQ](faq.rst) — frequently asked questions
+            🌍 [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader) — for viewing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
