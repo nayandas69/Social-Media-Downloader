@@ -4,6 +4,13 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.0.9] - 2025-04-18
+
+### Added
+- New **X (Twitter) Downloading**: Download posts from X (formerly Twitter). Only public videos are supported.
+
+---
+
 ## [1.0.8] - 2025-04-18
 
 ### Added

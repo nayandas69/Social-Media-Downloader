@@ -1,9 +1,9 @@
 # ---------------------------------
 # Social Media Downloader
-# Version: 1.0.8
+# Version: 1.0.9
 # Author: Nayan Das
 # License: MIT
-# Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, and Instagram.
+# Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram & X.
 # It supports instagram batch downloads, format selection, and maintains a download history.
 # Dependencies: yt-dlp, instaloader, requests, tqdm, pyfiglet, termcolor
 # Usage: python downloader.py
@@ -32,7 +32,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.0.8"
+CURRENT_VERSION = "1.0.9"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -375,6 +375,28 @@ def batch_download_from_file(file_path):
 
 
 # ---------------------------------
+# Download X (Tweeter) Videos
+# ---------------------------------
+def download_x_video(url):
+    """Download a video from X (formerly Twitter)."""
+    ensure_ffmpeg()
+    ensure_internet_connection()
+    try:
+        ydl_opts = {
+            "format": "best",
+            "outtmpl": os.path.join(download_directory, "%(title)s.%(ext)s"),
+            "continue_dl": True,
+        }
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+            log_download(url, "Success")
+            print(f"Downloaded X video from {url}")
+    except Exception as e:
+        log_download(url, f"Failed: {str(e)}")
+        logging.error(f"X download error for {url}: {str(e)}")
+
+
+# ---------------------------------
 # Help Menu
 # ---------------------------------
 def show_help():
@@ -393,10 +415,13 @@ def show_help():
         "4. \033[1;33mBatch Download Instagram Posts:\033[0m Enter '4' and provide a text file containing public Instagram post URLs."
     )
     print(
-        "5. \033[1;33mCheck for Updates:\033[0m Enter '5' to check for software updates and install the latest version."
+        "5. \033[1;33mDownload X (Tweeter) Videos:\033[0m Enter '5' to download a public X video."
     )
-    print("6. \033[1;33mHelp Menu:\033[0m Enter '6' to display this help guide.")
-    print("7. \033[1;33mExit the Program:\033[0m Enter '7' to close the application.\n")
+    print(
+        "6. \033[1;33mCheck for Updates:\033[0m Enter '5' to check for software updates and install the latest version."
+    )
+    print("7. \033[1;33mHelp Menu:\033[0m Enter '6' to display this help guide.")
+    print("8. \033[1;33mExit the Program:\033[0m Enter '7' to close the application.\n")
 
     print("\033[1;31mImportant Notice:\033[0m")
     print("\033[1;31mThis tool only supports downloading public videos.\033[0m")
@@ -433,9 +458,10 @@ def main():
             print("2. Download Facebook")
             print("3. Download Instagram")
             print("4. Instagram Batch Download")
-            print("5. Check for updates")
-            print("6. Help")
-            print("7. Exit")
+            print("5. Download X (Tweeter)")
+            print("6. Check for updates")
+            print("7. Help")
+            print("8. Exit")
 
             choice = input("\nEnter your choice: ").strip()
             if not choice:
@@ -454,10 +480,13 @@ def main():
                 file_path = input("Enter the path to your .txt file: ").strip()
                 batch_download_from_file(file_path)
             elif choice == "5":
-                check_for_updates()
+                url = input("Enter the X video URL: ").strip()
+                download_x_video(url)
             elif choice == "6":
-                show_help()
+                check_for_updates()
             elif choice == "7":
+                show_help()
+            elif choice == "8":
                 print(
                     "\nSocial Media Downloader has exited successfully. Thank you for using it!\n"
                 )

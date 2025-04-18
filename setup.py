@@ -6,10 +6,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="social_media_downloader",
-    version="1.0.8",
+    version="1.0.9",
     author="nayandas69",
     author_email="nayanchandradas@hotmail.com",
-    description="A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, and Instagram. It supports instagram batch downloads, format selection, and maintains a download history.",
+    description="A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram and X. It supports instagram batch downloads, format selection, and maintains a download history.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/nayandas69/Social-Media-Downloader",

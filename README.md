@@ -18,6 +18,7 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] TikTok  
 - [x] Instagram  
 - [x] Facebook  
+- [x] X (Twitter) *(New)*   
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
@@ -176,12 +177,13 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Linux/Windows support
 - [x] PyPI packaging
 - [x] Basic EXE & binary build
+- [x] Facebook, Instagram, YouTube, TikTok & X
 
 ### In Progress / Planned
 - [ ] GUI Interface
 - [ ] macOS support
 - [ ] Proxy support
-- [ ] Snapchat, Twitter, and other platforms
+- [ ] Snapchat and other platforms
 
 ## Contributing & Support
 > Have suggestions? We'd love to hear them!
@@ -201,4 +203,4 @@ Thanks for downloading & supporting! Share your reviews and feedback.
 **Y’all are the real MVPs!**
 
 > **Disclaimer:**  
-> This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, or Facebook. Use at your own discretion.
+> This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook or X. Use at your own discretion.
