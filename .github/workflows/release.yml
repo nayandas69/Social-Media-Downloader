@@ -12,8 +12,10 @@ permissions:
   contents: write
 
 jobs:
-  tag-and-release:
+  linux-build:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
 
     steps:
       - name: Checkout repository
@@ -31,7 +33,7 @@ jobs:
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Check if tag exists
+      - name: Check if Git tag exists
         id: tag_check
         run: |
           if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
@@ -49,8 +51,18 @@ jobs:
           git tag -a "${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
           git push origin "${{ steps.get_version.outputs.version }}"
 
-      - name: Create GitHub Release
-        if: steps.tag_check.outputs.tag_exists == 'false'
+      - name: Install dependencies and PyInstaller
+        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+
+      - name: Build Linux binary with PyInstaller spec
+        run: |
+          pyinstaller downloader.spec
+          mkdir smd-linux
+          cp dist/downloader smd-linux/smd
+          cp AUTHOR.rst LICENSE smd-linux/
+          tar -czvf smd-linux.tar.gz -C smd-linux .
+
+      - name: Upload Linux release asset
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "${{ steps.get_version.outputs.version }}"
@@ -62,13 +74,43 @@ jobs:
             ```bash
             pip install social-media-downloader
             ```
-            or already installed? Use this command to upgrade:
+            Already installed? Upgrade with:
             ```bash
             pip install --upgrade social-media-downloader
             ```
-            👉 [What's New](whats_new.md) — highlights of this version
-            📜 [Change Log](CHANGELOG.md) — full commit history
-            🤔 [FAQ](faq.rst) — frequently asked questions
-            🌍 [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader) — for viewing
+            👉 [What's New](whats_new.md)
+            📜 [Change Log](CHANGELOG.md)
+            🌍 [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
+          files: smd-linux.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  windows-build:
+    runs-on: windows-latest
+    needs: linux-build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies and PyInstaller
+        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+
+      - name: Build Windows EXE using PyInstaller spec
+        run: pyinstaller downloader.spec
+
+      - name: Rename Windows executable
+        run: Rename-Item -Path "dist/downloader.exe" -NewName "Social Media Downloader.exe"
+
+      - name: Upload Windows release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ needs.linux-build.outputs.version }}"
+          files: dist/Social Media Downloader.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
