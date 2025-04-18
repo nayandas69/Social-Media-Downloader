@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="social-media-downloader",
+    name="social_media_downloader",
     version="1.0.8",
     author="nayandas69",
     author_email="nayanchandradas@hotmail.com",
