@@ -1,6 +1,17 @@
 # Changelog  
 
 All the spicy updates, tweaks, and new vibes are logged here. 🌟  
+---
+
+## [1.1.0] - 2025-04-20
+
+### Added
+- Support for new platforms: **Twitch**, **Snapchat**, **Reddit**, **Vimeo**, and **Streamable**.
+- URL validation to ensure only links from supported platforms are accepted.
+
+### Changed
+- Help menu redesigned for better readability and structure.
+- Improved error handling for batch downloads.
 
 ---
 

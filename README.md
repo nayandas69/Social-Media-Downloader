@@ -18,13 +18,19 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] TikTok  
 - [x] Instagram  
 - [x] Facebook  
-- [x] X (Twitter) *(New)*   
+- [x] X (Twitter) *(New)*
+- [x] Twitch *(New)*
+- [x] Snapchat *(New)*
+- [x] Reddit *(New)*
+- [x] Vimeo *(New)*
+- [x] Streamable *(New)*   
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
 
 ## Features
 
+- [x] Multiple Platforms – YouTube, Instagram & more
 - [x] Batch Downloads – Download multiple links at once ( only public links Instagram)  
 - [x] Choose Formats – MP4, MP3, or whatever you vibe with   
 - [x] History Log – Keeps track of what you downloaded  
@@ -32,7 +38,7 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Interactive CLI – Easy to use, even for non-techies
 
 ## Preview
-![Preview](assets/1.0.8.gif)
+![Preview](assets/1.1.0.gif)
 
 ## Usage
 
@@ -130,16 +136,17 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 ## How to Use
 
 1. Run the tool (either via command line or double-click the EXE)
-2. Paste the **public link** of a video
-3. Choose output format ID available like `625` (or type `mp3` for audio-only)
-4. Sit back and let the tool work its magic!
-5. Wait for the download to finish (it’ll show you the progress)
-6. Batch download? No problem! Just follow these steps:
+2. Select the platform you want to download from (YouTube, Instagram, etc.)
+3. Paste the **public link** of a video
+4. Choose output format ID available like `625` (or type `mp3` for audio-only)
+5. Sit back and let the tool work its magic!
+6. Wait for the download to finish (it’ll show you the progress)
+7. Batch download? No problem! Just follow these steps:
    - Create a `.txt` file with each URL on a new line
    - For batch download, enter the path to your `.txt` file containing URLs.
    - For example: `C:\path\to\batch_links.txt` or `/home/user/batch_links.txt`
-7. Find your downloaded files in the same directory as the tool
-8. Enjoy your videos!
+8. Find your downloaded files in the same directory as the tool
+9. Enjoy your videos!
 
 ## Tested Platforms
 
@@ -156,7 +163,7 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 > This tool is for **PERSONAL USE ONLY** and only works with **public** videos. You **CANNOT** use it to:
 > - Download **private, copyrighted, or restricted** content
 > - Repost videos without credit (be a decent human, c’mon)
-> - Violate **YouTube, Instagram, Facebook, or TikTok** TOS
+> - Violate **YouTube, Instagram, Facebook, TikTok or other social media** TOS
 > I'm not responsible if you break the rules. **Use this ethically and responsibly!**
 
 ### Read More:
@@ -177,13 +184,13 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Linux/Windows support
 - [x] PyPI packaging
 - [x] Basic EXE & binary build
-- [x] Facebook, Instagram, YouTube, TikTok & X
+- [x] Facebook, Instagram, YouTube, TikTok, X, Twitch, Snapchat, Reddit, Vimeo & Streamable
 
 ### In Progress / Planned
 - [ ] GUI Interface
 - [ ] macOS support
 - [ ] Proxy support
-- [ ] Snapchat and other platforms
+- [ ] Other platforms
 
 ## Contributing & Support
 > Have suggestions? We'd love to hear them!
@@ -203,4 +210,4 @@ Thanks for downloading & supporting! Share your reviews and feedback.
 **Y’all are the real MVPs!**
 
 > **Disclaimer:**  
-> This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook or X. Use at your own discretion.
+> This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X, or other social media. Use at your own discretion.
