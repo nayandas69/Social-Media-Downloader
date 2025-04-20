@@ -2,6 +2,8 @@ name: Build and Publish to PyPI
 
 on:
   push:
+    paths:
+      - 'downloader.py'
     branches:
       - main  # Runs on every push to main
 
