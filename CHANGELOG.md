@@ -1,6 +1,18 @@
 # Changelog  
 
 All the spicy updates, tweaks, and new vibes are logged here. 🌟  
+
+---
+
+## [1.1.1] -2025-04-22
+
+### Added
+- Now new platform supports **Pinterest** for downloading videos.
+
+### Packaging
+- Support for .deb package installation.
+- Added a .deb package for easy installation on Debian-based systems.
+
 ---
 
 ## [1.1.0] - 2025-04-20

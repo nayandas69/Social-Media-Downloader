@@ -1,14 +1,18 @@
+#!/usr/bin/env python3
+# downloader.py
+
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.0
+# Version: 1.1.1
 # Author: Nayan Das
 # License: MIT
-# Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X, Twitch, Snapchat, Reddit, Vimeo & Streamable.
+# Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
 # It supports instagram batch downloads, format selection, and maintains a download history.
 # Dependencies: yt-dlp, instaloader, requests, tqdm, pyfiglet, termcolor
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
+# Last Updated: 22nd April 2025
 # -----------------------------------------
 
 import os

@@ -23,7 +23,8 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Snapchat *(New)*
 - [x] Reddit *(New)*
 - [x] Vimeo *(New)*
-- [x] Streamable *(New)*   
+- [x] Streamable *(New)* 
+- [x] Pinterest *(New)*  
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
@@ -97,6 +98,27 @@ social-media-downloader
 If you want to update to the latest version, run:
 ```bash
 pip install --upgrade social-media-downloader
+```
+
+### Install via .deb package
+> [!NOTE]
+> This is only for Debian-based systems (like Ubuntu).
+> If you are using other Linux distros, please use the prebuilt binaries or build from source.
+
+1. Download the `.deb` file from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)
+2. Open a terminal and navigate to the directory where you downloaded the file.
+3. Run the following command:
+```bash
+sudo dpkg -i social-media-downloader_VERSION_amd64.deb
+```
+4. If you get any dependency errors, run:
+```bash
+sudo apt-get install -f
+```
+5. After installation, you can run the tool by typing `smd` in the terminal.
+6. To uninstall, run:
+```bash
+sudo apt-get remove social-media-downloader
 ```
 
 ## Prebuilt Binaries & EXE
@@ -184,7 +206,8 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Linux/Windows support
 - [x] PyPI packaging
 - [x] Basic EXE & binary build
-- [x] Facebook, Instagram, YouTube, TikTok, X, Twitch, Snapchat, Reddit, Vimeo & Streamable
+- [x] Facebook, Instagram, YouTube, TikTok, X
+- [x] Snapchat, Reddit, Vimeo, Streamable & Pinterest
 
 ### In Progress / Planned
 - [ ] GUI Interface

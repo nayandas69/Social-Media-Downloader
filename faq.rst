@@ -120,6 +120,53 @@ The tool will automatically check if FFmpeg is available.
 
     sudo apt install ffmpeg
 
+Can I install Social Media Downloader using a `.deb` file?
+===========================================================
+
+Yes! We provide `.deb` packages for Linux users.
+
+Download the `.deb` file from the `Releases` section:
+https://github.com/nayandas69/Social-Media-Downloader/releases
+
+To install:
+
+.. code-block:: bash
+
+    sudo dpkg -i social-media-downloader_<version>_amd64.deb
+    sudo apt-get install -f  # To fix any missing dependencies
+
+This will install the tool system-wide as a global command: `smd`
+
+
+Does the `.deb` package include all dependencies?
+==================================================
+
+The `.deb` package contains only the compiled `smd` binary.
+
+It does **not install Python libraries** like `yt-dlp`, `requests`, or `instaloader` — but don't worry!
+
+All dependencies are **already bundled** into the binary using PyInstaller.  
+So you **do not need to install them manually**.
+
+However, **FFmpeg is required** and must be installed separately:
+
+
+.. code-block:: bash
+
+    sudo apt install ffmpeg
+
+
+How do I run the tool after installing the `.deb` package?
+===========================================================
+
+Once installed via `.deb`, simply open your terminal and run:
+
+.. code-block:: bash
+
+    smd
+
+You will see the same CLI interface and functionality as with the Python version or EXE.
+
 Can I download private videos or login to an account?
 ======================================================
 
