@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: url('https://www.transparenttextures.com/patterns/stardust.png'), #0f0f10;
     color: #eaeaea;
@@ -71,19 +75,28 @@ h1 {
     border: none;
     border-radius: 8px;
     font-size: 1rem;
+    font-weight: 600;
+    gap: 8px;
+    align-items: center;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
     outline: none;
+    transition: background 0.3s, transform 0.2s ease;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
     background: linear-gradient(to right, #0072ff, #00c6ff);
 }
 
 .btn:focus {
     box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.5);
+}
+
+/* Icons */
+i {
+    margin-right: 6px;
 }
 
 /* Main Sections */
@@ -141,7 +154,7 @@ p {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 50px;
     font-size: 0.9rem;
     color: #888;
 }
@@ -155,6 +168,7 @@ footer {
     .btn {
         width: 100%;
         text-align: center;
+        
     }
 
     section {

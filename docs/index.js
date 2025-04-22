@@ -50,7 +50,11 @@ function markRecommendedButton() {
     if (platform.includes("win")) {
         os = "windows";
     } else if (platform.includes("linux") || userAgent.includes("linux")) {
-        os = "linux";
+        if (userAgent.includes("ubuntu") || userAgent.includes("debian")) {
+            os = "debian";
+        } else {
+            os = "linux";
+        }
     }
 
     document.querySelectorAll(".download-btn").forEach(button => {
@@ -59,7 +63,8 @@ function markRecommendedButton() {
 
         if (
             (os === "windows" && link.endsWith(".exe")) ||
-            (os === "linux" && link.endsWith(".tar.gz"))
+            (os === "linux" && link.endsWith(".deb")) ||
+            (os === "debian" && link.endsWith(".deb"))
         ) {
             const recommendedBadge = `<span style="margin-left: 8px; background: #00ff9d; color: #000; padding: 3px 6px; border-radius: 5px; font-size: 0.75rem;">Recommended</span>`;
             button.innerHTML += recommendedBadge;
