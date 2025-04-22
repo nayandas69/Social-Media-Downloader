@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.1
+# Version: 1.1.2
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -36,7 +36,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.1"
+CURRENT_VERSION = "1.1.2"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -266,11 +266,15 @@ def download_youtube_or_tiktok_video(url):
         "packaged-media.redd.it",
         "vimeo.com",
         "streamable.com",
+        "pinterest.com",
+        "pin.it",
+        "linkedin.com",
+        "bilibili.tv",
     ]
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, TikTok, X (Tweeter), Twitch, Snapchat, Vimeo & Streamable.\033[0m"
+            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili.\033[0m"
         )
         return
 
@@ -400,7 +404,7 @@ def show_help():
     """Display the help menu with usage instructions."""
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
     print(
-        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, TikTok, Facebook, X, Twitch, Snapchat, Reddit, Vimeo, Streamable videos."
+        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili videos."
     )
     print(
         "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, or picture."
@@ -421,7 +425,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, TikTok, Facebook, Instagram, X (Twitter), Twitch, Snapchat, Reddit, Vimeo & Streamable.\n"
+        "• YouTube, Instagram, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili. \n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")

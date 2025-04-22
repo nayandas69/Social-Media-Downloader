@@ -18,13 +18,15 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] TikTok  
 - [x] Instagram  
 - [x] Facebook  
-- [x] X (Twitter) *(New)*
-- [x] Twitch *(New)*
-- [x] Snapchat *(New)*
-- [x] Reddit *(New)*
-- [x] Vimeo *(New)*
-- [x] Streamable *(New)* 
+- [x] X (Twitter)
+- [x] Twitch
+- [x] Snapchat
+- [x] Reddit
+- [x] Vimeo
+- [x] Streamable
 - [x] Pinterest *(New)*  
+- [x] LinkedIn *(New)*
+- [x] BiliBili *(New)*
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
@@ -208,9 +210,11 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Basic EXE & binary build
 - [x] Facebook, Instagram, YouTube, TikTok, X
 - [x] Snapchat, Reddit, Vimeo, Streamable & Pinterest
+- [x] LinkedIn & BiliBili
 
 ### In Progress / Planned
 - [ ] GUI Interface
+- [ ] Web Interface
 - [ ] macOS support
 - [ ] Proxy support
 - [ ] Other platforms

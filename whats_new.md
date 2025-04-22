@@ -1,7 +1,7 @@
-# What's New in Social Media Downloader v1.1.0
+# What's New in Social Media Downloader v1.1.2
 
 ## New Platform Support
-- **Pinterest** are now supported!
+- **Linkedin** & **Bilibili** are now supported!
 - Full list of supported platforms now includes:
   - YouTube
   - TikTok
@@ -14,7 +14,8 @@
   - Vimeo
   - Streamable
   - Pinterest
+  - Linkedin
+  - Bilibili
 
-## .deb Package
-- A .deb package is now available for easy installation on Debian-based systems.
-- This package simplifies the installation process and ensures that all dependencies are handled automatically.
+## Fixes Issues
+- Version correctly update on pypi

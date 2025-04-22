@@ -4,6 +4,16 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.2] -2025-04-22
+
+### Added
+- New platform support for **Linkedin** and **Bilibili**.
+
+### Fixes
+- version correctly update on pypi.
+
+---
+
 ## [1.1.1] -2025-04-22
 
 ### Added
