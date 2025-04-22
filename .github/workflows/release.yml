@@ -93,7 +93,7 @@ jobs:
           tag_name: "${{ steps.get_version.outputs.version }}"
           name: "Release v${{ steps.get_version.outputs.version }}"
           body: |
-            We made new changes. Download the executable/binary or source code from the assets below.
+            We made new changes. Download the source code from the assets below.
             You can also check the change log and what's new in this release.
             
             [What's New](whats_new.md)
