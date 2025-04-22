@@ -30,8 +30,11 @@ jobs:
       - name: Update download links in HTML
         run: |
           VERSION="${{ steps.get_version.outputs.version }}"
+
+          # Update the download links in docs/index.html
           sed -i "s|https://github.com/nayandas69/Social-Media-Downloader/releases/download/.*/Social.Media.Downloader.exe|https://github.com/nayandas69/Social-Media-Downloader/releases/download/${VERSION}/Social.Media.Downloader.exe|g" docs/index.html
           sed -i "s|https://github.com/nayandas69/Social-Media-Downloader/releases/download/.*/smd-linux.tar.gz|https://github.com/nayandas69/Social-Media-Downloader/releases/download/${VERSION}/smd-linux.tar.gz|g" docs/index.html
+          sed -i "s|https://github.com/nayandas69/Social-Media-Downloader/releases/download/.*/social-media-downloader_.*_amd64.deb|https://github.com/nayandas69/Social-Media-Downloader/releases/download/${VERSION}/social-media-downloader_${VERSION}_amd64.deb|g" docs/index.html
 
       - name: Commit and push changes to main
         run: |
