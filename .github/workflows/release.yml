@@ -1,4 +1,4 @@
-name: Tag & Release
+name: Tag Release Creation and Build for Linux and Windows
 
 on:
   workflow_dispatch:
@@ -54,13 +54,38 @@ jobs:
       - name: Install dependencies and PyInstaller
         run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
 
-      - name: Build Linux binary with PyInstaller spec
+      - name: Build Linux binary with PyInstaller
         run: |
           pyinstaller downloader.spec
           mkdir smd-linux
           cp dist/downloader smd-linux/smd
           cp AUTHOR.rst LICENSE smd-linux/
           tar -czvf smd-linux.tar.gz -C smd-linux .
+
+      - name: Create .deb package
+        run: |
+          mkdir -p smd-deb/usr/local/bin
+          mkdir -p smd-deb/DEBIAN
+
+          # Copy the binary
+          cp dist/downloader smd-deb/usr/local/bin/smd
+
+          # Create control file
+          VERSION="${{ steps.get_version.outputs.version }}"
+          cat <<EOF > smd-deb/DEBIAN/control
+          Package: social-media-downloader
+          Version: $VERSION
+          Section: utils
+          Priority: optional
+          Architecture: amd64
+          Depends: python3
+          Maintainer: nayandas69
+          Description: Social Media Downloader - download from various platforms via CLI.
+          EOF
+
+          # Build .deb package
+          dpkg-deb --build smd-deb
+          mv smd-deb.deb smd-linux/social-media-downloader_${VERSION}_amd64.deb
 
       - name: Upload Linux release asset
         uses: softprops/action-gh-release@v2
@@ -69,19 +94,14 @@ jobs:
           name: "Release v${{ steps.get_version.outputs.version }}"
           body: |
             We made new changes. Download the executable/binary or source code from the assets below.
-
-            Use this command for installation:
-            ```bash
-            pip install social-media-downloader
-            ```
-            Already installed? Upgrade with:
-            ```bash
-            pip install --upgrade social-media-downloader
-            ```
-            👉 [What's New](whats_new.md)
-            📜 [Change Log](CHANGELOG.md)
-            🌍 [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
-          files: smd-linux.tar.gz
+            You can also check the change log and what's new in this release.
+            
+            [What's New](whats_new.md)
+            [Change Log](CHANGELOG.md)
+            [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
+          files: |
+            smd-linux.tar.gz
+            smd-linux/social-media-downloader_${{ steps.get_version.outputs.version }}_amd64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
