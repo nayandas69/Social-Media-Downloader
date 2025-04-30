@@ -8,6 +8,9 @@ on:
     paths:
       - setup.py
 
+permissions:
+  contents: write
+
 jobs:
   update-download-links:
     runs-on: ubuntu-latest
