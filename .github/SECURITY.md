@@ -6,8 +6,8 @@ We only provide security updates and support for the **latest released version**
 
 | Version | Supported |
 |---------|-----------|
-| 1.1.0   | ✅         |
-| < 1.0.9 | ❌         |
+| 1.1.3   | ✅         |
+| < 1.1.1 | ❌         |
 
 > [!NOTE]
 > To stay safe and secure, **always update to the latest version**. We do not support or patch older versions.
