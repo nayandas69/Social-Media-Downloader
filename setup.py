@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="social_media_downloader",
-    version="1.1.2",
+    version="1.1.3",
     author="nayandas69",
     author_email="nayanchandradas@hotmail.com",
     description="A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram and X. It supports instagram batch downloads, format selection, and maintains a download history.",
@@ -56,6 +56,7 @@ setup(
         "wheel>=0.38.4",
         "pyfiglet>=0.8.post1",
         "termcolor>=2.3.0",
+        "tabulate>=0.9.0",
     ],
     extras_require={
         "dev": [
