@@ -18,9 +18,3 @@ __pycache__/
 
 # Ignore log files
 *.log
-
-# my other
-PyInstaller
-note
-10.txt
-smd-token.txt

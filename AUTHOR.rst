@@ -10,7 +10,7 @@ GitHub: https://github.com/nayandas69
 Discord: https://discord.gg/skHyssu    
 Email: nayanchandradas@hotmail.com       
 
-Nayan is the creator and maintainer of the **Social Media Downloader** project.  
+**Nayan** is the creator and maintainer of the **Social Media Downloader** project.  
 He is passionate about building tools that empower users and simplify their digital lives.  
 
 When not coding, Nayan enjoys exploring cybersecurity, automating workflows, and contributing to the open-source community.

@@ -168,25 +168,41 @@ The working `.exe` will be in the `dist/` folder.
 > [!TIP]
 > It is **not recommended** to redistribute modified binaries or EXEs outside this repository unless you're contributing through official channels.
 
----
-
 ## Tested Platforms
 
 - [x] Windows 11 / 10 ✅
 - [x] Kali Linux ✅
 - [x] Parrot OS ✅
 - [ ] macOS ❌ (Not tested)
+- [ ] Other Linux Distros ✅ (Should work but not tested)
 
----
 
 ## Recommended Setup
 
 While prebuilt binaries (EXE, Linux) are available, **we recommend** cloning the repo and building the tool yourself for the best compatibility and security.
 
----
+
+## Why Build from Source?
+
+- **Security**: Ensure the code is safe and free from malware.
+- **Customization**: Modify the code to suit your needs.
+- **Latest Features**: Get the latest updates and features directly from the source.
+- **User Feedback**: We value your input to improve the tool.
+
 
 ## Stay Updated
 
 For updates, improvements, and support:
 - Visit the official repo: [GitHub - Social Media Downloader](https://github.com/nayandas69/Social-Media-Downloader)
 - Join the [Discord Community](https://discord.gg/skHyssu)
+
+
+## See Tutorials
+[![Watch the demo](https://img.youtube.com/vi/a_O1oQwZPlk/0.jpg)](https://www.youtube.com/watch?v=a_O1oQwZPlk)
+
+
+## See Also
+> [!NOTE]
+> This Web Portal is maintained by the original author.
+> You can download the tool from the web portal as well.
+> - [Social Media Downloader - Web Portal](https://nayandas69.github.io/Social-Media-Downloader)

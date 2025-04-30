@@ -24,9 +24,11 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Reddit
 - [x] Vimeo
 - [x] Streamable
-- [x] Pinterest *(New)*  
-- [x] LinkedIn *(New)*
-- [x] BiliBili *(New)*
+- [x] Pinterest  
+- [x] LinkedIn 
+- [x] BiliBili 
+- [x] Odysee *(New)*
+- [x] Rumble *(New)*
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
@@ -55,7 +57,7 @@ Then navigate to the directory:
 cd Social-Media-Downloader
 ```
 
-### Create a virtual environment (optional but recommended)
+### Recommended (Create a virtual environment)
 
 # Windows
 ```bash
@@ -73,7 +75,7 @@ pip3 install -r requirements.txt
 python3 downloader.py
 ```
 
-## 🧩 Requirements
+## Requirements Must Be Installed
 
 ### Install FFmpeg
 
@@ -89,7 +91,14 @@ sudo apt install ffmpeg
 
 ## Installation Options
 
-### 🔌 Install via PIP (Python Users)
+### Install via PIP (Python Users Only)
+> [!NOTE]
+> You need to have Python 3.7 or higher installed on your system.
+> If you don't have Python, please install it from [python.org](https://www.python.org/downloads).
+> If you are using Windows, make sure to check the box "Add Python to PATH" during installation.
+> If you are using Linux, make sure to install `python3-pip` and `python3-venv`.
+> Then run the following command to install the tool:
+
 ```bash
 pip install social-media-downloader
 ```
@@ -132,16 +141,16 @@ sudo apt-get remove social-media-downloader
 > If you have any issues, please open an issue on GitHub.
 > Prebuilt binaries & exe don't require Python or any dependencies.
 > Just download and run!
-> Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus.
+> Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus. If you get a 
+  warning, click "More Info" and then "Run Anyway".
 > This is normal for unsigned builds. You can safely ignore it and run the EXE.
 > If you are not sure about the build, please build it from source using the [Instructions](Instructions.md) above.
 > We are not responsible for any issues caused by using untrusted builds.
-> DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds. If you get a warning, click "More Info" and then "Run Anyway".
+> DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds.
 
 ### 🪟 Windows EXE (Prebuilt)
 1. Download the EXE from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)  
 2. Double-click & run like a normal app
-
 
 
 
@@ -153,7 +162,7 @@ sudo chmod +x smd
 ./smd
 ```
 
-## 🌐 Visit Our SMD Web Portal
+## Visit Our SMD Web Portal
 
 Check out the official page: [nayandas69.github.io/Social-Media-Downloader](https://nayandas69.github.io/Social-Media-Downloader)
 
@@ -210,14 +219,16 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Basic EXE & binary build
 - [x] Facebook, Instagram, YouTube, TikTok, X
 - [x] Snapchat, Reddit, Vimeo, Streamable & Pinterest
-- [x] LinkedIn & BiliBili
+- [x] LinkedIn, BiliBili, Odysee & Rumble
+- [x] Instagram Reels & Videos Audio download
 
 ### In Progress / Planned
 - [ ] GUI Interface
 - [ ] Web Interface
 - [ ] macOS support
-- [ ] Proxy support
 - [ ] Other platforms
+- [ ] Proxy support
+- [ ] Playlist support
 
 ## Contributing & Support
 > Have suggestions? We'd love to hear them!
@@ -234,7 +245,7 @@ Love the tool? Help improve it! Open an issue or PR on [GitHub](https://github.c
 ## Thank You, 4.7K+ Users!
 This project is maintained by **[nayandas69](https://github.com/nayandas69)**.  
 Thanks for downloading & supporting! Share your reviews and feedback.  
-**Y’all are the real MVPs!**
+**Your support means the world to me!**
 
 > **Disclaimer:**  
 > This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X, or other social media. Use at your own discretion.

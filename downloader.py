@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.2
+# Version: 1.1.3
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -12,7 +12,7 @@
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
-# Last Updated: 22nd April 2025
+# Last Updated: 1st May 2025
 # -----------------------------------------
 
 import os
@@ -23,20 +23,22 @@ import json
 import shutil
 import yt_dlp
 import logging
+import tempfile
 import requests
+import subprocess
 import instaloader
 from tqdm import tqdm
 from pyfiglet import Figlet
 from termcolor import colored
 from datetime import datetime
+from tabulate import tabulate
 from concurrent.futures import ThreadPoolExecutor
-
 
 # ---------------------------------
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.2"
+CURRENT_VERSION = "1.1.3"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -245,6 +247,57 @@ def is_valid_platform_url(url, allowed_domains):
     return any(domain in url for domain in allowed_domains)
 
 
+# ----------------------------------
+# Format Table for Available Formats
+# ----------------------------------
+def print_format_table(info):
+    formats = info.get("formats", [])
+    table_data = []
+
+    for fmt in formats:
+        # Skip non-downloadable formats like storyboards
+        if fmt.get("vcodec") == "none" and fmt.get("acodec") == "none":
+            continue
+
+        fmt_id = fmt.get("format_id")
+        ext = fmt.get("ext")
+        resolution = (
+            f"{fmt.get('width', '')}x{fmt.get('height', '')}"
+            if fmt.get("height")
+            else "audio"
+        )
+        fps = fmt.get("fps", "")
+        filesize = fmt.get("filesize", 0)
+        filesize_str = f"{filesize / (1024 * 1024):.2f} MB" if filesize else "-"
+        vcodec = fmt.get("vcodec", "")
+        acodec = fmt.get("acodec", "")
+        note = fmt.get("format_note", "")
+
+        # Add color to the format_id column (Green)
+        fmt_id_colored = f"\033[1;32m{fmt_id}\033[0m"  # Green
+
+        table_data.append(
+            [fmt_id_colored, ext, resolution, fps, filesize_str, vcodec, acodec, note]
+        )
+
+    # Apply yellow color to all the headers dynamically
+    headers = [
+        f"\033[1;33m{header}\033[0m"
+        for header in [
+            "ID",
+            "EXT",
+            "RESOLUTION",
+            "FPS",
+            "SIZE",
+            "VCODEC",
+            "ACODEC",
+            "NOTE",
+        ]
+    ]
+    print("\n\033[1;36mAvailable formats:\033[0m")
+    print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
+
+
 # -----------------------------------------------------------
 # Download Functions for Youtube, TikTok and other platforms
 # -----------------------------------------------------------
@@ -270,18 +323,20 @@ def download_youtube_or_tiktok_video(url):
         "pin.it",
         "linkedin.com",
         "bilibili.tv",
+        "odysee.com",
+        "rumble.com",
     ]
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili.\033[0m"
+            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble.\033[0m"
         )
         return
 
     ensure_ffmpeg()
     ensure_internet_connection()
     try:
-        ydl_opts = {"listformats": True}
+        ydl_opts = {"listformats": False}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
 
@@ -302,9 +357,7 @@ def download_youtube_or_tiktok_video(url):
         print(f"\033[1;33mUpload Date:\033[0m {upload_date_formatted}")
 
         # List available formats
-        print("\nAvailable formats:")
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.list_formats(info)
+        print_format_table(info)
 
         # Prompt user for format choice
         choice = input(
@@ -317,7 +370,9 @@ def download_youtube_or_tiktok_video(url):
         if choice.lower() == "mp3":
             ydl_opts = {
                 "format": "bestaudio/best",
-                "outtmpl": os.path.join(download_directory, f"{title}.mp3"),
+                "outtmpl": os.path.join(
+                    download_directory, f"{title}"
+                ),  # <-- no .mp3 here
                 "postprocessors": [
                     {
                         "key": "FFmpegExtractAudio",
@@ -345,9 +400,9 @@ def download_youtube_or_tiktok_video(url):
         print(f"\033[1;31mError downloading video:\033[0m {str(e)}")
 
 
-# ----------------------------------------------------------------------------
-# Download Functions for Instagram public posts, videos, reels, and pictures
-# ----------------------------------------------------------------------------
+# ---------------------------------
+# Download Functions for Instagram
+# ---------------------------------
 def download_instagram_post(url):
     """Download an Instagram post."""
     allowed_domains = ["instagram.com"]
@@ -361,10 +416,102 @@ def download_instagram_post(url):
         post = instaloader.Post.from_shortcode(L.context, shortcode)
         L.download_post(post, target=download_directory)
         log_download(url, "Success")
-        print(f"Downloaded Instagram post from {url}")
+        print(f"\n\033[1;32mDownloaded Instagram post from successfully:\033[0m {url}")
     except Exception as e:
         log_download(url, f"Failed: {str(e)}")
         logging.error(f"Instagram download error for {url}: {str(e)}")
+        print(f"\033[1;31mError downloading video:\033[0m {str(e)}")
+
+
+# ---------------------------------
+# Extract MP3 from Instagram Video
+# ---------------------------------
+def extract_instagram_video_mp3(url):
+    """Download Instagram video/reel and auto-convert to MP3."""
+    allowed_domains = ["instagram.com"]
+    if not is_valid_platform_url(url, allowed_domains):
+        print(
+            "\n\033[1;31mError: This feature only supports Instagram video URLs (reels, posts, TV).\033[0m"
+        )
+        log_download(url, "Failed: Invalid Instagram URL")
+        return
+
+    ensure_internet_connection()
+
+    # Extract shortcode from supported Instagram URL types
+    if "/reel/" in url:
+        shortcode = url.split("/reel/")[1].split("/")[0]
+    elif "/p/" in url:
+        shortcode = url.split("/p/")[1].split("/")[0]
+    elif "/tv/" in url:
+        shortcode = url.split("/tv/")[1].split("/")[0]
+    else:
+        print(
+            "\n\033[1;31mError: This feature only supports Instagram video URLs (reels, posts, TV).\033[0m"
+        )
+        print("\033[1;31mPlease provide a valid Instagram video URL.\033[0m")
+        log_download(url, "Failed: Unsupported Instagram video URL")
+        return
+
+    try:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            loader = instaloader.Instaloader(
+                dirname_pattern=temp_dir, save_metadata=False, download_comments=False
+            )
+
+            post = instaloader.Post.from_shortcode(loader.context, shortcode)
+            if not post.is_video:
+                print("This post is not a video.")
+                log_download(url, "Failed: Not a video post")
+                return
+
+            print("Downloading video...")
+            loader.download_post(post, target=shortcode)
+
+            # Find downloaded .mp4
+            video_path = None
+            for root, _, files in os.walk(temp_dir):
+                for file in files:
+                    if file.endswith(".mp4"):
+                        video_path = os.path.join(root, file)
+                        break
+
+            if not video_path or not os.path.exists(video_path):
+                print("Video file not found.")
+                log_download(url, "Failed: Video file not found after download")
+                return
+
+            ensure_ffmpeg()
+
+            # Define MP3 path
+            filename_base = f"instagram_{shortcode}"
+            mp3_path = os.path.join(download_directory, f"{filename_base}.mp3")
+
+            print("Extracting MP3...")
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-i",
+                    video_path,
+                    "-vn",
+                    "-ab",
+                    f"{mp3_quality}k",
+                    "-ar",
+                    "44100",
+                    "-y",
+                    mp3_path,
+                ],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+
+            print(f"\n\033[1;32mDownloaded successfully:\033[0m {url}")
+            log_download(url, f"Success: {url}")
+
+    except Exception as e:
+        print(f"\033[1;31mError: {e}\033[0m")
+        log_download(url, f"Failed: {str(e)}")
+        logging.error(f"Instagram MP3 extract error for {url}: {str(e)}")
 
 
 # -------------------------
@@ -404,19 +551,16 @@ def show_help():
     """Display the help menu with usage instructions."""
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
     print(
-        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili videos."
+        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble videos."
     )
     print(
-        "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, or picture."
+        "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, picture. And for Batch download provide a text file containing public Instagram post URLs."
     )
     print(
-        "3. \033[1;33mBatch Download Instagram Posts:\033[0m Enter '3' and provide a text file containing public Instagram post URLs."
+        "3. \033[1;33mCheck for Updates:\033[0m Enter '3' to check for software updates and install the latest version."
     )
-    print(
-        "4. \033[1;33mCheck for Updates:\033[0m Enter '4' to check for software updates and install the latest version."
-    )
-    print("5. \033[1;33mHelp Menu:\033[0m Enter '5' to display this help guide.")
-    print("6. \033[1;33mExit the Program:\033[0m Enter '6' to close the application.\n")
+    print("4. \033[1;33mHelp Menu:\033[0m Enter '4' to display this help guide.")
+    print("5. \033[1;33mExit the Program:\033[0m Enter '5' to close the application.\n")
 
     print("\033[1;31mImportant Notice:\033[0m")
     print("\033[1;31mThis tool only supports downloading public videos.\033[0m")
@@ -425,7 +569,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, Instagram, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn & Bilibili. \n"
+        "• YouTube, Instagram, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble. \n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")
@@ -441,6 +585,38 @@ def show_help():
 
 
 # ---------------------------------
+# Instagram Menu with Options
+# ---------------------------------
+def instagram_menu():
+    print("\nInstagram Menu")
+    print("1. Download Reel, Video & Pictures")
+    print("2. Extract MP3 from Instagram Video")
+    print("3. Batch Download Instagram Posts")
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        url = input("Enter Instagram URL: ").strip()
+        download_instagram_post(url)
+    elif choice == "2":
+        url = input("Enter video URL: ").strip()
+        extract_instagram_video_mp3(url)
+    elif choice == "3":
+        file_path = input(
+            "Enter the path to the text file containing Instagram URLs: "
+        ).strip()
+        if os.path.exists(file_path):
+            batch_download_from_file(file_path)
+        else:
+            print(f"File not found: {file_path}")
+            print(f"\033[1;31mFor Linux example: /home/user/batch_links.txt\033[0m")
+            print(
+                f"\033[1;31mFor Windows example: C:\\Users\\user\\batch_links.txt\033[0m"
+            )
+    else:
+        print("Invalid choice.")
+
+
+# ---------------------------------
 # Main Function: CLI Interface
 # ---------------------------------
 def main():
@@ -450,16 +626,15 @@ def main():
             "\nPress Enter to start the Social Media Downloader..."
         )  # Wait for user input before execution
 
-        print("Welcome to Social Media Downloader!")
+        print(f"\033[38;5;21mWelcome to Social Media Downloader!\033[0m")
 
         while True:
             print("\n" + "─" * 60)
             print("\n1. Download YouTube/TikTok... etc.")
             print("2. Download Instagram")
-            print("3. Instagram Batch Download")
-            print("4. Check for updates")
-            print("5. Help")
-            print("6. Exit")
+            print("3. Check for updates")
+            print("4. Help")
+            print("5. Exit")
 
             choice = input("\nEnter your choice: ").strip()
             if not choice:
@@ -469,24 +644,14 @@ def main():
                 url = input("Enter video URL: ").strip()
                 download_youtube_or_tiktok_video(url)
             elif choice == "2":
-                url = input("Enter the Instagram URL: ").strip()
-                download_instagram_post(url)
+                instagram_menu()
             elif choice == "3":
-                file_path = input(
-                    "Enter the path to the text file containing Instagram URLs: "
-                ).strip()
-                if os.path.exists(file_path):
-                    batch_download_from_file(file_path)
-                else:
-                    print(f"File not found: {file_path}")
-                    print(f"\nFor example: /home/user/batch_links.txt")
-            elif choice == "4":
                 check_for_updates()
-            elif choice == "5":
+            elif choice == "4":
                 show_help()
-            elif choice == "6":
+            elif choice == "5":
                 print(
-                    "\nSocial Media Downloader has exited successfully. Thank you for using it!\n"
+                    f"\033[38;2;255;105;180mSocial Media Downloader has exited successfully. Thank you for using it!\033[0m"
                 )
 
                 sys.exit(0)

@@ -4,6 +4,21 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.3] - 2025-05-01
+
+### Added
+- Introduced a new **Instagram** menu.
+- Added support for **MP3 downloads** from Instagram videos and reels.
+- Implemented a **format table display** for YouTube and TikTok, listing available video/audio formats in a structured way.
+- Added new platform support for **Odysee** and **Rumble**.
+
+### Fixed
+- Resolved **MP3 download issues** in `download_youtube_or_tiktok_video(url)` affecting specific formats.
+- No more Duplicate Format listings in the format table.
+- Fixed **other minor functions** that were not behaving correctly.
+
+---
+
 ## [1.1.2] -2025-04-22
 
 ### Added

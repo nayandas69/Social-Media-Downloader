@@ -1,21 +1,21 @@
-# What's New in Social Media Downloader v1.1.2
+# What's New in Social Media Downloader v1.1.3
 
-## New Platform Support
-- **Linkedin** & **Bilibili** are now supported!
-- Full list of supported platforms now includes:
-  - YouTube
-  - TikTok
-  - Facebook
-  - Instagram
-  - X (Twitter)
-  - Twitch
-  - Snapchat
-  - Reddit
-  - Vimeo
-  - Streamable
-  - Pinterest
-  - Linkedin
-  - Bilibili
+## New Features
+- **Instagram Support**  
+  - A brand-new menu for Instagram is now available.  
+  - You can now download **MP3 audio** from Instagram Videos and Reels.
 
-## Fixes Issues
-- Version correctly update on pypi
+- **Format Table for YouTube & TikTok**  
+  - Easily view all available video/audio formats in a clean, structured table before downloading.
+
+- **New Platform Support**  
+  - Added compatibility with:
+    - **Odysee**
+    - **Rumble**
+
+## Fixes & Improvements
+- Fixed MP3 download issues with **`download_youtube_or_tiktok_video(url)`** that caused failures on certain formats.
+- The function now returns a single list of available formats, making it easier to choose your desired format.
+- Resolved several smaller function issues to ensure smoother operation and better performance.
+
+Enjoy the update, and keep the feedback coming!
