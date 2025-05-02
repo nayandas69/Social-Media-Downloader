@@ -1,0 +1,75 @@
+[project]
+name = "social-media-downloader"  # Name of PyPI package
+version = "1.1.3"
+description = "A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram and X. It supports instagram batch downloads, format selection, and maintains a download history."
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "MIT"}
+authors = [
+    {name = "nayandas69", email = "nayanchandradas@hotmail.com"},
+]
+keywords = [
+    "smd",
+    "cli tool",
+    "video downloader",
+    "tiktok downloader",
+    "youtube downloader",
+    "facebook downloader",
+    "instagram downloader",
+    "social media downloader",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.6",
+    "Topic :: Internet",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+]
+
+# Dependencies required for the tool to run
+dependencies = [
+    "yt-dlp>=2023.7.6",
+    "instaloader>=4.10.0",
+    "tqdm>=4.65.0",
+    "requests>=2.31.0",
+    "ffmpeg-python>=0.2.0",
+    "certifi>=2023.7.22",
+    "setuptools>=65.5.0",
+    "wheel>=0.38.4",
+    "pyfiglet>=0.8.post1",
+    "termcolor>=2.3.0",
+    "tabulate>=0.9.0",
+]
+
+# Development-only dependencies
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "flake8>=6.0",
+    "black>=23.1",
+]
+
+# CLI entry point: This will let users run the tool using the `smd` command
+[project.scripts]
+smd = "downloader:main"
+
+# Links to source code and other resources
+[project.urls]
+"Source Code" = "https://github.com/nayandas69/Social-Media-Downloader"
+"Bug Tracker" = "https://github.com/nayandas69/Social-Media-Downloader/issues"
+"Documentation" = "https://github.com/nayandas69/Social-Media-Downloader#readme"
+"Discord Community" = "https://discord.gg/skHyssu"
+
+# Include all non-code files listed in MANIFEST.in
+[tool.setuptools]
+include-package-data = true
+
+# Automatically discover packages, excluding tests and docs
+[tool.setuptools.packages.find]
+exclude = ["tests*", "docs*"]
