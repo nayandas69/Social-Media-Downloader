@@ -1,0 +1,9 @@
+# Core project files to include in PyPI package
+include downloader.py
+
+# Include key metadata and documentation files
+include README.md
+include LICENSE
+
+# Include requirements for reference (not installed automatically by pip)
+include requirements.txt
