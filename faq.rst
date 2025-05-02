@@ -28,7 +28,7 @@ You can install the tool in multiple ways:
 .. code-block:: bash
 
     pip install social-media-downloader
-    social-media-downloader
+    smd
 
 **3. Use the EXE or Linux Prebuilt Binary:**
 
