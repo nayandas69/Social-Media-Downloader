@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - setup.py
+      - pyproject.toml
 
 permissions:
   contents: write
@@ -24,10 +24,10 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Get version from setup.py
+      - name: Get version from pyproject.toml
         id: get_version
         run: |
-          VERSION=$(python3 -c "import re; f=open('setup.py').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
+          VERSION=$(python3 -c "import re; f=open('pyproject.toml').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Update download links in HTML
