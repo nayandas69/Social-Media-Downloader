@@ -26,10 +26,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Extract version from setup.py
+      - name: Extract version from pyproject.toml
         id: get_version
         run: |
-          VERSION=$(python setup.py --version)
+          VERSION=$(python pyproject.toml --version)
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
