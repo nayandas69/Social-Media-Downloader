@@ -43,7 +43,7 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Interactive CLI – Easy to use, even for non-techies
 
 ## Preview
-![Preview](assets/1.1.0.gif)
+![Preview](https://raw.githubusercontent.com/nayandas69/Social-Media-Downloader/refs/heads/main/assets/1.1.0.gif)
 
 ## Usage
 
