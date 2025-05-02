@@ -125,12 +125,12 @@ jobs:
         run: pyinstaller downloader.spec
 
       - name: Rename Windows executable
-        run: Rename-Item -Path "dist/downloader.exe" -NewName "Social Media Downloader.exe"
+        run: Rename-Item -Path "dist/downloader.exe" -NewName "smd.exe"
 
       - name: Upload Windows release asset
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "${{ needs.linux-build.outputs.version }}"
-          files: dist/Social Media Downloader.exe
+          files: dist/smd.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
