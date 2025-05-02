@@ -1,6 +1,0 @@
-# This file is used to set attributes for files in the repository
-# I set this for detecting the language of the files
-
-docs/index.html linguist-detectable=true
-docs/index.css linguist-detectable=true
-docs/indec.js linguist-detectable=true
