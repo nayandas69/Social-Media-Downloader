@@ -104,7 +104,7 @@ pip install social-media-downloader
 ```
 Then just run from anywhere:
 ```bash
-social-media-downloader
+smd
 ```
 If you want to update to the latest version, run:
 ```bash
