@@ -1,6 +1,7 @@
 name: Update Contributors
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -18,23 +19,29 @@ jobs:
       - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Create or update CONTRIBUTORS.rst
+      - name: Append new contributors to CONTRIBUTORS.rst
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p docs
+          touch docs/CONTRIBUTORS.rst
 
-          echo "Contributors" > docs/CONTRIBUTORS.rst
-          echo "============" >> docs/CONTRIBUTORS.rst
-          echo "" >> docs/CONTRIBUTORS.rst
+          TMP_FILE=$(mktemp)
+          cp docs/CONTRIBUTORS.rst "$TMP_FILE"
 
-          # Always include the primary author
-          echo "- **@nayandas69** - Author and Maintainer" >> docs/CONTRIBUTORS.rst
+          # Extract existing GitHub usernames already listed
+          EXISTING=$(grep -oP '(?<=\*\*`)[^ ]+' "$TMP_FILE")
 
-          # Add all other contributors
+          # Fetch contributors from GitHub
           curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/contributors |
-            jq -r '.[] | select(.login != "nayandas69") | "- **@" + .login + "** - Contributor"' >> docs/CONTRIBUTORS.rst
+            jq -r '.[].login' | while read LOGIN; do
+              if [ "$LOGIN" != "nayandas69" ] && ! echo "$EXISTING" | grep -q "^$LOGIN$"; then
+                echo -e "\n- **\`$LOGIN <https://github.com/$LOGIN>\`__** - Contributor" >> "$TMP_FILE"
+              fi
+            done
+
+          mv "$TMP_FILE" docs/CONTRIBUTORS.rst
 
       - name: Commit updated CONTRIBUTORS.rst if changed
         run: |
@@ -44,5 +51,5 @@ jobs:
             echo "No changes to CONTRIBUTORS.rst"
           else
             git add docs/CONTRIBUTORS.rst
-            git commit -m "Auto-update docs/CONTRIBUTORS.rst with latest contributors"
+            git commit -m "Auto-update CONTRIBUTORS.rst with new contributors"
             git push origin main
