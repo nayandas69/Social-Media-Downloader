@@ -1,0 +1,48 @@
+name: Update Contributors
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Ensure jq is installed
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Create or update CONTRIBUTORS.rst
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p docs
+
+          echo "Contributors" > docs/CONTRIBUTORS.rst
+          echo "============" >> docs/CONTRIBUTORS.rst
+          echo "" >> docs/CONTRIBUTORS.rst
+
+          # Always include the primary author
+          echo "- **@nayandas69** - Author and Maintainer" >> docs/CONTRIBUTORS.rst
+
+          # Add all other contributors
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/contributors |
+            jq -r '.[] | select(.login != "nayandas69") | "- **@" + .login + "** - Contributor"' >> docs/CONTRIBUTORS.rst
+
+      - name: Commit updated CONTRIBUTORS.rst if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet docs/CONTRIBUTORS.rst; then
+            echo "No changes to CONTRIBUTORS.rst"
+          else
+            git add docs/CONTRIBUTORS.rst
+            git commit -m "Auto-update docs/CONTRIBUTORS.rst with latest contributors"
+            git push origin main
