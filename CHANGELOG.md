@@ -4,6 +4,22 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.4] - 2025-05-03
+
+### Added
+- New platform support for **GameClips** and **Triller**.
+- New short command: After installing via pip the new version, you can use `smd` as a shortcut for `social-media-downloader`.
+
+#### Improvements
+- File structure has been improved for better organization and maintainability.
+
+## Contributors Involved
+- **Contributors**: [@mohinikhan123](https://github.com/mohinikhan123), her contribution to the project is greatly appreciated.
+- [x] New Command: `smd` as a shortcut for `social-media-downloader`.
+- [x] Better file structure for the project.
+
+---
+
 ## [1.1.3] - 2025-05-01
 
 ### Added

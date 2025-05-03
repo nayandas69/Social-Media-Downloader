@@ -205,4 +205,5 @@ For updates, improvements, and support:
 > [!NOTE]
 > This Web Portal is maintained by the original author.
 > You can download the tool from the web portal as well.
+> Latest version is always available on the web portal.
 > - [Social Media Downloader - Web Portal](https://nayandas69.github.io/Social-Media-Downloader)

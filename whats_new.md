@@ -1,21 +1,13 @@
-# What's New in Social Media Downloader v1.1.3
+# What's New in Social Media Downloader v1.1.4
 
 ## New Features
-- **Instagram Support**  
-  - A brand-new menu for Instagram is now available.  
-  - You can now download **MP3 audio** from Instagram Videos and Reels.
+- **New Platforms**: Added support for **GameClips** and **Triller**.
+- **New Short Command**: After installing via pip the new version, you can use `smd` as a shortcut for `social-media-downloader`.
 
-- **Format Table for YouTube & TikTok**  
-  - Easily view all available video/audio formats in a clean, structured table before downloading.
+## Improvements
+- **File Structure**: The file structure has been improved for better organization and maintainability.
 
-- **New Platform Support**  
-  - Added compatibility with:
-    - **Odysee**
-    - **Rumble**
-
-## Fixes & Improvements
-- Fixed MP3 download issues with **`download_youtube_or_tiktok_video(url)`** that caused failures on certain formats.
-- The function now returns a single list of available formats, making it easier to choose your desired format.
-- Resolved several smaller function issues to ensure smoother operation and better performance.
-
-Enjoy the update, and keep the feedback coming!
+## Contributors
+- **Contributors**: [@mohinikhan123](https://github.com/mohinikhan123) her contribution to the project is greatly appreciated.
+- [x] New Command: `smd` as a shortcut for `social-media-downloader`.
+- [x] Better file structure for the project.

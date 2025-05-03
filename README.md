@@ -27,8 +27,10 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Pinterest  
 - [x] LinkedIn 
 - [x] BiliBili 
-- [x] Odysee *(New)*
-- [x] Rumble *(New)*
+- [x] Odysee 
+- [x] Rumble 
+- [x] GameClips  **(New!)**
+- [x] Triller  **(New!)**
 - [ ] Other platforms *(Not yet)*
 - [ ] Private content *(Not yet)*
 - [ ] Playlist support *(Not yet)*
@@ -106,6 +108,10 @@ Then just run from anywhere:
 ```bash
 social-media-downloader
 ```
+also you can run it shortcut command `smd`
+```bash
+smd
+```
 If you want to update to the latest version, run:
 ```bash
 pip install --upgrade social-media-downloader
@@ -144,14 +150,14 @@ sudo apt-get remove social-media-downloader
 > Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus. If you get a 
   warning, click "More Info" and then "Run Anyway".
 > This is normal for unsigned builds. You can safely ignore it and run the EXE.
-> If you are not sure about the build, please build it from source using the [Instructions](Instructions.md) above.
+> If you are not sure about the build, please build it from source using the [Instructions](https://github.com/nayandas69/Social-Media-Downloader/blob/b1e4c9b8dc44e072167938c7eff306f8818f09eb/Instructions.md) above.
 > We are not responsible for any issues caused by using untrusted builds.
 > DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds.
 
 ### 🪟 Windows EXE (Prebuilt)
 1. Download the EXE from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)  
 2. Double-click & run like a normal app
-
+3. Boom! You're ready to download videos!
 
 
 ### 🐧 Prebuilt Linux Binaries
@@ -162,7 +168,11 @@ sudo chmod +x smd
 ./smd
 ```
 
-## Visit Our SMD Web Portal
+## Visit SMD Web Portal to Download the EXE or Binaries
+> [!NOTE]
+> This is a web portal to download the EXE or Binaries files.
+> You can also use the web portal to download the latest version of the tool.
+> The web portal is hosted on GitHub Pages and is updated automatically whenever a new version is released.
 
 Check out the official page: [nayandas69.github.io/Social-Media-Downloader](https://nayandas69.github.io/Social-Media-Downloader)
 
@@ -200,12 +210,13 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 > I'm not responsible if you break the rules. **Use this ethically and responsibly!**
 
 ### Read More:
-- [FAQ](faq.rst)
-- [License](LICENSE)
-- [What's New](whats_new.md)
-- [Change Log](CHANGELOG.md)
-- [Instructions](Instructions.md)
-- [Contributing](.github/CONTRIBUTING.md)
+- [FAQ](https://github.com/nayandas69/Social-Media-Downloader/blob/main/faq.rst)
+- [License](https://github.com/nayandas69/Social-Media-Downloader/blob/main/LICENSE)
+- [What's New](https://github.com/nayandas69/Social-Media-Downloader/blob/main/whats_new.md)
+- [Change Log](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CHANGELOG.md)
+- [Instructions](https://github.com/nayandas69/Social-Media-Downloader/blob/main/Instructions.md)
+- [Contributing](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
+- [CONTRIBUTORS.md](https://github.com/nayandas69/Social-Media-Downloader/blob/main/docs/CONTRIBUTORS.md)
 
 ## Planned & Current Features
 
@@ -219,12 +230,12 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 - [x] Basic EXE & binary build
 - [x] Facebook, Instagram, YouTube, TikTok, X
 - [x] Snapchat, Reddit, Vimeo, Streamable & Pinterest
-- [x] LinkedIn, BiliBili, Odysee & Rumble
+- [x] LinkedIn, BiliBili, Odysee, Rumble, GameClips & triller
 - [x] Instagram Reels & Videos Audio download
 
 ### In Progress / Planned
-- [ ] GUI Interface
-- [ ] Web Interface
+- [ ] GUI Interface **(Next Comming Soon!)**
+- [ ] Web Interface **(Next Comming Soon!)**
 - [ ] macOS support
 - [ ] Other platforms
 - [ ] Proxy support

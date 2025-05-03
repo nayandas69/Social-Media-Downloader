@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.3
+# Version: 1.1.4
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -12,7 +12,7 @@
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
-# Last Updated: 1st May 2025
+# Last Updated: 3rd May 2025
 # -----------------------------------------
 
 import os
@@ -38,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.3"
+CURRENT_VERSION = "1.1.4"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -216,9 +216,9 @@ def check_internet_connection():
 def ensure_internet_connection():
     """Ensure that an internet connection is active before proceeding."""
     while not check_internet_connection():
-        print("\nNo internet connection. Retrying in 5 seconds...")
+        print("\033[91m\nNo internet connection. Retrying in 5 seconds...\033[0m")
         time.sleep(5)
-    print("Internet connection detected. Proceeding...")
+    print("\033[92mInternet connection detected. Proceeding...\033[0m")
 
 
 def log_download(url, status):
@@ -325,11 +325,13 @@ def download_youtube_or_tiktok_video(url):
         "bilibili.tv",
         "odysee.com",
         "rumble.com",
+        "gameclips.io",
+        "triller.co",
     ]
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble.\033[0m"
+            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\033[0m"
         )
         return
 
@@ -551,7 +553,7 @@ def show_help():
     """Display the help menu with usage instructions."""
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
     print(
-        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble videos."
+        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller videos."
     )
     print(
         "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, picture. And for Batch download provide a text file containing public Instagram post URLs."
@@ -569,7 +571,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, Instagram, Facebook, TikTok, X (Tweeter), Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee & Rumble. \n"
+        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")
@@ -626,7 +628,7 @@ def main():
             "\nPress Enter to start the Social Media Downloader..."
         )  # Wait for user input before execution
 
-        print(f"\033[38;5;21mWelcome to Social Media Downloader!\033[0m")
+        print(f"\033[38;2;255;105;180mWelcome to Social Media Downloader!\033[0m")
 
         while True:
             print("\n" + "─" * 60)

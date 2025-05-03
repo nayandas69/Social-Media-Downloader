@@ -24,6 +24,8 @@ Old Structure
     ├── downloader.py
     ├── docs/
     │   └── index.html
+    |   └── index.css
+    |   └── index.js
     ├── LICENSE
     ├── README.md
     ├── requirements.txt
@@ -45,9 +47,10 @@ New Structure
     ├── AUTHOR.rst
     └── .github/
         └── workflows/
-            ├── release.yml
             ├── page.yml
-            └── pypi.yml
+            └── release.yml
+            └── python-package.yml
+            └── update-contributors.yml
 
 Important Notes
 ---------------
@@ -68,4 +71,4 @@ Important Notes
 Acknowledgments
 ---------------
 
-Special thanks to **@mohinikhan123** for contributing to this structural improvement and streamlining the project layout.
+Special thanks to [@mohinikhan123](https://github.com/mohinikhan123) for contributing to this structural improvement and streamlining the project layout.
