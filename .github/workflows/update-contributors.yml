@@ -53,3 +53,4 @@ jobs:
             git add docs/CONTRIBUTORS.rst
             git commit -m "Auto-update CONTRIBUTORS.rst with new contributors"
             git push origin main
+          fi
