@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Downloader</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="/assets/logo.ico" type="image/x-icon">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="title">Social Media Downloader</h1>
+        <p class="subheading">
+            A powerful, <strong>open-source</strong> CLI tool to download public content from YouTube, Instagram,
+            TikTok, Facebook, X and more — fast, safe & easy. By
+            <a href="https://github.com/nayandas69" target="_blank">Nayan Das</a>
+        </p>
+        <div class="badges">
+            <img src="https://img.shields.io/github/actions/workflow/status/nayandas69/Social-Media-Downloader/python-package.yml?style=flat-square&color=4DB6AC&logo=github"
+                alt="Workflow Status" />
+            <img src="https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white"
+                alt="Python Version" />
+            <img src="https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white"
+                alt="PyPI Version" />
+            <img src="https://static.pepy.tech/badge/social-media-downloader" alt="Total Downloads" />
+        </div>
+        <div class="btn-group" id="btn-group">
+            <button class="btn download-btn"
+                data-link="https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.3/smd.exe">
+                <i class="fab fa-windows"></i> .exe
+            </button>
+            <button class="btn download-btn"
+                data-link="https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.3/social-media-downloader_1.1.3_amd64.deb">
+                <i class="fa-brands fa-debian"></i> .deb
+            </button>
+            <button class="btn download-btn"
+                data-link="https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.3/smd-linux.tar.gz">
+                <i class="fab fa-linux"></i> Linux Binary
+            </button>
+            <a class="btn" href="https://github.com/nayandas69/Social-Media-Downloader/releases/latest" target="_blank">
+                <i class="fab fa-github"></i> Source Code
+            </a>
+            <a class="btn" href="https://pypi.org/project/social-media-downloader" target="_blank">
+                <i class="fab fa-python"></i> PyPI
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section class="about">
+            <h2><i class="fas fa-box"></i> What is this?</h2>
+            <p>
+                This is a command-line tool to download public content from popular social media platforms like
+                YouTube, Instagram, TikTok, and Facebook. It allows you to download videos and audio in various
+                formats quickly and easily. The tool is designed to be lightweight and user-friendly, making it
+                accessible for everyone. It is open-source and free to use, ensuring that you can download content
+                without any restrictions. The tool is built using Python and is compatible with both Windows and Linux
+                operating systems. It is designed to be fast and efficient, allowing you to download multiple files at
+                once (only from Instagram) without any issues. The tool also includes features like history logs and
+                update checks, ensuring that you always have the latest version and can keep track of your downloads.
+            </p>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2><i class="fas fa-star"></i> Features</h2>
+            <ul>
+                <li>Fast batch downloads</li>
+                <li>Lightweight & easy to use</li>
+                <li>Open-source and free to use</li>
+                <li>History logs & update checks</li>
+                <li>Download public content only</li>
+                <li>Choose formats (MP3, MP4, etc)</li>
+                <li>Cross-platform (Windows/Linux)</li>
+            </ul>
+        </section>
+
+        <!-- Usage Section -->
+        <section class="usage">
+            <h2><i class="fas fa-book"></i> How to Use</h2>
+            <ol>
+                <li>Install via Python: <code>pip install social-media-downloader</code></li>
+                <li>Run the command: <code>social-media-downloader</code></li>
+                <li>For .deb files, use: <code>sudo dpkg -i social-media-downloader_amd64.deb</code></li>
+                <li>After installing the .deb package, run the command: <code>smd</code></li>
+                <li>For .exe files, run: <code>Social.Media.Downloader.exe</code></li>
+                <li>For Linux pre-binaries, extract the <code>smd-linux.tar.gz</code> file and run the
+                    script <code>./smd</code></li>
+                <li>Follow on-screen steps</li>
+                <li>For additional support, refer to the <a href="#support">Support</a> section.</li>
+            </ol>
+            <p><strong>FFmpeg required</strong> for audio+video. <a href="https://ffmpeg.org" target="_blank">official
+                    FFmpeg</a></p>
+        </section>
+
+        <!-- Developer's Note Section -->
+        <section class="note">
+            <h2><i class="fas fa-code"></i> Developer's Note</h2>
+            <p>
+                Always use the latest version from the official <a
+                    href="https://github.com/nayandas69/Social-Media-Downloader/releases/latest"
+                    target="_blank">GitHub</a> or <a href="https://pypi.org/project/social-media-downloader"
+                    target="_blank">PyPI</a>.
+                If an antivirus detects a virus <code>.exe</code> it’s a false positive. This is a common issue with
+                .exe files, especially
+                those that are not signed. The tool is safe to use, and the code is open-source, so you can verify it
+                yourself.
+                If you’re using a modified version, it may contain malware or other harmful code. Never trust unofficial
+                or modified versions.
+                I’m not responsible for any misuse — use this tool ethically and legally. Always check for updates on
+                the
+                official <a href="https://github.com/nayandas69/Social-Media-Downloader" target="_blank">repo</a>. This
+                tool is not affiliated with any social media platform.
+            </p>
+        </section>
+
+        <!-- Legal Notice Section -->
+        <section class="legal">
+            <h2><i class="fas fa-balance-scale"></i> Legal Notice</h2>
+            <p>
+                This tool is for educational purposes only. It does not endorse or promote any illegal activities.
+                Downloading copyrighted content without permission may violate copyright laws.
+                This tool only downloads <strong>public content</strong>. You may not use it to download copyrighted,
+                private, or restricted material.
+                By using this tool, you accept <strong>all responsibility for your usage.</strong>
+            </p>
+        </section>
+
+        <!-- Support Section -->
+        <section class="support" id="support">
+            <h2><i class="fas fa-life-ring"></i> Need Help?</h2>
+            <p><i class="fas fa-envelope"></i> Email: <a
+                    href="mailto:nayanchandradas@hotmail.com">nayanchandradas@hotmail.com</a></p>
+            <p><i class="fab fa-github"></i> GitHub Issues: <a
+                    href="https://github.com/nayandas69/Social-Media-Downloader/issues" target="_blank">Click here</a>
+            </p>
+            <p><i class="fab fa-discord"></i> Join the community on <a href="https://discord.gg/skHyssu"
+                    target="_blank">Discord</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://nayandas69.github.io/link-in-bio" target="_blank">Nayan Das</a> | &copy;
+            2025</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
