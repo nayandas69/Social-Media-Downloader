@@ -19,38 +19,65 @@ jobs:
       - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Append new contributors to CONTRIBUTORS.rst
+      - name: Update CONTRIBUTORS.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p docs
-          touch docs/CONTRIBUTORS.rst
+          touch docs/CONTRIBUTORS.md
 
-          TMP_FILE=$(mktemp)
-          cp docs/CONTRIBUTORS.rst "$TMP_FILE"
+          AUTHOR="nayandas69"
 
-          # Extract existing GitHub usernames already listed
-          EXISTING=$(grep -oP '(?<=\*\*`)[^ ]+' "$TMP_FILE")
+          # Fetch contributors
+          CONTRIBUTORS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/contributors | jq -r '.[].login')
 
-          # Fetch contributors from GitHub
-          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/contributors |
-            jq -r '.[].login' | while read LOGIN; do
-              if [ "$LOGIN" != "nayandas69" ] && ! echo "$EXISTING" | grep -q "^$LOGIN$"; then
-                echo -e "\n- **\`$LOGIN <https://github.com/$LOGIN>\`__** - Contributor" >> "$TMP_FILE"
-              fi
-            done
+          # Prepare sections
+          echo "# Contributors" > docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "This project exists thanks to the contributions of the following individuals:" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
 
-          mv "$TMP_FILE" docs/CONTRIBUTORS.rst
+          echo "## Author" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and Maintainer" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
 
-      - name: Commit updated CONTRIBUTORS.rst if changed
+          echo "## Contributors" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+
+          for USER in $CONTRIBUTORS; do
+            if [[ "$USER" != "$AUTHOR" && "$USER" != *"[bot]"* ]]; then
+              echo "- [**$USER**](https://github.com/$USER)" >> docs/CONTRIBUTORS.md
+            fi
+          done
+
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "## Bot Contributors" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+
+          for USER in $CONTRIBUTORS; do
+            if [[ "$USER" == *"[bot]"* ]]; then
+              echo "- [**$USER**](https://github.com/$USER)" >> docs/CONTRIBUTORS.md
+            fi
+          done
+
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "---" >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "We sincerely appreciate your efforts in making this project better." >> docs/CONTRIBUTORS.md
+          echo "" >> docs/CONTRIBUTORS.md
+          echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!" >> docs/CONTRIBUTORS.md
+
+      - name: Commit updated CONTRIBUTORS.md if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet docs/CONTRIBUTORS.rst; then
-            echo "No changes to CONTRIBUTORS.rst"
+
+          if git diff --quiet docs/CONTRIBUTORS.md; then
+            echo "No changes to CONTRIBUTORS.md"
           else
-            git add docs/CONTRIBUTORS.rst
-            git commit -m "Auto-update CONTRIBUTORS.rst with new contributors"
+            git add docs/CONTRIBUTORS.md
+            git commit -m "Auto-update CONTRIBUTORS.md with new contributors"
             git push origin main
           fi
