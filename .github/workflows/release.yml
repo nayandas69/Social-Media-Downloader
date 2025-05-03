@@ -26,10 +26,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Extract version from setup.py
+      - name: Extract version from pyproject.toml
         id: get_version
         run: |
-          VERSION=$(python setup.py --version)
+          VERSION=$(python -c "import re; f=open('pyproject.toml').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
@@ -52,7 +52,9 @@ jobs:
           git push origin "${{ steps.get_version.outputs.version }}"
 
       - name: Install dependencies and PyInstaller
-        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
 
       - name: Build Linux binary with PyInstaller
         run: |
@@ -66,24 +68,18 @@ jobs:
         run: |
           mkdir -p smd-deb/usr/local/bin
           mkdir -p smd-deb/DEBIAN
-
-          # Copy the binary
           cp dist/downloader smd-deb/usr/local/bin/smd
 
-          # Create control file
           VERSION="${{ steps.get_version.outputs.version }}"
-          cat <<EOF > smd-deb/DEBIAN/control
-          Package: social-media-downloader
-          Version: $VERSION
-          Section: utils
-          Priority: optional
-          Architecture: amd64
-          Depends: python3
-          Maintainer: nayandas69
-          Description: Social Media Downloader - download from various platforms via CLI.
-          EOF
+          echo "Package: social-media-downloader" > smd-deb/DEBIAN/control
+          echo "Version: $VERSION" >> smd-deb/DEBIAN/control
+          echo "Section: utils" >> smd-deb/DEBIAN/control
+          echo "Priority: optional" >> smd-deb/DEBIAN/control
+          echo "Architecture: amd64" >> smd-deb/DEBIAN/control
+          echo "Depends: python3" >> smd-deb/DEBIAN/control
+          echo "Maintainer: nayandas69" >> smd-deb/DEBIAN/control
+          echo "Description: Social Media Downloader - download from various platforms via CLI." >> smd-deb/DEBIAN/control
 
-          # Build .deb package
           dpkg-deb --build smd-deb
           mv smd-deb.deb smd-linux/social-media-downloader_${VERSION}_amd64.deb
 
@@ -95,9 +91,9 @@ jobs:
           body: |
             We made new changes. Download the source code from the assets below.
             You can also check the change log and what's new in this release.
-            
-            [What's New](whats_new.md)
-            [Change Log](CHANGELOG.md)
+
+            [What's New](whats_new.md)  
+            [Change Log](CHANGELOG.md)  
             [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
           files: |
             smd-linux.tar.gz
@@ -119,18 +115,20 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies and PyInstaller
-        run: pip install --upgrade pip && pip install -r requirements.txt pyinstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
 
       - name: Build Windows EXE using PyInstaller spec
         run: pyinstaller downloader.spec
 
       - name: Rename Windows executable
-        run: Rename-Item -Path "dist/downloader.exe" -NewName "Social Media Downloader.exe"
+        run: Rename-Item -Path "dist/downloader.exe" -NewName "smd.exe"
 
       - name: Upload Windows release asset
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "${{ needs.linux-build.outputs.version }}"
-          files: dist/Social Media Downloader.exe
+          files: dist/smd.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
