@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.4
+# Version: 1.1.5
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -12,7 +12,7 @@
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
-# Last Updated: 3rd May 2025
+# Last Updated: 10th May 2025
 # -----------------------------------------
 
 import os
@@ -38,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.4"
+CURRENT_VERSION = "1.1.5"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -144,7 +144,12 @@ def load_config():
 config = load_config()
 download_directory = config["download_directory"]
 history_file = config["history_file"]
-mp3_quality = config["mp3_quality"]
+mp3_quality = config["mp3_quality"]  # ← right after this line
+
+if not mp3_quality.isdigit() or int(mp3_quality) not in [64, 128, 192, 256, 320, 396]:
+    logging.warning(f"Invalid MP3 quality in config: {mp3_quality}. Using default 192.")
+    mp3_quality = "192"
+
 
 os.makedirs(download_directory, exist_ok=True)  # Ensure download directory exists
 
@@ -379,7 +384,7 @@ def download_youtube_or_tiktok_video(url):
                     {
                         "key": "FFmpegExtractAudio",
                         "preferredcodec": "mp3",
-                        "preferredquality": "192",
+                        "preferredquality": mp3_quality,  # ✅ FIXED: use variable here
                     },
                 ],
             }

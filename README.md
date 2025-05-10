@@ -12,6 +12,7 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 ![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)
 ![Total Downloads](https://static.pepy.tech/badge/social-media-downloader)
 ![License](https://img.shields.io/github/license/nayandas69/Social-Media-Downloader?style=flat-square&color=blue&logo=github&logoColor=white)
+[![Read Docs](https://img.shields.io/badge/docs-Read%20Docs-blue?style=flat-square&logo=githubpages&logoColor=white)](https://nayandas69.github.io/smd-docsite)     
 
 ## Supported Social Media Platforms
 - [x] YouTube  
@@ -19,21 +20,7 @@ A powerful and easy-to-use tool to download public videos from your favorite soc
 - [x] Instagram  
 - [x] Facebook  
 - [x] X (Twitter)
-- [x] Twitch
-- [x] Snapchat
-- [x] Reddit
-- [x] Vimeo
-- [x] Streamable
-- [x] Pinterest  
-- [x] LinkedIn 
-- [x] BiliBili 
-- [x] Odysee 
-- [x] Rumble 
-- [x] GameClips  **(New!)**
-- [x] Triller  **(New!)**
-- [ ] Other platforms *(Not yet)*
-- [ ] Private content *(Not yet)*
-- [ ] Playlist support *(Not yet)*
+& more! See the full list Here: [Supported Platforms](https://nayandas69.github.io/smd-docsite/supported-platforms) 
 
 ## Features
 
@@ -94,13 +81,8 @@ sudo apt install ffmpeg
 ## Installation Options
 
 ### Install via PIP (Python Users Only)
-> [!NOTE]
-> You need to have Python 3.7 or higher installed on your system.
-> If you don't have Python, please install it from [python.org](https://www.python.org/downloads).
-> If you are using Windows, make sure to check the box "Add Python to PATH" during installation.
-> If you are using Linux, make sure to install `python3-pip` and `python3-venv`.
-> Then run the following command to install the tool:
 
+Run the following command to install the tool:
 ```bash
 pip install social-media-downloader
 ```
@@ -112,6 +94,9 @@ also you can run it shortcut command `smd`
 ```bash
 smd
 ```
+> [!NOTE]
+Listen if you are using `1.1.4` or later version, you can run the tool using `smd` or `social-media-downloader` command.
+> If you are using `1.1.3` or earlier version, you can run the tool using `social-media-downloader` command.
 If you want to update to the latest version, run:
 ```bash
 pip install --upgrade social-media-downloader
@@ -139,8 +124,7 @@ sudo apt-get remove social-media-downloader
 ```
 
 ## Prebuilt Binaries & EXE
-> [!WARNING]
-> Use them at your own risk.
+> **READ THIS BEFORE USING!**
 > These are prebuilt binaries and EXE files.
 > For EXE/Binaries don't forget to install FFmpeg.
 > Always use the latest version from the Releases page.
@@ -150,17 +134,17 @@ sudo apt-get remove social-media-downloader
 > Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus. If you get a 
   warning, click "More Info" and then "Run Anyway".
 > This is normal for unsigned builds. You can safely ignore it and run the EXE.
-> If you are not sure about the build, please build it from source using the [Instructions](https://github.com/nayandas69/Social-Media-Downloader/blob/b1e4c9b8dc44e072167938c7eff306f8818f09eb/Instructions.md) above.
+> If you are not sure about the build, please build it from source using the [Build Instructions](https://nayandas69.github.io/smd-docsite/build) above.
 > We are not responsible for any issues caused by using untrusted builds.
 > DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds.
 
-### 🪟 Windows EXE (Prebuilt)
+### Windows EXE (Prebuilt)
 1. Download the EXE from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)  
 2. Double-click & run like a normal app
 3. Boom! You're ready to download videos!
 
 
-### 🐧 Prebuilt Linux Binaries
+### Prebuilt Linux Binaries
 Download the `smd-linux.tar.gz` from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases) and:
 ```bash
 tar -xvzf smd-linux.tar.gz
@@ -168,13 +152,15 @@ sudo chmod +x smd
 ./smd
 ```
 
-## Visit SMD Web Portal to Download the EXE or Binaries
+## Visit SMD Web Portal/SMD Docs/Release to Download the EXE/Binaries/.deb files
 > [!NOTE]
 > This is a web portal to download the EXE or Binaries files.
 > You can also use the web portal to download the latest version of the tool.
 > The web portal is hosted on GitHub Pages and is updated automatically whenever a new version is released.
 
 Check out the official page: [nayandas69.github.io/Social-Media-Downloader](https://nayandas69.github.io/Social-Media-Downloader)
+
+Check out the official documentation: [nayandas69.github.io/smd-docsite](https://nayandas69.github.io/smd-docsite)
 
 ## How to Use
 
@@ -210,36 +196,18 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 > I'm not responsible if you break the rules. **Use this ethically and responsibly!**
 
 ### Read More:
-- [FAQ](https://github.com/nayandas69/Social-Media-Downloader/blob/main/faq.rst)
 - [License](https://github.com/nayandas69/Social-Media-Downloader/blob/main/LICENSE)
 - [What's New](https://github.com/nayandas69/Social-Media-Downloader/blob/main/whats_new.md)
 - [Change Log](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CHANGELOG.md)
-- [Instructions](https://github.com/nayandas69/Social-Media-Downloader/blob/main/Instructions.md)
 - [Contributing](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
 - [CONTRIBUTORS.md](https://github.com/nayandas69/Social-Media-Downloader/blob/main/docs/CONTRIBUTORS.md)
+- [Details](https://github.com/nayandas69/smd-docsite)
 
-## Planned & Current Features
+## Read the full documentation
+- [Social Media Downloader Documentation](https://nayandas69.github.io/smd-docsite)
 
-### Completed
-- [x] CLI Interface
-- [x] MP4 / MP3 support
-- [x] Batch mode
-- [x] Update checker
-- [x] Linux/Windows support
-- [x] PyPI packaging
-- [x] Basic EXE & binary build
-- [x] Facebook, Instagram, YouTube, TikTok, X
-- [x] Snapchat, Reddit, Vimeo, Streamable & Pinterest
-- [x] LinkedIn, BiliBili, Odysee, Rumble, GameClips & triller
-- [x] Instagram Reels & Videos Audio download
-
-### In Progress / Planned
-- [ ] GUI Interface **(Next Comming Soon!)**
-- [ ] Web Interface **(Next Comming Soon!)**
-- [ ] macOS support
-- [ ] Other platforms
-- [ ] Proxy support
-- [ ] Playlist support
+## Planned Features
+See Roadmap for more details: [Roadmap](https://nayandas69.github.io/smd-docsite/roadmap)
 
 ## Contributing & Support
 > Have suggestions? We'd love to hear them!
@@ -247,6 +215,9 @@ Check out the official page: [nayandas69.github.io/Social-Media-Downloader](http
 > Your feedback is invaluable in making this tool even better!
 
 Love the tool? Help improve it! Open an issue or PR on [GitHub](https://github.com/nayandas69/Social-Media-Downloader).
+
+## Who contributed to this project?
+- [See the list of contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
 
 ### Contact Me:
 - Made by [Nayan Das](https://nayandas69.github.io/link-in-bio)

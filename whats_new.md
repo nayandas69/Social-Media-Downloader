@@ -1,13 +1,16 @@
-# What's New in Social Media Downloader v1.1.4
+# What's New in Social Media Downloader v1.1.5
 
-## New Features
-- **New Platforms**: Added support for **GameClips** and **Triller**.
-- **New Short Command**: After installing via pip the new version, you can use `smd` as a shortcut for `social-media-downloader`.
+### MP3 Quality Fix
+- Fixed a bug where custom `mp3_quality` values (e.g., 256, 320) were ignored.
+- Now respects and validates values from `config.json`.
 
-## Improvements
-- **File Structure**: The file structure has been improved for better organization and maintainability.
+### Improved Validation
+- Falls back to default `192` if invalid quality is set.
+- Logs a warning for incorrect config values.
 
-## Contributors
-- **Contributors**: [@mohinikhan123](https://github.com/mohinikhan123) her contribution to the project is greatly appreciated.
-- [x] New Command: `smd` as a shortcut for `social-media-downloader`.
-- [x] Better file structure for the project.
+### Docs Moved!
+All documentation is now hosted separately:  
+[https://nayandas69.github.io/smd-docsite/](https://nayandas69.github.io/smd-docsite/)
+
+New docs repo:  
+[https://github.com/nayandas69/smd-docsite](https://github.com/nayandas69/smd-docsite)

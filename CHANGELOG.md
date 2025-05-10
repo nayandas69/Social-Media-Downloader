@@ -4,6 +4,35 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.5] - 2025-05-10
+
+### Fixes & Improvements
+- **Fixed MP3 Quality Handling:**  
+  The MP3 quality value (`mp3_quality`) from `config.json` is now properly validated and applied during audio downloads.  
+  Previously, entering custom qualities like `256` or `396` wouldn't work correctly due to a bug — it's now fixed.
+
+- **Corrected Format Selection Logic:**  
+  The audio download process now correctly respects the selected `mp3_quality` value (e.g., 128, 192, 256, 320, 396) instead of defaulting silently or failing.
+
+- **Stronger Validation:**  
+  If an invalid `mp3_quality` value is provided (e.g., `60`), the app will fall back to the default `192` and show a warning in the logs.
+
+### Config Updates
+- The `config.json` now supports and validates the following MP3 qualities:  
+  `64`, `128`, `192`, `256`, `320`, `396`.
+
+### Documentation Update
+
+All documentation has been moved to a **dedicated repository and site**!
+
+Visit the new docs site here:  
+[https://nayandas69.github.io/smd-docsite/](https://nayandas69.github.io/smd-docsite/)
+
+New repo for documentation only:  
+[https://github.com/nayandas69/smd-docsite](https://github.com/nayandas69/smd-docsite)
+
+---
+
 ## [1.1.4] - 2025-05-03
 
 ### Added
