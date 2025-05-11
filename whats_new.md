@@ -1,16 +1,10 @@
-# What's New in Social Media Downloader v1.1.5
+# What's New in Social Media Downloader v1.1.6
 
-### MP3 Quality Fix
-- Fixed a bug where custom `mp3_quality` values (e.g., 256, 320) were ignored.
-- Now respects and validates values from `config.json`.
+We’ve expanded platform support in this update! You can now download videos from two additional platforms:
 
-### Improved Validation
-- Falls back to default `192` if invalid quality is set.
-- Logs a warning for incorrect config values.
+- **SnackVideo** (`snackvideo.com`)
+- **Kwai** (`kwai.com`)
 
-### Docs Moved!
-All documentation is now hosted separately:  
-[https://nayandas69.github.io/smd-docsite/](https://nayandas69.github.io/smd-docsite/)
+This brings even more flexibility to your content downloading experience across short-video platforms.
 
-New docs repo:  
-[https://github.com/nayandas69/smd-docsite](https://github.com/nayandas69/smd-docsite)
+As always, thanks for using the tool!
