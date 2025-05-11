@@ -338,7 +338,7 @@ def download_youtube_or_tiktok_video(url):
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\033[0m"
+            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips Triller, SnackVideo & Kwai.\033[0m"
         )
         return
 
