@@ -2,8 +2,8 @@ name: Update Contributors
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 0'
+  push:
+    branches: [dev]
 
 permissions:
   contents: write
@@ -40,7 +40,7 @@ jobs:
 
           echo "## Author" >> CONTRIBUTORS.md
           echo "" >> CONTRIBUTORS.md
-          echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and Maintainer" >> CONTRIBUTORS.md
+          echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer" >> CONTRIBUTORS.md
           echo "" >> CONTRIBUTORS.md
 
           echo "## Contributors" >> CONTRIBUTORS.md
@@ -79,5 +79,5 @@ jobs:
           else
             git add CONTRIBUTORS.md
             git commit -m "Auto-update CONTRIBUTORS.md with new contributors"
-            git push origin main
+            git push origin dev
           fi
