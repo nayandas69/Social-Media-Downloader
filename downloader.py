@@ -578,7 +578,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\n"
+        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, SnackVideo & Kwai.\n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")
