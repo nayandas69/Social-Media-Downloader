@@ -4,6 +4,15 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.6] - 2025-05-11
+### Added
+- Support for two new video platforms:
+  - SnackVideo (`snackvideo.com`)
+  - Kwai (`kwai.com`)
+
+
+---
+
 ## [1.1.5] - 2025-05-10
 
 ### Fixes & Improvements

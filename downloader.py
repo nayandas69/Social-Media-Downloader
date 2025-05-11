@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.5
+# Version: 1.1.6
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -12,7 +12,7 @@
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
-# Last Updated: 10th May 2025
+# Last Updated: 11th May 2025
 # -----------------------------------------
 
 import os
@@ -38,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.5"
+CURRENT_VERSION = "1.1.6"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -332,11 +332,13 @@ def download_youtube_or_tiktok_video(url):
         "rumble.com",
         "gameclips.io",
         "triller.co",
+        "snackvideo.com",
+        "kwai.com",
     ]
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\033[0m"
+            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, SnackVideo & Kwai.\033[0m"
         )
         return
 
@@ -558,7 +560,7 @@ def show_help():
     """Display the help menu with usage instructions."""
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
     print(
-        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller videos."
+        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, Snackvideo & kwai videos."
     )
     print(
         "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, picture. And for Batch download provide a text file containing public Instagram post URLs."
@@ -576,7 +578,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips & Triller.\n"
+        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, SnackVideo & Kwai.\n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")
