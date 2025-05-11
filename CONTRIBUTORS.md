@@ -9,6 +9,7 @@ This project exists thanks to the contributions of the following individuals:
 ## Contributors
 
 - [**mohinikhan123**](https://github.com/mohinikhan123)
+- [**rafaelkurniawan004**](https://github.com/rafaelkurniawan004)
 
 ## Bot Contributors
 
