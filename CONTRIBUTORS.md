@@ -4,7 +4,7 @@ This project exists thanks to the contributions of the following individuals:
 
 ## Author
 
-- [**nayandas69**](https://github.com/nayandas69) — Author and Maintainer
+- [**nayandas69**](https://github.com/nayandas69) — Author and devtainer
 
 ## Contributors
 
