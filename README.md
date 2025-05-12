@@ -53,7 +53,7 @@ cd Social-Media-Downloader
 python -m venv .venv            # (Recommended)
 .venv\Scripts\activate
 pip install -r requirements.txt
-python downloader.py
+python smd/downloader.py
 ```
 
 # Linux
@@ -61,7 +61,7 @@ python downloader.py
 python3 -m venv .venv            # (Recommended)
 source .venv/bin/activate
 pip3 install -r requirements.txt
-python3 downloader.py
+python3 smd/downloader.py
 ```
 
 ## Requirements Must Be Installed
