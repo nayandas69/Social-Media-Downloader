@@ -198,7 +198,7 @@ Check out the official documentation: [nayandas69.github.io/smd-docsite](https:/
 - [What's New](https://github.com/nayandas69/Social-Media-Downloader/blob/main/whats_new.md)
 - [Change Log](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CHANGELOG.md)
 - [Contributing](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
-- [CONTRIBUTORS.md](https://github.com/nayandas69/Social-Media-Downloader/blob/main/docs/CONTRIBUTORS.md)
+- [CONTRIBUTORS.md](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
 - [Details](https://github.com/nayandas69/smd-docsite)
 
 ## Read the full documentation
