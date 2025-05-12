@@ -3,7 +3,7 @@ name: Build and Publish to PyPI
 on:
   push:
     paths:
-      - 'downloader.py'
+      - 'smd/downloader.py'
     branches:
       - main  # Runs on every push to main
 

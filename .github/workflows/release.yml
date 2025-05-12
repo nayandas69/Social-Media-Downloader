@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'downloader.py'
+      - 'smd/downloader.py'
     branches:
       - main
 

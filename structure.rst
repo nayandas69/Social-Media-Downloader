@@ -37,7 +37,9 @@ New Structure
 ::
 
     .
-    ├── downloader.py
+    ├── smd/
+    |   ├── __init__.py
+    │   └── downloader.py
     ├── index.html
     ├── LICENSE
     ├── README.md
