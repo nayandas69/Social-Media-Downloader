@@ -1,10 +1,20 @@
-# What's New in Social Media Downloader v1.1.6
+# What's New in Social Media Downloader v1.1.7
 
-We’ve expanded platform support in this update! You can now download videos from two additional platforms:
+## Fixes and Improvements
+- 🔧 Fixed `ModuleNotFoundError` by restructuring code into a proper package (`smd/downloader.py`).
+- 🔄 Updated CLI script entry points in `pyproject.toml` to:
+  - `smd = "smd.downloader:main"`
+  - `social-media-downloader = "smd.downloader:main"`
 
-- **SnackVideo** (`snackvideo.com`)
-- **Kwai** (`kwai.com`)
+✅ Now you can run the tool with:
+```bash
+smd
+# or
+social-media-downloader
+```
 
-This brings even more flexibility to your content downloading experience across short-video platforms.
+## Upgrade now:
 
-As always, thanks for using the tool!
+```bash
+pip install --upgrade social-media-downloader
+```

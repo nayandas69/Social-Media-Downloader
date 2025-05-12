@@ -4,6 +4,37 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.7] - 2025-05-12
+
+### Fixes & Improvements
+- Fixed `ModuleNotFoundError: No module named 'downloader'` by properly restructuring the project as a Python package (`smd/downloader.py`).
+- Updated `pyproject.toml` entry points to:
+```toml
+  [project.scripts]
+  smd = "smd.downloader:main"
+  social-media-downloader = "smd.downloader:main"
+```
+
+* CLI scripts now work reliably across systems when installed via PyPI.
+
+### How to Upgrade
+
+To upgrade to the latest version, run:
+
+```bash
+pip install --upgrade social-media-downloader
+```
+
+Then use the CLI tool with:
+
+```bash
+smd
+# or
+social-media-downloader
+```
+
+---
+
 ## [1.1.6] - 2025-05-11
 ### Added
 - Support for two new video platforms:
