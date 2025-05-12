@@ -105,7 +105,6 @@ pip install --upgrade social-media-downloader
 ### Install via .deb package
 > [!NOTE]
 > This is only for Debian-based systems (like Ubuntu).
-> If you are using other Linux distros, please use the prebuilt binaries or build from source.
 
 1. Download the `.deb` file from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)
 2. Open a terminal and navigate to the directory where you downloaded the file.
@@ -123,13 +122,12 @@ sudo apt-get install -f
 sudo apt-get remove social-media-downloader
 ```
 
-## Prebuilt Binaries & EXE
+## Build Artifacts
 > **READ THIS BEFORE USING!**
-> These are prebuilt binaries and EXE files.
 > For EXE/Binaries don't forget to install FFmpeg.
 > Always use the latest version from the Releases page.
 > If you have any issues, please open an issue on GitHub.
-> Prebuilt binaries & exe don't require Python or any dependencies.
+> Build Artifacts don't require Python or any dependencies.
 > Just download and run!
 > Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus. If you get a 
   warning, click "More Info" and then "Run Anyway".
@@ -138,13 +136,13 @@ sudo apt-get remove social-media-downloader
 > We are not responsible for any issues caused by using untrusted builds.
 > DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds.
 
-### Windows EXE (Prebuilt)
+### Windows EXE
 1. Download the EXE from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)  
 2. Double-click & run like a normal app
 3. Boom! You're ready to download videos!
 
 
-### Prebuilt Linux Binaries
+### Linux Binaries
 Download the `smd-linux.tar.gz` from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases) and:
 ```bash
 tar -xvzf smd-linux.tar.gz
