@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  downloader:
+    build: .
+    image: social-media-downloader:latest
+    container_name: smd
+    entrypoint: ["social-media-downloader"]
+    stdin_open: true       # Keep STDIN open so CLI works interactively
+    tty: true              # Allocate a pseudo-TTY for interactive sessions
+    volumes:
+      - ./media:/app/media   # Optional: map local "media" folder for downloads
