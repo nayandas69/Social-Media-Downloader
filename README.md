@@ -1,78 +1,42 @@
 # Social Media Downloader
 
-A powerful and easy-to-use tool to download public videos from your favorite social media platforms. Whether you're on Windows or Linux, technical or not — we've got you covered. Download in batches, choose your formats, and even use it as a command-line tool or standalone app. Built with **love**, **open-source**, and fully community-driven. **100% Free** (but hey, [a coffee wouldn’t hurt!](https://www.patreon.com/nayandas69))
+A fast, simple, and open-source tool to grab **public videos** from all your favorite platforms — including YouTube, TikTok, Instagram, Facebook, X and see all [supported platforms](https://nayandas69.github.io/Social-Media-Downloader/installation/supported-platforms).
 
-> [!NOTE]
-> This tool only supports **public** links. It does **not** work on private or restricted content.
-> If you try to use it on private content, it will throw an error.
-> **Please respect the privacy of others.**
+Whether you're a techie or a casual user, this tool works seamlessly across **Windows** and **Linux**. Download single videos or entire batches, pick your desired format, and save content hassle-free. With a user-friendly command-line interface, you can easily download videos in just a few clicks.
 
 ![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/Social-Media-Downloader/python-package.yml?style=flat-square&color=4DB6AC&logo=github)
 ![Python Version](https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white)
 ![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)
 ![Total Downloads](https://static.pepy.tech/badge/social-media-downloader)
 ![License](https://img.shields.io/github/license/nayandas69/Social-Media-Downloader?style=flat-square&color=blue&logo=github&logoColor=white)
-[![Read Docs](https://img.shields.io/badge/docs-Read%20Docs-blue?style=flat-square&logo=githubpages&logoColor=white)](https://nayandas69.github.io/smd-docsite)     
+[![Read Docs](https://img.shields.io/badge/docs-Read%20Docs-blue?style=flat-square&logo=githubpages&logoColor=white)](https://nayandas69.github.io/Social-Media-Downloader)    
 
-## Supported Social Media Platforms
-- [x] YouTube  
-- [x] TikTok  
-- [x] Instagram  
-- [x] Facebook  
-- [x] X (Twitter)
-& more! See the full list Here: [Supported Platforms](https://nayandas69.github.io/smd-docsite/supported-platforms) 
+> [!NOTE] 
+> This tool **only works with publicly available videos**. It **cannot download private, restricted, or protected content**. Attempting to do so will result in an error.  
+> Please use responsibly and respect content ownership and privacy.
 
-## Features
+## Intro
+![Social Media Downloader](https://raw.githubusercontent.com/nayandas69/Social-Media-Downloader/4d0aebcc7433bb47bbfdce34b88ece1e7e41fd4f/docs/assets/intro.gif)
 
-- [x] Multiple Platforms – YouTube, Instagram & more
-- [x] Batch Downloads – Download multiple links at once ( only public links Instagram)  
-- [x] Choose Formats – MP4, MP3, or whatever you vibe with   
-- [x] History Log – Keeps track of what you downloaded  
-- [x] Update Checker – Always stay fresh with the latest version  
-- [x] Interactive CLI – Easy to use, even for non-techies
+## Quick Start
 
-## Preview
-![Preview](https://raw.githubusercontent.com/nayandas69/Social-Media-Downloader/refs/heads/main/assets/1.1.0.gif)
-
-## Usage
-
-### Clone this repo (Recommended)
+### Clone the Repository
 ```bash
 git clone https://github.com/nayandas69/Social-Media-Downloader.git
-```
-
-Then navigate to the directory:
-```bash
 cd Social-Media-Downloader
 ```
 
-### Recommended (Create a virtual environment)
+## Requirements
 
-# Windows
-```bash
-python -m venv .venv            # (Recommended)
-.venv\Scripts\activate
-pip install -r requirements.txt
-python smd/downloader.py
-```
-
-# Linux
-```bash
-python3 -m venv .venv            # (Recommended)
-source .venv/bin/activate
-pip3 install -r requirements.txt
-python3 smd/downloader.py
-```
-
-## Requirements Must Be Installed
+> ✅ Before running the tool, make sure **FFmpeg** is installed:
 
 ### Install FFmpeg
 
-- **Windows**  
-  Download from: [https://ffmpeg.org/download.html](https://ffmpeg.org/download.html)  
-  Add the bin path to your system environment variables.
+* **Windows:**
+  Download from [ffmpeg.org](https://ffmpeg.org/download.html) and add bin folder to your **System PATH**.
 
-- **Linux**
+* **Linux:**
+
 ```bash
 sudo apt update
 sudo apt install ffmpeg
@@ -80,152 +44,95 @@ sudo apt install ffmpeg
 
 ## Installation Options
 
-### Install via PIP (Python Users Only)
+> Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation/)
 
-Run the following command to install the tool:
-```bash
-pip install social-media-downloader
-```
-Then just run from anywhere:
-```bash
-social-media-downloader
-```
-also you can run it shortcut command `smd`
-```bash
-smd
-```
-> [!NOTE]
-Listen if you are using `1.1.4` or later version, you can run the tool using `smd` or `social-media-downloader` command.
-> If you are using `1.1.3` or earlier version, you can run the tool using `social-media-downloader` command.
-If you want to update to the latest version, run:
-```bash
-pip install --upgrade social-media-downloader
-```
+| Platform   | Method              | Instructions                                                                                                  |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Windows | Standalone `.exe`   | Download from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases), double-click to run |
+| Linux   | `Binary` / `.deb`     | Use the `.deb` installer or download the `binary` for direct execution                                          |
+| Any     | `pip` (recommended) | `pip install social-media-downloader`                                                                         |
+| Manual  | From Source         | Clone repo → install deps → python smd/downloader.py                                                        |
 
-### Install via .deb package
-> [!NOTE]
-> This is only for Debian-based systems (like Ubuntu).
+## 📚 Full Documentation
 
-1. Download the `.deb` file from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases/latest)
-2. Open a terminal and navigate to the directory where you downloaded the file.
-3. Run the following command:
-```bash
-sudo dpkg -i social-media-downloader_VERSION_amd64.deb
-```
-4. If you get any dependency errors, run:
-```bash
-sudo apt-get install -f
-```
-5. After installation, you can run the tool by typing `smd` in the terminal.
-6. To uninstall, run:
-```bash
-sudo apt-get remove social-media-downloader
-```
+Our complete user guide is available online:
 
-## Build Artifacts
-> **READ THIS BEFORE USING!**
-> For EXE/Binaries don't forget to install FFmpeg.
-> Always use the latest version from the Releases page.
-> If you have any issues, please open an issue on GitHub.
-> Build Artifacts don't require Python or any dependencies.
-> Just download and run!
-> Note: These builds are not signed, so you may get a warning from Windows Defender or your antivirus. If you get a 
-  warning, click "More Info" and then "Run Anyway".
-> This is normal for unsigned builds. You can safely ignore it and run the EXE.
-> If you are not sure about the build, please build it from source using the [Build Instructions](https://nayandas69.github.io/smd-docsite/build) above.
-> We are not responsible for any issues caused by using untrusted builds.
-> DO NOT use modified EXE/Binaries files outside this repository. For your security, only use trusted builds.
+**Docs:** [https://nayandas69.github.io/Social-Media-Downloader](https://nayandas69.github.io/Social-Media-Downloader)
 
-### Windows EXE
-1. Download the EXE from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)  
-2. Double-click & run like a normal app
-3. Boom! You're ready to download videos!
+### Highlights:
 
+* [Requirements & Setup](https://nayandas69.github.io/Social-Media-Downloader/installation/)
+* [Using the Downloader](https://nayandas69.github.io/Social-Media-Downloader/installation/usage/)
+* [Supported Platforms](https://nayandas69.github.io/Social-Media-Downloader/installation/supported-platforms/)
+* [Common Issues](https://nayandas69.github.io/Social-Media-Downloader/installation/faq/)
+* [Build & Troubleshooting](https://nayandas69.github.io/Social-Media-Downloader/build/)
+* [Feature Roadmap](https://nayandas69.github.io/Social-Media-Downloader/development/roadmap/)
 
-### Linux Binaries
-Download the `smd-linux.tar.gz` from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases) and:
-```bash
-tar -xvzf smd-linux.tar.gz
-sudo chmod +x smd
-./smd
-```
+## Features
 
-## Visit SMD Web Portal/SMD Docs/Release to Download the EXE/Binaries/.deb files
-> [!NOTE]
-> This is a web portal to download the EXE or Binaries files.
-> You can also use the web portal to download the latest version of the tool.
-> The web portal is hosted on GitHub Pages and is updated automatically whenever a new version is released.
+* **Multi-platform** support: YouTube, TikTok, Instagram, etc.
+* **Batch downloads**: Just paste multiple links in a .txt file
+* **Format options**: Choose between MP4, MP3, or ID-based formats
+* **Download history** tracking
+* **Update checker** built-in
+* **Interactive CLI**: Beginner-friendly and simple to use
+* Works on both **Windows** and **Linux**
 
-Check out the official page: [nayandas69.github.io/Social-Media-Downloader](https://nayandas69.github.io/Social-Media-Downloader)
+## How It Works
 
-Check out the official documentation: [nayandas69.github.io/smd-docsite](https://nayandas69.github.io/smd-docsite)
+1. Launch the tool (EXE or Python script)
+2. Choose a platform (YouTube, Instagram, etc.)
+3. Paste a **public video URL**
+4. Select a format (e.g., `mp3`, `625`)
+5. The tool handles the rest! You'll see real-time progress.
+6. For **batch downloads**:
 
-## How to Use
+   * Create a `.txt` file with one URL per line
+   * Provide the file path when prompted
 
-1. Run the tool (either via command line or double-click the EXE)
-2. Select the platform you want to download from (YouTube, Instagram, etc.)
-3. Paste the **public link** of a video
-4. Choose output format ID available like `625` (or type `mp3` for audio-only)
-5. Sit back and let the tool work its magic!
-6. Wait for the download to finish (it’ll show you the progress)
-7. Batch download? No problem! Just follow these steps:
-   - Create a `.txt` file with each URL on a new line
-   - For batch download, enter the path to your `.txt` file containing URLs.
-   - For example: `C:\path\to\batch_links.txt` or `/home/user/batch_links.txt`
-8. Find your downloaded files in the same directory as the tool
-9. Enjoy your videos!
+Your videos will be saved in the same folder where the tool is located.
 
-## Tested Platforms
+## Tested Environments
 
-- [x] Windows 11
-- [x] Windows 10
-- [x] Kali Linux
-- [x] Parrot OS
-- [ ] macOS *(Not tested)*
-- [ ] Other Linux Distros *(Should work but not tested)*
+| OS          | Status         |
+| ----------- | -------------- |
+| Windows 11/10  | ✅ Tested       |
+| Kali Linux / Parrot OS  | ✅ Tested       |
+| macOS       | ⚠️ Not tested  |
+| Other Linux | ⚠️ Should work |
 
-## Legal & Ethical Use
-> [!WARNING]
-> **READ THIS BEFORE USING!**
-> This tool is for **PERSONAL USE ONLY** and only works with **public** videos. You **CANNOT** use it to:
-> - Download **private, copyrighted, or restricted** content
-> - Repost videos without credit (be a decent human, c’mon)
-> - Violate **YouTube, Instagram, Facebook, TikTok or other social media** TOS
-> I'm not responsible if you break the rules. **Use this ethically and responsibly!**
+## Legal & Usage Notice
 
-### Read More:
-- [License](https://github.com/nayandas69/Social-Media-Downloader/blob/main/LICENSE)
-- [What's New](https://github.com/nayandas69/Social-Media-Downloader/blob/main/whats_new.md)
-- [Change Log](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CHANGELOG.md)
-- [Contributing](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
-- [CONTRIBUTORS.md](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
-- [Details](https://github.com/nayandas69/smd-docsite)
+> 🚫 This tool is provided for **educational and personal use only**. You **must not**:
+>
+> * Use it to download **private, copyrighted, or restricted** content
+> * Violate any **Terms of Service** of the platforms supported
+> * Re-upload or redistribute videos without proper permission or credit
+>
+> ❗ The developer is **not responsible** for how this tool is used. Please respect digital ownership and platform policies.
 
-## Read the full documentation
-- [Social Media Downloader Documentation](https://nayandas69.github.io/smd-docsite)
+## Contributing
 
-## Planned Features
-See Roadmap for more details: [Roadmap](https://nayandas69.github.io/smd-docsite/roadmap)
+Have suggestions, bug reports, or ideas?
+We welcome contributions!
+👉 [Open an issue](https://github.com/nayandas69/Social-Media-Downloader/issues) or [submit a PR](https://github.com/nayandas69/Social-Media-Downloader/pulls)
 
-## Contributing & Support
-> Have suggestions? We'd love to hear them!
-> Open an issue on GitHub or join our Discord community.
-> Your feedback is invaluable in making this tool even better!
+Read the [Contribution Guide](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
 
-Love the tool? Help improve it! Open an issue or PR on [GitHub](https://github.com/nayandas69/Social-Media-Downloader).
+## Credits & Community
 
-## Who contributed to this project?
-- [See the list of contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
+Made with ❤️ by [**Nayan Das**](https://nayandas69.github.io/link-in-bio)
+Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
+Join us on [Discord](https://discord.gg/skHyssu)
 
-### Contact Me:
-- Made by [Nayan Das](https://nayandas69.github.io/link-in-bio)
-- Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
-- Discord: [Join here!](https://discord.gg/skHyssu)
+🙌 Special thanks to all [contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
 
-## Thank You, 4.7K+ Users!
-This project is maintained by **[nayandas69](https://github.com/nayandas69)**.  
-Thanks for downloading & supporting! Share your reviews and feedback.  
-**Your support means the world to me!**
+## Thank You — 7K+ Users and Growing!
 
-> **Disclaimer:**  
-> This tool is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X, or other social media. Use at your own discretion.
+If this tool helped you, show some love by ⭐ starring the repo or [Support](https://www.patreon.com/nayandas69)!
+Your support keeps this project alive ❤️
+
+> *This project is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X or other platforms.*
+
+## License
+This project is licensed under the [MIT License](LICENSE).
