@@ -61,7 +61,7 @@ jobs:
           pyinstaller downloader.spec
           mkdir smd-linux
           cp dist/downloader smd-linux/smd
-          cp AUTHOR.rst LICENSE smd-linux/
+          cp docs/AUTHOR.rst LICENSE smd-linux/
           tar -czvf smd-linux.tar.gz -C smd-linux .
 
       - name: Create .deb package
@@ -92,8 +92,8 @@ jobs:
             We made new changes. Download the source code from the assets below.
             You can also check the change log and what's new in this release.
 
-            [What's New](whats_new.md)  
-            [Change Log](CHANGELOG.md)  
+            [What's New](https://github.com/${{ github.repository }}/blob/main/docs/whats_new.md)  
+            [Change Log](https://github.com/${{ github.repository }}/blob/main/docs/CHANGELOG.md)  
             [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
           files: |
             smd-linux.tar.gz
