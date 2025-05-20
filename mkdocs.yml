@@ -60,8 +60,10 @@ nav:
       - Changelog: changelog.md
   - Development:
       - Roadmap: roadmap.md
-  - Contribute: contribute.md
-  - License: license.md
+  - Contribute:
+      - Contribute: contribute.md
+      - contributors: contributors.md
+  - License: license-info.md
 
 markdown_extensions:
   - admonition

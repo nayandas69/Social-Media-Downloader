@@ -1,4 +1,4 @@
-# License
+# Licensing Details
 
 MIT License © 2025  
 [See full license here](https://github.com/nayandas69/Social-Media-Downloader/blob/main/LICENSE)
