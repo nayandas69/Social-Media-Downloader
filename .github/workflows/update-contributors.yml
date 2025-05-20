@@ -19,12 +19,12 @@ jobs:
       - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Update docs/CONTRIBUTORS.md (only if changed)
+      - name: Update docs/contributors.md (only if changed)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p docs
-          touch docs/CONTRIBUTORS.md
+          touch docs/contributors.md
 
           AUTHOR="nayandas69"
           TEMP_FILE=$(mktemp)
@@ -71,20 +71,20 @@ jobs:
           } > "$TEMP_FILE"
 
           # Compare and overwrite only if content differs
-          if cmp -s "$TEMP_FILE" docs/CONTRIBUTORS.md; then
+          if cmp -s "$TEMP_FILE" docs/contributors.md; then
             echo "Contributors list is already up to date. Skipping commit."
             echo "skip_commit=true" >> $GITHUB_ENV
           else
-            cp "$TEMP_FILE" docs/CONTRIBUTORS.md
+            cp "$TEMP_FILE" docs/contributors.md
             echo "Contributors list updated."
             echo "skip_commit=false" >> $GITHUB_ENV
           fi
 
-      - name: Commit updated docs/CONTRIBUTORS.md if changed
+      - name: Commit updated docs/contributors.md if changed
         if: env.skip_commit == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/CONTRIBUTORS.md
-          git commit -m "Auto-update docs/CONTRIBUTORS.md with new contributors"
+          git add docs/contributors.md
+          git commit -m "Auto-update docs/contributors.md with new contributors"
           git push origin dev
