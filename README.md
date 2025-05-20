@@ -45,7 +45,7 @@ sudo apt install ffmpeg
 ## Installation Options
 
 > [!TIP]
-> Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation/)
+> Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation)
 
 | Platform   | Method              | Instructions                                                                                                  |
 | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -118,7 +118,7 @@ Have suggestions, bug reports, or ideas?
 We welcome contributions!
 👉 [Open an issue](https://github.com/nayandas69/Social-Media-Downloader/issues) or [submit a PR](https://github.com/nayandas69/Social-Media-Downloader/pulls)
 
-Read the [Contribution Guide](https://github.com/nayandas69/Social-Media-Downloader/blob/main/.github/CONTRIBUTING.md)
+Read the [Contribution Guide](https://github.com/nayandas69/Social-Media-Downloader/blob/dev/.github/CONTRIBUTING.md)
 
 ## Credits & Community
 
@@ -126,7 +126,7 @@ Made with ❤️ by [**Nayan Das**](https://nayandas69.github.io/link-in-bio)
 Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
 Join us on [Discord](https://discord.gg/skHyssu)
 
-🙌 Special thanks to all [contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/main/CONTRIBUTORS.md)
+🙌 Special thanks to all [contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/dev/docs/contributors.md)
 
 ## Thank You — 7K+ Users and Growing!
 

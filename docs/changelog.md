@@ -43,7 +43,6 @@ social-media-downloader
   - SnackVideo (`snackvideo.com`)
   - Kwai (`kwai.com`)
 
-
 ---
 
 ## [1.1.5] - 2025-05-10
@@ -62,16 +61,6 @@ social-media-downloader
 ### Config Updates
 - The `config.json` now supports and validates the following MP3 qualities:  
   `64`, `128`, `192`, `256`, `320`, `396`.
-
-### Documentation Update
-
-All documentation has been moved to a **dedicated repository and site**!
-
-Visit the new docs site here:  
-[https://nayandas69.github.io/smd-docsite/](https://nayandas69.github.io/smd-docsite/)
-
-New repo for documentation only:  
-[https://github.com/nayandas69/smd-docsite](https://github.com/nayandas69/smd-docsite)
 
 ---
 
