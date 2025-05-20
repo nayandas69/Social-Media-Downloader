@@ -55,7 +55,7 @@ You don’t have to be a Python guru to help! Here's how you can contribute:
 Check out these related pages before contributing:
 
 - [Roadmap](./roadmap.md) — Check out planed   
-- [License](./license.md) — Know your rights & responsibilities as a contributor  
+- [License](./license-info.md) — Know your rights & responsibilities as a contributor  
 
 ---
 
