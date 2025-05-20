@@ -44,7 +44,7 @@ sudo apt install ffmpeg
 
 ## Installation Options
 
-> [!TIPS]
+> [!TIP]
 > Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation/)
 
 | Platform   | Method              | Instructions                                                                                                  |
