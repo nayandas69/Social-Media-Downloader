@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Ensure jq is installed
+      - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Generate contributors.md from merged PRs
@@ -93,7 +93,7 @@ jobs:
             echo "skip_commit=false" >> $GITHUB_ENV
           fi
 
-      - name: Commit updated docs/contributors.md if changed
+      - name: Commit if changed
         if: env.skip_commit == 'false'
         run: |
           git config user.name "github-actions[bot]"
