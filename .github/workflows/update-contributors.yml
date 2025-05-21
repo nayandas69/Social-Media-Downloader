@@ -19,7 +19,7 @@ jobs:
       - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Generate contributors.md from merged PRs
+      - name: Update docs/contributors.md (only if changed)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -29,52 +29,40 @@ jobs:
           AUTHOR="nayandas69"
           TEMP_FILE=$(mktemp)
 
-          declare -A human_prs
-          declare -A bot_prs
+          # Fetch contributors list
+          CONTRIBUTORS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            https://api.github.com/repos/${{ github.repository }}/contributors | jq -r '.[].login')
 
-          PAGE=1
-          while true; do
-            PRS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-              "https://api.github.com/repos/${{ github.repository }}/pulls?state=closed&per_page=100&page=$PAGE")
-
-            COUNT=$(echo "$PRS" | jq length)
-            if [ "$COUNT" -eq 0 ]; then break; fi
-
-            echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.html_url)|\(.merged_at)"' |
-            while IFS="|" read -r USER TITLE URL MERGED_AT; do
-              DATE=$(date -d "$MERGED_AT" "+%Y-%m-%d")
-              LINE="  - [_${TITLE}_](${URL}) (${DATE})"
-              if [[ "$USER" == *"[bot]"* ]]; then
-                bot_prs["$USER"]+=$'\n'"$LINE"
-              elif [[ "$USER" != "$AUTHOR" ]]; then
-                human_prs["$USER"]+=$'\n'"$LINE"
-              fi
-            done
-
-            PAGE=$((PAGE + 1))
-          done
-
+          # Generate new content into temp file
           {
             echo "# Contributors"
+            echo ""
+            echo "This project exists thanks to the contributions of the following individuals:"
             echo ""
             echo "## Author"
             echo ""
             echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer"
             echo ""
-            echo "## Human Contributors (via PRs)"
+            echo "## Contributors"
             echo ""
-            for USER in "${!human_prs[@]}"; do
-              echo "- [**$USER**](https://github.com/$USER)"
-              echo "${human_prs[$USER]}"
-              echo ""
+
+            for USER in $CONTRIBUTORS; do
+              if [[ "$USER" != "$AUTHOR" && "$USER" != *"[bot]"* ]]; then
+                echo "- [**$USER**](https://github.com/$USER)"
+              fi
             done
+
+            echo ""
             echo "## Bot Contributors"
             echo ""
-            for BOT in "${!bot_prs[@]}"; do
-              echo "- [**$BOT**](https://github.com/$BOT)"
-              echo "${bot_prs[$BOT]}"
-              echo ""
+
+            for USER in $CONTRIBUTORS; do
+              if [[ "$USER" == *"[bot]"* ]]; then
+                echo "- [**$USER**](https://github.com/$USER)"
+              fi
             done
+
+            echo ""
             echo "---"
             echo ""
             echo "We sincerely appreciate your efforts in making this project better."
@@ -82,11 +70,13 @@ jobs:
             echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!"
           } > "$TEMP_FILE"
 
-          # Only update if changed
+          # Compare and overwrite only if content differs
           if cmp -s "$TEMP_FILE" docs/contributors.md; then
+            echo "Contributors list is already up to date. Skipping commit."
             echo "skip_commit=true" >> $GITHUB_ENV
           else
             cp "$TEMP_FILE" docs/contributors.md
+            echo "Contributors list updated."
             echo "skip_commit=false" >> $GITHUB_ENV
           fi
 
@@ -96,5 +86,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/contributors.md
-          git commit -m "Auto-update contributors.md with merged PR contributors"
+          git commit -m "Auto-update docs/contributors.md with new contributors"
           git push origin dev
+          
