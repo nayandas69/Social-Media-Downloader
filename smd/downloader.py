@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.7
+# Version: 1.1.8
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -12,7 +12,7 @@
 # Usage: pip install social-media-downloader
 # Requirements: Python 3.6+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
-# Last Updated: 12th May 2025
+# Last Updated: 21st May 2025
 # -----------------------------------------
 
 import os
@@ -38,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.7"
+CURRENT_VERSION = "1.1.8"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/link-in-bio"
@@ -118,40 +118,98 @@ logging.basicConfig(
 # ---------------------------------
 CONFIG_FILE = "config.json"
 DEFAULT_CONFIG = {
-    "default_format": "show_all",
+    "default_format": "show_all",  # Can be: 'show_all', 'mp3', '720p', '1080p', etc.
     "download_directory": "media",
     "history_file": "download_history.csv",
-    "mp3_quality": "192",
+    "mp3_quality": "192",  # Supported: 64, 128, 192, 256, 320, 396
 }
+
+VALID_DEFAULT_FORMATS = {
+    "show_all",
+    "mp3",
+    "360p",
+    "480p",
+    "720p",
+    "1080p",
+    "1440p",
+    "2160p",
+}
+VALID_MP3_QUALITIES = {"64", "128", "192", "256", "320", "396"}
 
 
 def load_config():
-    """Load or create configuration file safely."""
+    """Load, validate, and auto-correct the configuration file."""
+    config_changed = False
+
+    # If config file does not exist, create it with default config
     if not os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, "w") as f:
             json.dump(DEFAULT_CONFIG, f, indent=4)
+        logging.info(f"Created new config file with defaults: {CONFIG_FILE}")
+        return DEFAULT_CONFIG
 
+    # Load existing config
     try:
         with open(CONFIG_FILE, "r") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        logging.error("Invalid config file. Resetting to defaults.")
+            config_data = json.load(f)
+    except (json.JSONDecodeError, IOError) as e:
+        logging.error(f"Failed to load config file: {e}. Resetting to defaults.")
         with open(CONFIG_FILE, "w") as f:
             json.dump(DEFAULT_CONFIG, f, indent=4)
         return DEFAULT_CONFIG
 
+    # Add missing keys from default
+    for key, default_value in DEFAULT_CONFIG.items():
+        if key not in config_data:
+            logging.warning(
+                f"Missing '{key}' in config. Setting to default: {default_value}"
+            )
+            config_data[key] = default_value
+            config_changed = True
 
+    # Validate mp3_quality
+    mp3_quality = str(config_data.get("mp3_quality", "192"))
+    if mp3_quality not in VALID_MP3_QUALITIES:
+        logging.warning(f"Invalid mp3_quality '{mp3_quality}', resetting to '192'.")
+        config_data["mp3_quality"] = "192"
+        config_changed = True
+
+    # Validate default_format
+    default_format = str(config_data.get("default_format", "show_all")).lower()
+    if default_format not in VALID_DEFAULT_FORMATS:
+        logging.warning(
+            f"Invalid default_format '{default_format}', resetting to 'show_all'."
+        )
+        config_data["default_format"] = "show_all"
+        config_changed = True
+
+    # Save updated config if changes were made
+    if config_changed:
+        try:
+            with open(CONFIG_FILE, "w") as f:
+                json.dump(config_data, f, indent=4)
+            logging.info("Config file updated with corrected values.")
+        except IOError as e:
+            logging.error(f"Failed to write corrected config: {e}")
+
+    return config_data
+
+
+# Load config and extract validated values
 config = load_config()
-download_directory = config["download_directory"]
-history_file = config["history_file"]
-mp3_quality = config["mp3_quality"]  # ← right after this line
 
-if not mp3_quality.isdigit() or int(mp3_quality) not in [64, 128, 192, 256, 320, 396]:
-    logging.warning(f"Invalid MP3 quality in config: {mp3_quality}. Using default 192.")
-    mp3_quality = "192"
+# Assign global variables
+download_directory = config.get("download_directory", "media")
+history_file = config.get("history_file", "download_history.csv")
+mp3_quality = str(config.get("mp3_quality", "192"))
+default_format = config.get("default_format", "show_all")
 
-
-os.makedirs(download_directory, exist_ok=True)  # Ensure download directory exists
+# Ensure download directory exists
+try:
+    os.makedirs(download_directory, exist_ok=True)
+except OSError as e:
+    logging.error(f"Failed to create download directory '{download_directory}': {e}")
+    raise SystemExit("Cannot proceed without a valid download directory.")
 
 
 # ---------------------------------
@@ -307,7 +365,7 @@ def print_format_table(info):
 # Download Functions for Youtube, TikTok and other platforms
 # -----------------------------------------------------------
 def download_youtube_or_tiktok_video(url):
-    """Download a video with user-selected format (ensuring video has audio)."""
+    """Download a video using a format from config or prompt user if set to 'show_all'."""
 
     allowed_domains = [
         "youtube.com",
@@ -334,22 +392,29 @@ def download_youtube_or_tiktok_video(url):
         "triller.co",
         "snackvideo.com",
         "kwai.com",
+        "imdb.com",
+        "weibo.com",
+        "dailymotion.com",
+        "dai.ly",
+        "tumblr.com",
     ]
+
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms: YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, SnackVideo & Kwai.\033[0m"
+            "\033[1;31mSupported platforms https://nayandas69.github.io/Social-Media-Downloader/supported-platforms\033[0m"
         )
         return
 
     ensure_ffmpeg()
     ensure_internet_connection()
+
     try:
-        ydl_opts = {"listformats": False}
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        # Extract video info first
+        with yt_dlp.YoutubeDL({"listformats": False}) as ydl:
             info = ydl.extract_info(url, download=False)
 
-        # Extract video details
+        # Metadata display
         title = info.get("title", "Unknown Title")
         uploader = info.get("uploader", "Unknown Uploader")
         upload_date = info.get("upload_date", "Unknown Date")
@@ -359,45 +424,61 @@ def download_youtube_or_tiktok_video(url):
             else upload_date
         )
 
-        # Display video details
         print("\n\033[1;36mVideo Details:\033[0m")
         print(f"\033[1;33mTitle:\033[0m {title}")
         print(f"\033[1;33mUploader:\033[0m {uploader}")
         print(f"\033[1;33mUpload Date:\033[0m {upload_date_formatted}")
 
-        # List available formats
-        print_format_table(info)
+        # Determine format preference
+        preferred_format = config.get("default_format", "show_all").lower()
+        filename_base = get_unique_filename(
+            os.path.join(download_directory, f"{title}")
+        )
 
-        # Prompt user for format choice
-        choice = input(
-            "\nEnter the format ID to download (or type 'mp3' for audio-only): "
-        ).strip()
+        # Mapping for user-friendly quality labels
+        friendly_format_map = {
+            "360p": "bestvideo[height<=360]+bestaudio/best",
+            "480p": "bestvideo[height<=480]+bestaudio/best",
+            "720p": "bestvideo[height<=720]+bestaudio/best",
+            "1080p": "bestvideo[height<=1080]+bestaudio/best",
+            "1440p": "bestvideo[height<=1440]+bestaudio/best",
+            "2160p": "bestvideo[height<=2160]+bestaudio/best",
+            "mp3": "mp3",
+        }
 
-        filename = get_unique_filename(os.path.join(download_directory, f"{title}.mp4"))
+        if preferred_format == "show_all":
+            print_format_table(info)
+            choice = input(
+                "\nEnter format ID to download (or type 'mp3' for audio only): "
+            ).strip()
+        else:
+            choice = friendly_format_map.get(preferred_format, preferred_format)
 
-        # Prepare download options
-        if choice.lower() == "mp3":
+        # Build yt-dlp options based on format
+        if choice == "mp3":
             ydl_opts = {
                 "format": "bestaudio/best",
-                "outtmpl": os.path.join(
-                    download_directory, f"{title}"
-                ),  # <-- no .mp3 here
+                "outtmpl": os.path.join(download_directory, f"{title}.%(ext)s"),
                 "postprocessors": [
                     {
                         "key": "FFmpegExtractAudio",
                         "preferredcodec": "mp3",
-                        "preferredquality": mp3_quality,  # ✅ FIXED: use variable here
-                    },
+                        "preferredquality": config.get("mp3_quality", "192"),
+                    }
                 ],
             }
-        else:
+        elif choice.isdigit() or "+" in choice or "bestvideo" in choice:
             ydl_opts = {
-                "format": f"{choice}+bestaudio/best",
-                "outtmpl": filename,
+                "format": choice,
+                "outtmpl": f"{filename_base}.%(ext)s",
                 "merge_output_format": "mp4",
+                "noplaylist": True,
             }
+        else:
+            print(f"\033[1;31mInvalid format selection: {choice}\033[0m")
+            return
 
-        # Download
+        # Perform download
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
             log_download(url, "Success")
@@ -405,7 +486,7 @@ def download_youtube_or_tiktok_video(url):
 
     except Exception as e:
         log_download(url, f"Failed: {str(e)}")
-        logging.error(f"Error downloading video from {url}: {str(e)}")
+        logging.error(f"Error downloading video from {url}: {str(e)}", exc_info=True)
         print(f"\033[1;31mError downloading video:\033[0m {str(e)}")
 
 
@@ -559,9 +640,7 @@ def batch_download_from_file(file_path):
 def show_help():
     """Display the help menu with usage instructions."""
     print("\n\033[1;36mHow to Use Social Media Downloader:\033[0m")
-    print(
-        "1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public YouTube, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, Snackvideo & kwai videos."
-    )
+    print("1. \033[1;33mDownload Videos:\033[0m Enter '1' to download a public videos.")
     print(
         "2. \033[1;33mDownload Instagram Content:\033[0m Enter '2' to download a public Instagram post, video, reel, picture. And for Batch download provide a text file containing public Instagram post URLs."
     )
@@ -578,7 +657,7 @@ def show_help():
     )
     print("\033[1;32mSupported Platforms:\033[0m")
     print(
-        "• YouTube, Instagram, Facebook, TikTok, X, Twitch, Snapchat, Reddit, Vimeo, Streamable, Pinterest, LinkedIn, Bilibili, Odysee, Rumble, GameClips, Triller, SnackVideo & Kwai.\n"
+        "• Click here https://nayandas69.github.io/Social-Media-Downloader/supported-platforms\n"
     )
 
     print("\033[1;32mAdditional Information:\033[0m")

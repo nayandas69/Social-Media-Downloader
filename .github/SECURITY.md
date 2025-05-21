@@ -6,7 +6,7 @@ We only provide security updates and support for the **latest released version**
 
 | Version | Supported |
 |---------|-----------|
-| 1.1.7   | ✅         |
+| 1.1.8   | ✅         |
 | < 1.1.7 | ❌         |
 
 > [!NOTE]

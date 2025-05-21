@@ -13,23 +13,27 @@ Social Media Downloader supports a wide variety of popular platforms and video t
 | Platform     | Video (MP4) | Audio (MP3) | Notes                                   |
 |--------------|-------------|-------------|-----------------------------------------|
 | YouTube      | ✅ Yes       | ✅ Yes       | Only public videos & Shorts.                 |
-| TikTok       | ✅ Yes       | ✅ Yes       | Public Videos.                        |
+| TikTok       | ✅ Yes       | ✅ Yes       | Only public Videos.                        |
 | Instagram    | ✅ Yes       | ✅ Yes       | See special table below for details.  |
-| Facebook     | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| X (Twitter)  | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Twitch       | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Snapchat     | ✅ Yes       | ✅ Yes       | Public spotlight videos.              |
-| Reddit       | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Vimeo        | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Streamable   | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Pinterest    | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| LinkedIn     | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| BiliBili     | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Odysee       | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Rumble       | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| GameClips    | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| Snackvideo   | ✅ Yes       | ✅ Yes       | Only videos.                          |
-| kwai         | ✅ Yes       | ✅ Yes       | Only videos.                          |
+| Facebook     | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| X (Twitter)  | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Twitch       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Snapchat     | ✅ Yes       | ✅ Yes       | Only public spotlight videos.              |
+| Reddit       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Vimeo        | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Streamable   | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Pinterest    | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| LinkedIn     | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| BiliBili     | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Odysee       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Rumble       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| GameClips    | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Snackvideo   | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| kwai         | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| IMDB         | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Weibo        | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Dailymotion  | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Tumblr       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
 
 ---
 
@@ -88,4 +92,4 @@ Social Media Downloader supports a wide variety of popular platforms and video t
 
 ## Need Help?
 
-Need a platform added or having issues with one? Open an [Issue](https://github.com/nayandas69/Social-Media-Downloader/issues) — we love improving things with your help! You can also check our [FAQ](./faq.md) for common questions and troubleshooting tips. If you need further assistance, feel free to reach out to our community for support. We appreciate your feedback and suggestions!
+Need a platform added or having issues with one? Open an [Issue](https://github.com/nayandas69/Social-Media-Downloader/issues) — we love improving things with your help! You can also check our [FAQ](./faq.md) for common questions and troubleshooting tips. If you need further assistance, feel free to reach out to our community for support. We appreciate your feedback and suggestions! We are always looking to improve our platform support and user experience. Thank you for using Social Media Downloader!

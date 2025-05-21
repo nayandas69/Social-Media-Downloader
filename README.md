@@ -63,11 +63,11 @@ Our complete user guide is available online:
 ### Highlights:
 
 * [Requirements & Setup](https://nayandas69.github.io/Social-Media-Downloader/installation/)
-* [Using the Downloader](https://nayandas69.github.io/Social-Media-Downloader/installation/usage/)
-* [Supported Platforms](https://nayandas69.github.io/Social-Media-Downloader/installation/supported-platforms/)
-* [Common Issues](https://nayandas69.github.io/Social-Media-Downloader/installation/faq/)
+* [Using the Downloader](https://nayandas69.github.io/Social-Media-Downloader/usage/)
+* [Supported Platforms](https://nayandas69.github.io/Social-Media-Downloader/supported-platforms/)
+* [Common Issues](https://nayandas69.github.io/Social-Media-Downloader/faq/)
 * [Build & Troubleshooting](https://nayandas69.github.io/Social-Media-Downloader/build/)
-* [Feature Roadmap](https://nayandas69.github.io/Social-Media-Downloader/development/roadmap/)
+* [Feature Roadmap](https://nayandas69.github.io/Social-Media-Downloader/roadmap/)
 
 ## Features
 

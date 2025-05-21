@@ -16,8 +16,8 @@ We're building a modern, user-friendly, cross-platform media downloader with bot
 |--------------------------------|--------------------|------------|
 | CLI Tool                    |✅ Released           | 100%       |
 | PyPI Release                |✅ Released           | 100%       |
-| Web Interface               | In Planning        | 20%        |
-| GUI Interface (Next!)       | In Development     | 5%         |
+| Web Interface               | In Planning        | 35%        |
+| GUI Interface (Next!)       | In Development     | 20%         |
 | macOS Support               | Planned            | —          |
 | Other OS Platforms          | Planned            | —          |
 | Proxy Support               | Planned            | —          |

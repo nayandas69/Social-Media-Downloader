@@ -6,6 +6,44 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.8] - 2025-05-21
+
+* **New Platform Support**:
+  We've added support for even more video platforms! You can now download videos from:
+
+  * `imdb.com`
+  * `weibo.com`
+  * `dailymotion.com`
+  * `tumblr.com`
+
+  Big thanks to the community for the feature requests — keep 'em coming!
+
+### Improvements
+
+* **Configuration Loader Overhaul**
+  The config loading system has been refactored to:
+
+  * Auto-correct invalid or missing values
+  * Validate supported formats and MP3 quality levels
+  * Regenerate the config safely if corrupted
+  * Log everything clearly to help you debug easily
+
+* **Better Defaults & Validation**
+  Now your config won't silently break — it heals itself and tells you what was fixed. Nice.
+
+### Fixes
+
+* Fixed occasional crash when using corrupted or incomplete `config.json`
+* Corrected path handling for dynamic filenames in downloads
+* Ensured `download_directory` is always created safely before use
+
+### Heads Up
+
+* If your config breaks or is outdated, don’t worry — we’ll auto-fix it and log everything clearly.
+* Need more formats or platforms? Hit us up!
+
+---
+
 ## [1.1.7] - 2025-05-12
 
 ### Fixes & Improvements

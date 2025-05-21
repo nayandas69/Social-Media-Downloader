@@ -1,20 +1,7 @@
-# What's New in Social Media Downloader v1.1.7
+# What's New in Social Media Downloader v1.1.8
 
-## Fixes and Improvements
-- 🔧 Fixed `ModuleNotFoundError` by restructuring code into a proper package (`smd/downloader.py`).
-- 🔄 Updated CLI script entry points in `pyproject.toml` to:
-  - `smd = "smd.downloader:main"`
-  - `social-media-downloader = "smd.downloader:main"`
-
-✅ Now you can run the tool with:
-```bash
-smd
-# or
-social-media-downloader
-```
-
-## Upgrade now:
-
-```bash
-pip install --upgrade social-media-downloader
-```
+* Added support for **IMDB**, **Weibo**, **Dailymotion**, and **Tumblr** video downloads.
+* Improved config system with auto-fix for invalid or missing values.
+* Default video format can now be safely customized (e.g., `"default_format": "1080p"`).
+* Enhanced error handling and directory creation.
+* Cleaner logs and better platform validation.
