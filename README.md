@@ -44,12 +44,9 @@ sudo apt install ffmpeg
 
 <details>
 
-<summary>Click to expand for installation options</summary>
+<summary>Click to expand the installation options for Social Media Downloader</summary>
 
 ## Installation Options
-
-> [!TIP]
-> Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation)
 
 | Platform   | Method              | Instructions                                                                                                  |
 | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -59,6 +56,9 @@ sudo apt install ffmpeg
 | Manual  | From Source         | Clone repo → install deps → python smd/downloader.py                                                        |
 
 </details>
+
+> [!TIP]
+> Choose the method that works best for your setup. Full guide: [Installation Guide](https://nayandas69.github.io/Social-Media-Downloader/installation)
 
 ## 📚 Full Documentation
 
