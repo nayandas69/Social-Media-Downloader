@@ -47,7 +47,7 @@ jobs:
               LINE="  - _${TITLE}_ (${DATE})"
               if [[ "$USER" == *"[bot]"* ]]; then
                 bot_prs["$USER"]+=$'\n'"$LINE"
-              elif [[ "$USER" != "$AUTHOR" ]]; then
+              else
                 human_prs["$USER"]+=$'\n'"$LINE"
               fi
             done
@@ -55,20 +55,22 @@ jobs:
             PAGE=$((PAGE + 1))
           done
 
-          # Write to temp file
           {
             echo "# Contributors"
             echo ""
             echo "## Author"
             echo ""
             echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer"
+            echo "${human_prs[$AUTHOR]}"
             echo ""
             echo "## Human Contributors (via PRs)"
             echo ""
             for USER in "${!human_prs[@]}"; do
-              echo "- [**$USER**](https://github.com/$USER)"
-              echo "${human_prs[$USER]}"
-              echo ""
+              if [[ "$USER" != "$AUTHOR" ]]; then
+                echo "- [**$USER**](https://github.com/$USER)"
+                echo "${human_prs[$USER]}"
+                echo ""
+              fi
             done
             echo "## Bot Contributors"
             echo ""
@@ -84,7 +86,6 @@ jobs:
             echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!"
           } > "$TEMP_FILE"
 
-          # Only update if changed
           if cmp -s "$TEMP_FILE" docs/contributors.md; then
             echo "skip_commit=true" >> $GITHUB_ENV
           else
