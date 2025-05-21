@@ -42,9 +42,11 @@ sudo apt update
 sudo apt install ffmpeg
 ```
 
+### Install the Tool
+
 <details>
 
-<summary>Click to expand the installation options for Social Media Downloader</summary>
+<summary><strong>Click to expand the installation options for Social Media Downloader</strong></summary>
 
 ## Installation Options
 
