@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install jq
+      - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
       - name: Generate contributors.md from merged PRs
@@ -28,6 +28,7 @@ jobs:
 
           AUTHOR="nayandas69"
           TEMP_FILE=$(mktemp)
+          REPO="${{ github.repository }}"
 
           declare -A human_prs
           declare -A bot_prs
@@ -36,19 +37,22 @@ jobs:
           while :
           do
             PRS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-              "https://api.github.com/repos/${{ github.repository }}/pulls?state=all&per_page=100&page=$PAGE")
+              "https://api.github.com/repos/$REPO/pulls?state=all&per_page=100&page=$PAGE")
 
             COUNT=$(echo "$PRS" | jq length)
             if [ "$COUNT" -eq 0 ]; then break; fi
 
-            echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.merged_at)"' |
-            while IFS="|" read -r USER TITLE MERGED_AT; do
+            echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.number)|\(.merged_at)"' |
+            while IFS="|" read -r USER TITLE NUMBER MERGED_AT; do
               DATE=$(date -d "$MERGED_AT" "+%Y-%m-%d")
-              LINE="  - _${TITLE}_ (${DATE})"
+              LINE="  - [_${TITLE}_](https://github.com/$REPO/pull/$NUMBER) (${DATE})"
+
               if [[ "$USER" == *"[bot]"* ]]; then
                 bot_prs["$USER"]+=$'\n'"$LINE"
-              else
+              elif [[ "$USER" != "$AUTHOR" ]]; then
                 human_prs["$USER"]+=$'\n'"$LINE"
+              elif [[ "$USER" == "$AUTHOR" ]]; then
+                human_prs["$AUTHOR"]+=$'\n'"$LINE"
               fi
             done
 
@@ -86,6 +90,7 @@ jobs:
             echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!"
           } > "$TEMP_FILE"
 
+          # Only update if changed
           if cmp -s "$TEMP_FILE" docs/contributors.md; then
             echo "skip_commit=true" >> $GITHUB_ENV
           else
@@ -93,7 +98,7 @@ jobs:
             echo "skip_commit=false" >> $GITHUB_ENV
           fi
 
-      - name: Commit if changed
+      - name: Commit updated docs/contributors.md if changed
         if: env.skip_commit == 'false'
         run: |
           git config user.name "github-actions[bot]"
