@@ -19,7 +19,7 @@ jobs:
       - name: Ensure jq is installed
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Update docs/contributors.md with grouped and timestamped contributors
+      - name: Generate contributors.md from merged PRs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -36,62 +36,59 @@ jobs:
           while :
           do
             PRS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-              "https://api.github.com/repos/${{ github.repository }}/pulls?state=closed&base=dev&per_page=100&page=$PAGE")
+              "https://api.github.com/repos/${{ github.repository }}/pulls?state=closed&per_page=100&page=$PAGE")
 
-            PR_COUNT=$(echo "$PRS" | jq 'length')
-            if [ "$PR_COUNT" -eq 0 ]; then break; fi
+            COUNT=$(echo "$PRS" | jq length)
+            if [ "$COUNT" -eq 0 ]; then break; fi
 
             echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.merged_at)"' |
-            while IFS="|" read -r USER TITLE DATE; do
-              DATE_FORMATTED=$(date -d "$DATE" +"%Y-%m-%d")
-              ENTRY="  - _${TITLE}_ (${DATE_FORMATTED})"
+            while IFS="|" read -r USER TITLE MERGED_AT; do
+              DATE=$(date -d "$MERGED_AT" "+%Y-%m-%d")
+              LINE="  - _${TITLE}_ (${DATE})"
               if [[ "$USER" == *"[bot]"* ]]; then
-                bot_prs["$USER"]+=$'\n'"$ENTRY"
+                bot_prs["$USER"]+=$'\n'"$LINE"
               elif [[ "$USER" != "$AUTHOR" ]]; then
-                human_prs["$USER"]+=$'\n'"$ENTRY"
+                human_prs["$USER"]+=$'\n'"$LINE"
               fi
             done
 
             PAGE=$((PAGE + 1))
           done
 
-          echo "# Contributors" > "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
+          # Write to temp file
+          {
+            echo "# Contributors"
+            echo ""
+            echo "## Author"
+            echo ""
+            echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer"
+            echo ""
+            echo "## Human Contributors (via PRs)"
+            echo ""
+            for USER in "${!human_prs[@]}"; do
+              echo "- [**$USER**](https://github.com/$USER)"
+              echo "${human_prs[$USER]}"
+              echo ""
+            done
+            echo "## Bot Contributors"
+            echo ""
+            for BOT in "${!bot_prs[@]}"; do
+              echo "- [**$BOT**](https://github.com/$BOT)"
+              echo "${bot_prs[$BOT]}"
+              echo ""
+            done
+            echo "---"
+            echo ""
+            echo "We sincerely appreciate your efforts in making this project better."
+            echo ""
+            echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!"
+          } > "$TEMP_FILE"
 
-          echo "## Author" >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-          echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer" >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-
-          echo "## Human Contributors (via PRs)" >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-          for USER in "${!human_prs[@]}"; do
-            echo "- [**$USER**](https://github.com/$USER)" >> "$TEMP_FILE"
-            echo "${human_prs[$USER]}" >> "$TEMP_FILE"
-            echo "" >> "$TEMP_FILE"
-          done
-
-          echo "## Bot Contributors" >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-          for BOT in "${!bot_prs[@]}"; do
-            echo "- [**$BOT**](https://github.com/$BOT)" >> "$TEMP_FILE"
-            echo "${bot_prs[$BOT]}" >> "$TEMP_FILE"
-            echo "" >> "$TEMP_FILE"
-          done
-
-          echo "---" >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-          echo "We sincerely appreciate your efforts in making this project better." >> "$TEMP_FILE"
-          echo "" >> "$TEMP_FILE"
-          echo "If you contributed and don’t see your name here, feel free to open a pull request to add yourself!" >> "$TEMP_FILE"
-
-          # Only commit if content differs
+          # Only update if changed
           if cmp -s "$TEMP_FILE" docs/contributors.md; then
-            echo "Contributors list is already up to date. Skipping commit."
             echo "skip_commit=true" >> $GITHUB_ENV
           else
             cp "$TEMP_FILE" docs/contributors.md
-            echo "Contributors list updated."
             echo "skip_commit=false" >> $GITHUB_ENV
           fi
 
@@ -101,5 +98,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/contributors.md
-          git commit -m "Auto-update contributors.md with grouped, timestamped contributors"
+          git commit -m "Auto-update contributors.md with merged PR contributors"
           git push origin dev
