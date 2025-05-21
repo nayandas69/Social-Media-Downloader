@@ -6,7 +6,7 @@ Whether you're a techie or a casual user, this tool works seamlessly across **Wi
 
 ![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/Social-Media-Downloader/python-package.yml?style=flat-square&color=4DB6AC&logo=github)
 ![Python Version](https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white)
-![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)
+[![Version](https://img.shields.io/pypi/v/social-media-downloader?style=flat-square&color=green&logo=pypi&logoColor=white)](https://pypi.org/project/social-media-downloader)
 ![Total Downloads](https://static.pepy.tech/badge/social-media-downloader)
 ![License](https://img.shields.io/github/license/nayandas69/Social-Media-Downloader?style=flat-square&color=blue&logo=github&logoColor=white)
 [![Read Docs](https://img.shields.io/badge/docs-Read%20Docs-blue?style=flat-square&logo=githubpages&logoColor=white)](https://nayandas69.github.io/Social-Media-Downloader)    
@@ -42,6 +42,10 @@ sudo apt update
 sudo apt install ffmpeg
 ```
 
+<details>
+
+<summary>Click to expand for installation options</summary>
+
 ## Installation Options
 
 > [!TIP]
@@ -51,8 +55,10 @@ sudo apt install ffmpeg
 | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Windows | Standalone `.exe`   | Download from [Releases](https://github.com/nayandas69/Social-Media-Downloader/releases), double-click to run |
 | Linux   | `Binary` / `.deb`     | Use the `.deb` installer or download the `binary` for direct execution                                          |
-| Any     | `pip` (recommended) | `pip install social-media-downloader`                                                                         |
+| Universal | `pip` (recommended) | `pip install social-media-downloader`                                                                         |
 | Manual  | From Source         | Clone repo → install deps → python smd/downloader.py                                                        |
+
+</details>
 
 ## 📚 Full Documentation
 
@@ -122,9 +128,9 @@ Read the [Contribution Guide](https://github.com/nayandas69/Social-Media-Downloa
 
 ## Credits & Community
 
-Made with ❤️ by [**Nayan Das**](https://nayandas69.github.io/link-in-bio)
-Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)
-Join us on [Discord](https://discord.gg/skHyssu)
+Made with ❤️ by [**Nayan Das**](https://nayandas69.github.io/link-in-bio)  
+Email: [nayanchandradas@hotmail.com](mailto:nayanchandradas@hotmail.com)  
+Join us on [Discord](https://discord.gg/skHyssu)  
 
 🙌 Special thanks to all [contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/dev/docs/contributors.md)
 
