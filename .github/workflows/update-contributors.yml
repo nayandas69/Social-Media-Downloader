@@ -28,31 +28,26 @@ jobs:
 
           AUTHOR="nayandas69"
           TEMP_FILE=$(mktemp)
-          REPO="${{ github.repository }}"
 
           declare -A human_prs
           declare -A bot_prs
 
           PAGE=1
-          while :
-          do
+          while true; do
             PRS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-              "https://api.github.com/repos/$REPO/pulls?state=all&per_page=100&page=$PAGE")
+              "https://api.github.com/repos/${{ github.repository }}/pulls?state=closed&per_page=100&page=$PAGE")
 
             COUNT=$(echo "$PRS" | jq length)
             if [ "$COUNT" -eq 0 ]; then break; fi
 
-            echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.number)|\(.merged_at)"' |
-            while IFS="|" read -r USER TITLE NUMBER MERGED_AT; do
+            echo "$PRS" | jq -r '.[] | select(.merged_at != null) | "\(.user.login)|\(.title)|\(.html_url)|\(.merged_at)"' |
+            while IFS="|" read -r USER TITLE URL MERGED_AT; do
               DATE=$(date -d "$MERGED_AT" "+%Y-%m-%d")
-              LINE="  - [_${TITLE}_](https://github.com/$REPO/pull/$NUMBER) (${DATE})"
-
+              LINE="  - [_${TITLE}_](${URL}) (${DATE})"
               if [[ "$USER" == *"[bot]"* ]]; then
                 bot_prs["$USER"]+=$'\n'"$LINE"
               elif [[ "$USER" != "$AUTHOR" ]]; then
                 human_prs["$USER"]+=$'\n'"$LINE"
-              elif [[ "$USER" == "$AUTHOR" ]]; then
-                human_prs["$AUTHOR"]+=$'\n'"$LINE"
               fi
             done
 
@@ -65,16 +60,13 @@ jobs:
             echo "## Author"
             echo ""
             echo "- [**$AUTHOR**](https://github.com/$AUTHOR) — Author and devtainer"
-            echo "${human_prs[$AUTHOR]}"
             echo ""
             echo "## Human Contributors (via PRs)"
             echo ""
             for USER in "${!human_prs[@]}"; do
-              if [[ "$USER" != "$AUTHOR" ]]; then
-                echo "- [**$USER**](https://github.com/$USER)"
-                echo "${human_prs[$USER]}"
-                echo ""
-              fi
+              echo "- [**$USER**](https://github.com/$USER)"
+              echo "${human_prs[$USER]}"
+              echo ""
             done
             echo "## Bot Contributors"
             echo ""
