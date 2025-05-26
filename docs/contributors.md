@@ -1,23 +1,18 @@
-# Contributors
-
-This project exists thanks to the contributions of the following individuals:
-
-## Author
-
-- [**nayandas69**](https://github.com/nayandas69) — Author and devtainer
-
-## Contributors
-
-- [**mohinikhan123**](https://github.com/mohinikhan123)
-- [**rafaelkurniawan004**](https://github.com/rafaelkurniawan004)
-
-## Bot Contributors
-
-- [**github-actions[bot]**](https://github.com/github-actions[bot])
-- [**dependabot[bot]**](https://github.com/dependabot[bot])
-
+---
+title: 💁‍♂️ Contributors
 ---
 
-We sincerely appreciate your efforts in making this project better.
+This project thrives thanks to the dedication and hard work of our amazing contributors.
 
-If you contributed and don’t see your name here, feel free to open a pull request to add yourself!
+### Want to contribute?
+
+Join our growing community of developers and help improve this project by contributing code, fixing issues, or enhancing documentation. Every contribution—big or small—helps make a difference.
+
+<br><br> <a href="https://github.com/nayandas69/Social-Media-Downloader/graphs/contributors"> <img class="dark-light" src="https://contrib.rocks/image?repo=nayandas69/Social-Media-Downloader&anon=0&columns=25&max=100&r=true" alt="Contributors graph" /> </a>
+
+
+## Thank You
+
+We truly appreciate each and every contribution. Your support and collaboration play a crucial role in making this project better every day.
+
+If you’ve contributed but don’t see your name listed here, feel free to [open a pull request](https://github.com/nayandas69/Social-Media-Downloader/pulls) and add yourself!
