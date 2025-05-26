@@ -1,8 +1,8 @@
+<div align="center">
+
 # Social Media Downloader
 
-A fast, simple, and open-source tool to grab **public videos** from all your favorite platforms — including YouTube, TikTok, Instagram, Facebook, X and see all [supported platforms](https://nayandas69.github.io/Social-Media-Downloader/installation/supported-platforms).
-
-Whether you're a techie or a casual user, this tool works seamlessly across **Windows** and **Linux**. Download single videos or entire batches, pick your desired format, and save content hassle-free. With a user-friendly command-line interface, you can easily download videos in just a few clicks.
+A fast, simple, and open-source tool to grab **public videos** from all your favorite platforms — including YouTube, TikTok, Instagram, Facebook, X and see all [supported platforms](https://nayandas69.github.io/Social-Media-Downloader/supported-platforms). Whether you're a techie or a casual user, this tool works seamlessly across **Windows** and **Linux**. Download single videos or entire batches, pick your desired format, and save content hassle-free. With a user-friendly command-line interface, you can easily download videos in just a few clicks.
 
 ![Workflow Status](https://img.shields.io/github/actions/workflow/status/nayandas69/Social-Media-Downloader/python-package.yml?style=flat-square&color=4DB6AC&logo=github)
 ![Python Version](https://img.shields.io/pypi/pyversions/social-media-downloader?style=flat-square&color=blueviolet&logo=python&logoColor=white)
@@ -10,6 +10,8 @@ Whether you're a techie or a casual user, this tool works seamlessly across **Wi
 ![Total Downloads](https://static.pepy.tech/badge/social-media-downloader)
 ![License](https://img.shields.io/github/license/nayandas69/Social-Media-Downloader?style=flat-square&color=blue&logo=github&logoColor=white)
 [![Read Docs](https://img.shields.io/badge/docs-Read%20Docs-blue?style=flat-square&logo=githubpages&logoColor=white)](https://nayandas69.github.io/Social-Media-Downloader)    
+
+</div>
 
 > [!NOTE] 
 > This tool **only works with publicly available videos**. It **cannot download private, restricted, or protected content**. Attempting to do so will result in an error.  
@@ -42,13 +44,13 @@ sudo apt update
 sudo apt install ffmpeg
 ```
 
-### Install the Tool
+## Install the Tool
 
 <details>
 
 <summary><strong>Click to expand the installation options for Social Media Downloader</strong></summary>
 
-## Installation Options
+### Installation Options
 
 | Platform   | Method              | Instructions                                                                                                  |
 | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
