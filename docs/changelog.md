@@ -287,7 +287,7 @@ social-media-downloader
 - **FFmpeg Integration**: Handles video and audio conversions effortlessly.  
 
 ### Technical Notes  
-- Requires Python 3.7+ for PyPI installation.  
+- Requires Python 3.10+ for PyPI installation.  
 - FFmpeg installation is necessary for proper functionality.
 
 ---

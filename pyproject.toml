@@ -3,7 +3,7 @@ name = "social-media-downloader"
 version = "1.1.8"
 description = "A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more. It supports instagram batch downloads, format selection, and maintains a download history."
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "nayandas69", email = "nayanchandradas@hotmail.com"},

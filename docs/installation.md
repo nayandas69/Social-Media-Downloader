@@ -24,7 +24,7 @@ cd Social-Media-Downloader
 
 ## Set Up a Python Environment
 
-We recommend using **Python 3.8+** and creating a virtual environment to manage dependencies cleanly.
+We recommend using **Python 3.10+** and creating a virtual environment to manage dependencies cleanly.
 
 ### On Windows
 

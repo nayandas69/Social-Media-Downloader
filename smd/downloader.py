@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# downloader.py
+# smd/downloader.py
 
 # -----------------------------------------
 # Social Media Downloader
@@ -10,7 +10,7 @@
 # It supports instagram batch downloads, format selection, and maintains a download history.
 # Dependencies: yt-dlp, instaloader, requests, tqdm, pyfiglet, termcolor
 # Usage: pip install social-media-downloader
-# Requirements: Python 3.6+
+# Requirements: Python 3.10+
 # Note: Ensure FFmpeg is installed and added to your PATH for audio extraction.
 # Last Updated: 21st May 2025
 # -----------------------------------------

@@ -46,6 +46,9 @@ sudo dpkg -i social-media-downloader_VERSION_amd64.deb
 smd
 ```
 
+!!! info
+    Replace `VERSION` with the actual version number you downloaded.
+
 !!! abstract
     This installs the tool globally — run it anytime with `smd`.
 

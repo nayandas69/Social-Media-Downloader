@@ -145,5 +145,14 @@ Your support keeps this project alive ❤️
 
 > *This project is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X or other platforms.*
 
+## Built With
+
+This tool wouldn't be possible without these amazing open-source projects:
+
+* [**yt-dlp**](https://github.com/yt-dlp/yt-dlp)
+* [**Instaloader**](https://github.com/instaloader/instaloader)
+
+> **Huge thanks** to their developers and contributors for making this tool possible!
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
