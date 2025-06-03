@@ -145,6 +145,25 @@ Your support keeps this project alive ❤️
 
 > *This project is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X or other platforms.*
 
+### Full yt-dlp Support + Easy CLI Integration
+
+This tool uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) under the hood, so it supports **all sites yt-dlp supports** — not just the ones listed below.
+
+**[Click here to view the full list of sites supported by yt-dlp](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)**
+
+But we’ve gone a step further!
+In `downloader.py`, we’ve added **CLI program support for the most commonly used social media platforms** (like YouTube, TikTok, Reddit, X, etc.) via an internal `allowed_domains` list.
+
+This makes it easier for users to:
+
+* Paste a URL from a popular site
+* Automatically validate it
+* Download videos or extract audio seamlessly
+
+✅ All without needing to memorize complex flags or command-line options!
+
+You can even expand support by **editing the `allowed_domains` list** inside the script. This makes it super customizable for your own needs.
+
 ## Built With
 
 This tool wouldn't be possible without these amazing open-source projects:

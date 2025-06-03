@@ -8,7 +8,17 @@ Social Media Downloader supports a wide variety of popular platforms and video t
 
 ---
 
-## General Platform Support
+## Powered by yt-dlp — Full Platform Support
+
+This tool uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) under the hood, so it supports **all sites yt-dlp supports** — not just the ones listed below.
+
+[See the full list of supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
+
+You can also extend support by editing the `allowed_domains` list in `downloader.py`.
+
+---
+
+## SMD – General Platform Support
 
 | Platform     | Video (MP4) | Audio (MP3) | Notes                                   |
 |--------------|-------------|-------------|-----------------------------------------|
