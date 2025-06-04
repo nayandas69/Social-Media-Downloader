@@ -1,0 +1,48 @@
+# ------------------------------------------
+# Line endings and language definitions
+# ------------------------------------------
+
+# Auto normalize text files
+* text=auto
+
+# Enforce LF for code and config files
+*.py   text eol=lf
+*.sh   text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+*.toml text eol=lf
+*.txt  text eol=lf
+*.cfg  text eol=lf
+*.ini  text eol=lf
+*.spec text eol=lf
+Makefile text eol=lf
+
+# Linguist language overrides for GitHub stats
+*.py      linguist-language=Python
+*.sh      linguist-language=Shell
+*.md      linguist-language=Markdown
+*.yml     linguist-language=YAML
+*.toml    linguist-language=TOML
+*.json    linguist-language=JSON
+*.txt     linguist-language=Text
+
+# Mark assets and binary files
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.ico  binary
+*.mp4  binary
+*.deb  binary
+
+# Prevent diffs on built binary files
+*.pyc  binary
+*.pyo  binary
+*.pyd  binary
+
+# Treat license as plain text
+LICENSE text
+
+# Exclude vendored/built folders from GitHub language stats
+/dist/* linguist-vendored
+/build/* linguist-vendored
+/.venv/* linguist-vendored

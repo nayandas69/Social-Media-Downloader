@@ -145,7 +145,7 @@ Your support keeps this project alive ❤️
 
 > *This project is not affiliated with or endorsed by YouTube, TikTok, Instagram, Facebook, X or other platforms.*
 
-### Full yt-dlp Support + Easy CLI Integration
+## Full yt-dlp Support + Easy CLI Integration
 
 This tool uses [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) under the hood, so it supports **all sites yt-dlp supports** — not just the ones listed below.
 

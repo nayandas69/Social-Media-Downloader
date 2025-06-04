@@ -1,5 +1,5 @@
 # Core project files to include in PyPI package
-include downloader.py
+include smd/downloader.py
 
 # Include key metadata and documentation files
 include README.md
