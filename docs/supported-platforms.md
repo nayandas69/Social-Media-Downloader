@@ -44,6 +44,7 @@ You can also extend support by editing the `allowed_domains` list in `downloader
 | Weibo        | ✅ Yes       | ✅ Yes       | Only public videos.                          |
 | Dailymotion  | ✅ Yes       | ✅ Yes       | Only public videos.                          |
 | Tumblr       | ✅ Yes       | ✅ Yes       | Only public videos.                          |
+| Bluesky      | ✅ Yes       | ✅ Yes       | Only public videos.                          |
 
 ---
 

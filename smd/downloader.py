@@ -367,6 +367,7 @@ def print_format_table(info):
 def download_youtube_or_tiktok_video(url):
     """Download a video using a format from config or prompt user if set to 'show_all'."""
 
+    # Validate URL against allowed domains
     allowed_domains = [
         "youtube.com",
         "youtu.be",
@@ -397,12 +398,13 @@ def download_youtube_or_tiktok_video(url):
         "dailymotion.com",
         "dai.ly",
         "tumblr.com",
+        "bsky.app",
     ]
 
     if not is_valid_platform_url(url, allowed_domains):
         print("\n\033[1;31mInvalid URL. Please enter a valid URL.\033[0m")
         print(
-            "\033[1;31mSupported platforms https://nayandas69.github.io/Social-Media-Downloader/supported-platforms\033[0m"
+            "\033[1;31mSupported platforms: https://nayandas69.github.io/Social-Media-Downloader/supported-platforms\033[0m"
         )
         return
 
@@ -429,8 +431,7 @@ def download_youtube_or_tiktok_video(url):
         print(f"\033[1;33mUploader:\033[0m {uploader}")
         print(f"\033[1;33mUpload Date:\033[0m {upload_date_formatted}")
 
-        # Determine format preference
-        preferred_format = config.get("default_format", "show_all").lower()
+        # Prepare filename
         filename_base = get_unique_filename(
             os.path.join(download_directory, f"{title}")
         )
@@ -443,8 +444,13 @@ def download_youtube_or_tiktok_video(url):
             "1080p": "bestvideo[height<=1080]+bestaudio/best",
             "1440p": "bestvideo[height<=1440]+bestaudio/best",
             "2160p": "bestvideo[height<=2160]+bestaudio/best",
+            "4320p": "bestvideo[height<=4320]+bestaudio/best",
             "mp3": "mp3",
+            "best": "bestvideo+bestaudio/best",
         }
+
+        # Determine format preference
+        preferred_format = config.get("default_format", "show_all").lower()
 
         if preferred_format == "show_all":
             print_format_table(info)
@@ -454,7 +460,7 @@ def download_youtube_or_tiktok_video(url):
         else:
             choice = friendly_format_map.get(preferred_format, preferred_format)
 
-        # Build yt-dlp options based on format
+        # Handle mp3 download
         if choice == "mp3":
             ydl_opts = {
                 "format": "bestaudio/best",
@@ -467,18 +473,32 @@ def download_youtube_or_tiktok_video(url):
                     }
                 ],
             }
-        elif choice.isdigit() or "+" in choice or "bestvideo" in choice:
+
+        else:
+            # Check if selected format ID exists
+            selected_fmt = next(
+                (f for f in info.get("formats", []) if f.get("format_id") == choice),
+                None,
+            )
+
+            # Auto-correct video-only downloads
+            if selected_fmt and selected_fmt.get("acodec") in ["none", None, ""]:
+                print(
+                    f"\n\033[1;33mNote:\033[0m Selected format '{choice}' has no audio."
+                )
+                print(
+                    f"\033[1;32mAuto-fix:\033[0m Merging best video + best audio using FFmpeg."
+                )
+                choice = "bestvideo+bestaudio/best"
+
             ydl_opts = {
                 "format": choice,
                 "outtmpl": f"{filename_base}.%(ext)s",
                 "merge_output_format": "mp4",
                 "noplaylist": True,
             }
-        else:
-            print(f"\033[1;31mInvalid format selection: {choice}\033[0m")
-            return
 
-        # Perform download
+        # Perform the download
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
             log_download(url, "Success")
