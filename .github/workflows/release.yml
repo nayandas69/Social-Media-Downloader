@@ -37,18 +37,34 @@ jobs:
         id: tag_check
         run: |
           if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
-            echo "Tag already exists. Skipping."
             echo "tag_exists=true" >> $GITHUB_OUTPUT
           else
             echo "tag_exists=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create Git tag
+      - name: Import GPG key and create signed tag
         if: steps.tag_check.outputs.tag_exists == 'false'
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
+          git config user.name "nayandas69"
+          git config user.email "174907517+nayandas69@users.noreply.github.com"
+
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo RELOADAGENT | gpg-connect-agent
+
+          KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | cut -d'/' -f2)
+
+          echo "$GPG_PASSPHRASE" | \
+          gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 \
+          --local-user "$KEY_ID" \
+          --output signed.asc --sign --detach-sign
+
+          git tag -s "${{ steps.get_version.outputs.version }}" \
+            -m "Release v${{ steps.get_version.outputs.version }}" --local-user "$KEY_ID"
           git push origin "${{ steps.get_version.outputs.version }}"
 
       - name: Install dependencies and PyInstaller
@@ -132,3 +148,4 @@ jobs:
           files: dist/smd.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
