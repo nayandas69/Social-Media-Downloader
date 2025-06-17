@@ -6,8 +6,8 @@ We only provide security updates and support for the **latest released version**
 
 | Version | Supported |
 |---------|-----------|
-| 1.1.8   | ✅         |
-| < 1.1.7 | ❌         |
+| 1.1.9   | ✅         |
+| < 1.1.8 | ❌         |
 
 > [!NOTE]
 > To stay safe and secure, **always update to the latest version**. We do not support or patch older versions.
@@ -25,10 +25,10 @@ We will investigate and respond as quickly as possible.
 
 To keep your usage secure:
 
-- [-] Use only **official builds** from [our Releases](https://github.com/nayandas69/Social-Media-Downloader/releases).
-- [-] Keep dependencies up to date (especially `yt-dlp`, `instaloader`, and `requests`).
-- [-] Avoid downloading or running **modified EXEs or binaries** from third parties.
-- [-] Regularly check for updates using the built-in update checker or GitHub Releases.
+- [x] Use only **official builds** from [our Releases](https://github.com/nayandas69/Social-Media-Downloader/releases).
+- [x] Keep dependencies up to date (especially `yt-dlp`, `instaloader`, and `requests`).
+- [x] Avoid downloading or running **modified EXEs or binaries** from third parties.
+- [x] Regularly check for updates using the built-in update checker or GitHub Releases.
 
 ## Disclaimer
 

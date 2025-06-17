@@ -41,6 +41,7 @@ You can set the `default_format` to a specific video resolution to automatically
 * `"1080p"` – Full HD (recommended for good balance)
 * `"1440p"` – Quad HD (2K)
 * `"2160p"` – Ultra HD (4K)
+* `"4320p"` – 8K (rarely used, very large files)
 
 Or set to:
 
