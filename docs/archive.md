@@ -8,7 +8,8 @@ title: 📦 Release Archive
 
 | Release Date | Version | Windows EXE | Linux Binary | Debian Package |
 |--------------|---------|-------------|--------------|----------------|
-| 2025-05-21 | 1.1.8 <br>🟢 **Recommended** | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/social-media-downloader_1.1.8_amd64.deb) |
+| 2025-06-17 | 1.1.9 <br>🟢 **Recommended** | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.9/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.9/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.9/social-media-downloader_1.1.9_amd64.deb) |
+| 2025-05-21 | 1.1.8 | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.8/social-media-downloader_1.1.8_amd64.deb) |
 | 2025-05-12 | 1.1.7 | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.7/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.7/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.7/social-media-downloader_1.1.7_amd64.deb) |
 | 2025-05-11 | 1.1.6 | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.6/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.6/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.6/social-media-downloader_1.1.6_amd64.deb) |
 | 2025-05-10 | 1.1.5 | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.5/smd.exe) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.5/smd-linux.tar.gz) | [Download](https://github.com/nayandas69/Social-Media-Downloader/releases/download/1.1.5/social-media-downloader_1.1.5_amd64.deb) |
@@ -31,4 +32,4 @@ title: 📦 Release Archive
     We always recommend using the **latest release** to get the best features and compatibility.
 
 ---
-**Last Updated:** 2025-06-15 01:27:38 UTC
+**Last Updated:** 2025-06-22 01:26:44 UTC
