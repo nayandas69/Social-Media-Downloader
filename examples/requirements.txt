@@ -1,0 +1,1 @@
+social-media-downloader>=1.1.10
