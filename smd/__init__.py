@@ -11,6 +11,11 @@ from .downloader import (
     batch_download_from_file,
     check_for_updates,
     show_help,
+    load_config,
+    check_internet_connection,
+    is_valid_platform_url,
+    get_unique_filename,
+    log_download,
 )
 
 __all__ = [
@@ -20,4 +25,9 @@ __all__ = [
     "batch_download_from_file",
     "check_for_updates",
     "show_help",
+    "load_config",
+    "check_internet_connection",
+    "is_valid_platform_url",
+    "get_unique_filename",
+    "log_download",
 ]
