@@ -1,6 +1,7 @@
 # Social Media Downloader
 # smd/__init__.py
 # This file is part of Social Media Downloader (SMD).
+# Now U can import smd and use its functions directly.
 
 
 from .downloader import (

@@ -5,7 +5,7 @@ from PyInstaller.utils.hooks import collect_data_files
 datas = collect_data_files("pyfiglet")
 
 a = Analysis(
-    ['smd/downloader.py'],  # ✅ Updated path
+    ['smd/__main__.py'],  # Main script of the application
     pathex=[],
     binaries=[],
     datas=datas,
