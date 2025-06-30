@@ -21,7 +21,7 @@ class TestDownloader(unittest.TestCase):
         self.assertIn("mp3_quality", config)
 
     def test_check_internet_connection_mocked(self):
-        with patch("smd.requests.head") as mock_head:
+        with patch("smd.downloader.requests.head") as mock_head:
             mock_head.return_value.status_code = 200
             self.assertTrue(check_internet_connection())
 
@@ -40,7 +40,7 @@ class TestDownloader(unittest.TestCase):
         tmp_file = "test_download_log.csv"
         try:
             # Patch target file path
-            with patch("smd.history_file", tmp_file):
+            with patch("smd.downloader.history_file", tmp_file):
                 log_download("http://example.com", "Success")
                 with open(tmp_file, newline="") as f:
                     rows = list(csv.reader(f))
