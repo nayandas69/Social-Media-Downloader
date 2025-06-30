@@ -3,7 +3,7 @@
 
 # -----------------------------------------
 # Social Media Downloader
-# Version: 1.1.9
+# Version: 1.1.10
 # Author: Nayan Das
 # License: MIT
 # Description: A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more.
@@ -38,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 # Version and Update Variables
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.9"
+CURRENT_VERSION = "1.1.10"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/Social-Media-Downloader"
@@ -772,5 +772,5 @@ def main():
         print(f"Unexpected error: {e}")
 
 
-if __name__ == "__main__":
+def cli():
     main()
