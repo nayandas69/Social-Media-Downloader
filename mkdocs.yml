@@ -50,6 +50,7 @@ nav:
   - Installation:
       - Requirements & Setup: installation.md
       - How to Use: usage.md
+      - Use as Python Library: use-as-library.md
       - Configuration Details: config-info.md
       - Supported Platforms: supported-platforms.md
       - FAQ: faq.md
