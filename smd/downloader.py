@@ -482,15 +482,15 @@ def download_youtube_or_tiktok_video(url):
                 None,
             )
 
-            # Auto-correct video-only downloads
+            # Auto-correct video-only downloads [Now fix with selected]
             if selected_fmt and selected_fmt.get("acodec") in ["none", None, ""]:
                 print(
                     f"\n\033[1;33mNote:\033[0m Selected format '{choice}' has no audio."
                 )
                 print(
-                    f"\033[1;32mAuto-fix:\033[0m Merging best video + best audio using FFmpeg."
+                    f"\033[1;32mAuto-fix:\033[0m Merging selected video ({choice}) with best available audio."
                 )
-                choice = "bestvideo+bestaudio/best"
+                choice = f"{choice}+bestaudio"
 
             ydl_opts = {
                 "format": choice,
