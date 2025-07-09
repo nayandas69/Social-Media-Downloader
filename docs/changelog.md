@@ -6,6 +6,14 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.10] - 2025-07-09
+
+## Fixes
+
+- Merging selected video ({choice}) with best available audio.
+
+---
+
 ## [1.1.9] - 2025-06-18
 
 ## New Platform Support
