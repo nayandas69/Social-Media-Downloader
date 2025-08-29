@@ -1,0 +1,39 @@
+# Include the main package
+recursive-include smd *.py
+
+# Include documentation and metadata
+include README.md
+include LICENSE
+include requirements.txt
+include pyproject.toml
+
+# Include configuration files
+include config.json
+
+# Include assets if they exist
+recursive-include assets *
+
+# Exclude development and build files
+exclude Makefile
+exclude Dockerfile
+exclude docker-compose.yml
+exclude downloader.spec
+exclude install.sh
+exclude mkdocs.yml
+exclude requirements-dev.txt
+
+# Exclude directories
+recursive-exclude test *
+recursive-exclude docs *
+recursive-exclude .github *
+recursive-exclude dist *
+recursive-exclude build *
+recursive-exclude *.egg-info *
+
+# Exclude version control and IDE files
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__

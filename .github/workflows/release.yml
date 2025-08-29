@@ -1,0 +1,148 @@
+name: Tag Release Creation and Build for Linux and Windows
+
+on:
+  push:
+    tags:
+      - '*.*.*'  # Only run on version tags like 1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Extract version from pyproject.toml
+        id: get_version
+        run: |
+          VERSION=$(python -c "import re; f=open('pyproject.toml').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
+          echo "Project version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if Git tag exists
+        id: tag_check
+        run: |
+          if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Import GPG key and create signed tag
+        if: steps.tag_check.outputs.tag_exists == 'false'
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          git config user.name "nayandas69"
+          git config user.email "174907517+nayandas69@users.noreply.github.com"
+
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo RELOADAGENT | gpg-connect-agent
+
+          KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | cut -d'/' -f2)
+
+          echo "$GPG_PASSPHRASE" | \
+          gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 \
+          --local-user "$KEY_ID" \
+          --output signed.asc --sign --detach-sign
+
+          git tag -s "${{ steps.get_version.outputs.version }}" \
+            -m "Release v${{ steps.get_version.outputs.version }}" --local-user "$KEY_ID"
+          git push origin "${{ steps.get_version.outputs.version }}"
+
+      - name: Install dependencies and PyInstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build Linux binary with PyInstaller
+        run: |
+          pyinstaller downloader.spec
+          mkdir smd-linux
+          cp dist/downloader smd-linux/smd
+          cp docs/AUTHOR.rst LICENSE smd-linux/
+          tar -czvf smd-linux.tar.gz -C smd-linux .
+
+      - name: Create .deb package
+        run: |
+          mkdir -p smd-deb/usr/local/bin
+          mkdir -p smd-deb/DEBIAN
+          cp dist/downloader smd-deb/usr/local/bin/smd
+
+          VERSION="${{ steps.get_version.outputs.version }}"
+          echo "Package: social-media-downloader" > smd-deb/DEBIAN/control
+          echo "Version: $VERSION" >> smd-deb/DEBIAN/control
+          echo "Section: utils" >> smd-deb/DEBIAN/control
+          echo "Priority: optional" >> smd-deb/DEBIAN/control
+          echo "Architecture: amd64" >> smd-deb/DEBIAN/control
+          echo "Depends: python3" >> smd-deb/DEBIAN/control
+          echo "Maintainer: nayandas69" >> smd-deb/DEBIAN/control
+          echo "Description: Social Media Downloader - download from various platforms via CLI." >> smd-deb/DEBIAN/control
+
+          dpkg-deb --build smd-deb
+          mv smd-deb.deb smd-linux/social-media-downloader_${VERSION}_amd64.deb
+
+      - name: Upload Linux release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ steps.get_version.outputs.version }}"
+          name: "Release v${{ steps.get_version.outputs.version }}"
+          body: |
+            We made new changes. Download the source code from the assets below.
+            You can also check the change log and what's new in this release.
+
+            [What's New](https://github.com/${{ github.repository }}/blob/dev/docs/whats_new.md)  
+            [Change Log](https://github.com/${{ github.repository }}/blob/dev/docs/changelog.md)  
+            [Visit SMD Page](https://nayandas69.github.io/Social-Media-Downloader)
+          files: |
+            smd-linux.tar.gz
+            smd-linux/social-media-downloader_${{ steps.get_version.outputs.version }}_amd64.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  windows-build:
+    runs-on: windows-latest
+    needs: linux-build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies and PyInstaller
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build Windows EXE using PyInstaller spec
+        run: pyinstaller downloader.spec
+
+      - name: Rename Windows executable
+        run: Rename-Item -Path "dist/downloader.exe" -NewName "smd.exe"
+
+      - name: Upload Windows release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "${{ needs.linux-build.outputs.version }}"
+          files: dist/smd.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          

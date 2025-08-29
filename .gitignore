@@ -1,0 +1,26 @@
+# Ignore build directory
+build/
+
+# Ignore dist directory
+dist/
+
+# Ignore virtual environment directories
+.venv/
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# MkDocs build output
+site/
+
+# IDE settings
+.idea/
+
+# Ignore IDE configuration files
+.vscode/
+
+# Ignore log files
+*.log

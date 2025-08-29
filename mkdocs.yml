@@ -1,0 +1,97 @@
+site_name: Social Media Downloader Docs
+site_url: https://nayandas69.github.io/Social-Media-Downloader
+repo_url: https://github.com/nayandas69/Social-Media-Downloader
+edit_uri: ""
+
+theme:
+  name: material
+  language: en
+  favicon: assets/images/favicon.ico
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+    - content.action.view
+    - header.autohide
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    - scheme: default
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Fira Code
+  icon:
+    admonition:
+      note: material/information-outline
+      tip: material/lightbulb-on-outline
+      warning: material/alert-outline
+      important: material/alert-circle-outline
+      info: material/information
+
+nav:
+  - Home: index.md
+  - Installation:
+      - Requirements & Setup: installation.md
+      - How to Use: usage.md
+      - Use as Python Library: use-as-library.md
+      - Configuration Details: config-info.md
+      - Supported Platforms: supported-platforms.md
+      - FAQ: faq.md
+  - Build:
+      - Build Instructions: build.md
+      - Troubleshooting Setup: troubleshooting.md
+      - Archive: archive.md
+      - Changelog: changelog.md
+  - Development:
+      - Roadmap: roadmap.md
+  - Contribute:
+      - Contribute: contribute.md
+      - contributors: contributors.md
+  - License: license-info.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.magiclink
+  - pymdownx.keys
+  - pymdownx.snippets
+
+plugins:
+  - search
+  - glightbox
+
+extra:
+  smd_logo_text: "SMD"
+
+extra_javascript:
+  - javascripts/logo.js

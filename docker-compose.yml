@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  social-media-downloader:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: social-media-downloader:latest
+    container_name: smd-app
+    stdin_open: true       # Keep STDIN open for interactive CLI
+    tty: true              # Allocate pseudo-TTY for interactive sessions
+    volumes:
+      - ./media:/app/media:rw   # Map local media folder for downloads
+      - ./config.json:/app/config.json:rw  # Map config file
+      - ./download_history.csv:/app/download_history.csv:rw  # Map download history
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: "no"          # Don't restart automatically since it's interactive
+    working_dir: /app
+    entrypoint: ["social-media-downloader"]
+
+  # Optional: Development service for testing
+  smd-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: social-media-downloader:dev
+    container_name: smd-dev
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:rw           # Mount entire project for development
+    environment:
+      - PYTHONUNBUFFERED=1
+    working_dir: /app
+    entrypoint: ["python", "-m", "smd"]
+    profiles: ["dev"]       # Only start with --profile dev

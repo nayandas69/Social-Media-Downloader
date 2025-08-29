@@ -1,0 +1,36 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Update Archive"]
+    types:
+      - completed
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    # Only proceed if the previous workflow completed successfully
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs-material mkdocs-glightbox pymdown-extensions
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
