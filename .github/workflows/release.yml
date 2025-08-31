@@ -23,10 +23,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Extract version from pyproject.toml
+      - name: Extract version from package
         id: get_version
         run: |
-          VERSION=$(python -c "import re; f=open('pyproject.toml').read(); print(re.search(r'version\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
+          VERSION=$(python -c "import sys; sys.path.insert(0, '.'); from smd import __version__; print(__version__)")
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
@@ -145,4 +145,3 @@ jobs:
           files: dist/smd.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          

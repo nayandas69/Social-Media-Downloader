@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "wheel>=0.38.4"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "social-media-downloader"
-version = "1.1.11"
+dynamic = ["version"]
 description = "A command-line tool to download videos from various social media platforms like YouTube, TikTok, Facebook, Instagram, X & more. It supports instagram batch downloads, format selection, and maintains a download history."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -26,6 +30,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Internet",
     "Topic :: Multimedia :: Video",
     "Topic :: Software Development :: Libraries",
@@ -33,24 +39,28 @@ classifiers = [
 ]
 
 dependencies = [
-    "yt-dlp>=2023.7.6",
-    "instaloader>=4.10.0",
-    "tqdm>=4.65.0",
-    "requests>=2.31.0",
+    "yt-dlp>=2024.1.0",
+    "instaloader>=4.11.0",
+    "tqdm>=4.66.0",
+    "requests>=2.32.0",
     "ffmpeg-python>=0.2.0",
-    "certifi>=2023.7.22",
-    "setuptools>=65.5.0",
-    "wheel>=0.38.4",
-    "pyfiglet>=0.8.post1",
-    "termcolor>=2.3.0",
+    "certifi>=2024.2.0",
+    "setuptools>=69.0.0",
+    "wheel>=0.42.0",
+    "pyfiglet>=1.0.0",
+    "termcolor>=2.4.0",
     "tabulate>=0.9.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0",
-    "flake8>=6.0",
-    "black>=23.1",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+    "flake8>=7.0.0",
+    "black>=24.0.0",
+    "mypy>=1.8.0",
+    "isort>=5.13.0",
+    "pre-commit>=3.6.0",
 ]
 
 [project.scripts]
@@ -61,9 +71,80 @@ social-media-downloader = "smd.downloader:cli"
 "Source Code" = "https://github.com/nayandas69/Social-Media-Downloader"
 "Bug Tracker" = "https://github.com/nayandas69/Social-Media-Downloader/issues"
 "Documentation" = "https://github.com/nayandas69/Social-Media-Downloader#readme"
+"Homepage" = "https://smd-toolkit.vercel.app"
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-exclude = ["test*", "docs*"]
+exclude = ["test*", "docs*", "scripts*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "smd.__version__"}
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["smd"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--verbose",
+    "--cov=smd",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.coverage.run]
+source = ["smd"]
+omit = [
+    "*/test*",
+    "*/venv/*",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]
