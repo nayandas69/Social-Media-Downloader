@@ -1,8 +1,13 @@
-# Social Media Downloader
-# smd/__init__.py
-# This file is part of Social Media Downloader (SMD).
-# Now U can import smd and use its functions directly.
+"""
+Social Media Downloader (SMD) - A comprehensive CLI tool for downloading videos.
 
+This package provides functionality to download videos from various social media platforms
+including YouTube, TikTok, Instagram, Facebook, Twitter/X, and many others.
+
+Author: Nayan Das
+Version: 1.1.12
+License: MIT
+"""
 
 from .downloader import (
     download_youtube_or_tiktok_video,
@@ -16,7 +21,13 @@ from .downloader import (
     is_valid_platform_url,
     get_unique_filename,
     log_download,
+    cli,
 )
+
+
+__version__ = "1.1.12"
+__author__ = "Nayan Das"
+__email__ = "nayanchandradas@hotmail.com"
 
 __all__ = [
     "download_youtube_or_tiktok_video",
@@ -30,4 +41,5 @@ __all__ = [
     "is_valid_platform_url",
     "get_unique_filename",
     "log_download",
+    "cli",
 ]

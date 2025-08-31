@@ -6,6 +6,25 @@ All the spicy updates, tweaks, and new vibes are logged here. 🌟
 
 ---
 
+## [1.1.12] - 2025-08-31
+
+### Bug Fixes
+- Fixed internet connection checking to properly handle all network exceptions
+- Corrected unique filename generation logic for duplicate file handling
+- Improved overall stability and reliability of the CLI tool
+
+### Testing Improvements
+- Fixed failing unit tests for internet connection and filename generation
+- Enhanced test coverage with more comprehensive test cases
+- Improved test reliability and maintainability
+
+### Dependencies
+- Updated `requests` to latest version with security improvements
+- Updated `yt-dlp` for better video platform support
+- Streamlined requirements files for better dependency management
+
+---
+
 ## [1.1.11] - 2025-08-29
 
 ### Improved

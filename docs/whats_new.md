@@ -1,33 +1,21 @@
-# What's New in Social Media Downloader v1.1.11
+# What's New in Social Media Downloader v1.1.12
 
 
-# What's New in v1.1.11
+## Welcome to SMD 1.1.12!
 
-## Major Update Checker Improvements
+This release focuses on **code quality**, **reliability**, and **developer experience**. We've made significant improvements under the hood to make SMD more robust and maintainable.
 
-We've completely rewritten the update checking system to make it faster, more reliable, and user-friendly!
+## Key Highlights
 
-### New Features
-- **PyPI Integration**: Now checks updates directly from PyPI for faster and more accurate results
-- **Smart Error Handling**: Better error messages when network issues occur
-- **Enhanced UI**: Colorful output with emojis for better visual feedback
-- **Multiple Update Options**: Shows both pip upgrade command and GitHub releases link
+### Improved Reliability  
+- **Better Error Handling**: More specific error messages and graceful failure handling
+- **Fixed Bugs**: Resolved issues with internet connectivity checks and file naming conflicts
+- **Stable Tests**: All unit tests now pass consistently
 
-### Technical Improvements
-- **Timeout Protection**: 10-second timeout prevents the app from hanging
-- **Robust Version Parsing**: Better handling of version comparison edge cases
-- **Improved Logging**: Better debugging information for troubleshooting
+## What This Means for Users
 
-### User Experience
-- Clearer visual feedback during update checks
-- More informative error messages
-- Shows release summaries when available
-- Handles development versions gracefully
-
-### How to Update
-```bash
-pip install social-media-downloader --upgrade
-```
-Or download from [GitHub Releases](https://github.com/nayandas69/Social-Media-Downloader/releases)
-
-This update focuses on making the software more reliable and user-friendly. Enjoy the improved experience!
+While most changes are internal, you'll benefit from:
+- More reliable downloads with better error handling
+- Clearer error messages when something goes wrong
+- Improved stability across different platforms
+- Foundation for future feature additions
