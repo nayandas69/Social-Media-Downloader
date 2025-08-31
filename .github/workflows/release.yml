@@ -26,7 +26,7 @@ jobs:
       - name: Extract version from package
         id: get_version
         run: |
-          VERSION=$(python -c "import sys; sys.path.insert(0, '.'); from smd import __version__; print(__version__)")
+          VERSION=$(python -c "import re; f=open('smd/__init__.py').read(); print(re.search(r'__version__\s*=\s*[\"\\'](.+?)[\"\\']', f).group(1))")
           echo "Project version: $VERSION"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
