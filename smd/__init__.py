@@ -5,7 +5,7 @@ This package provides functionality to download videos from various social media
 including YouTube, TikTok, Instagram, Facebook, Twitter/X, and many others.
 
 Author: Nayan Das
-Version: 1.1.12
+Version: 1.1.13
 License: MIT
 """
 
@@ -25,7 +25,7 @@ from .downloader import (
 )
 
 
-__version__ = "1.1.12"
+__version__ = "1.1.13"
 __author__ = "Nayan Das"
 __email__ = "nayanchandradas@hotmail.com"
 

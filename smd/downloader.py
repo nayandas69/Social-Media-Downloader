@@ -7,7 +7,7 @@ Twitter/X, and many other social media platforms. It supports format selection, 
 and maintains download history.
 
 Author: Nayan Das
-Version: 1.1.12
+Version: 1.1.13
 License: MIT
 """
 
@@ -38,7 +38,7 @@ from tabulate import tabulate
 # Constants and Configuration
 # ---------------------------------
 AUTHOR = "Nayan Das"
-CURRENT_VERSION = "1.1.12"
+CURRENT_VERSION = "1.1.13"
 EMAIL = "nayanchandradas@hotmail.com"
 DISCORD_INVITE = "https://discord.gg/skHyssu"
 WEBSITE = "https://nayandas69.github.io/Social-Media-Downloader"
