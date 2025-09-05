@@ -1,7 +1,7 @@
 # Project metadata
 PACKAGE_NAME=social-media-downloader
 IMAGE_NAME=ghcr.io/nayandas69/$(PACKAGE_NAME)
-VERSION=$(shell python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+VERSION=$(shell python -c "import re; f=open('smd/__init__.py'); content=f.read(); f.close(); print(re.search(r'__version__\s*=\s*[\"\'](.*?)[\"\']', content).group(1))")
 
 # Build Python package locally
 install:
@@ -22,7 +22,6 @@ test:
 # Format code
 format:
 	black smd/
-	flake8 smd/
 
 # Build Python package
 build:
@@ -59,7 +58,7 @@ help:
 	@echo "  install-dev  - Install in development mode"
 	@echo "  run          - Run the CLI"
 	@echo "  test         - Run tests"
-	@echo "  format       - Format code with black and check with flake8"
+	@echo "  format       - Format code with black"
 	@echo "  build        - Build Python package"
 	@echo "  clean        - Clean build artifacts"
 	@echo "  docker-build - Build Docker image"

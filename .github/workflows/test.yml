@@ -5,9 +5,9 @@ permissions:
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev, main ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev, main ]
 
 jobs:
   test:
@@ -29,5 +29,5 @@ jobs:
 
       - name: Run Tests
         run: |
-          python -m unittest discover -s test
+          python -m pytest tests/test_downloader.py
           
