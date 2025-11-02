@@ -35,4 +35,4 @@ title: 📦 Release Archive
     We always recommend using the **latest release** to get the best features and compatibility.
 
 ---
-**Last Updated:** 2025-09-23 19:56:35 UTC
+**Last Updated:** 2025-11-02 01:18:59 UTC
