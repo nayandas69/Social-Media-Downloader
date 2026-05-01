@@ -97,7 +97,7 @@ jobs:
           mv smd-deb.deb smd-linux/social-media-downloader_${VERSION}_amd64.deb
 
       - name: Upload Linux release asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: "${{ steps.get_version.outputs.version }}"
           name: "Release v${{ steps.get_version.outputs.version }}"
@@ -139,7 +139,7 @@ jobs:
         run: Rename-Item -Path "dist/downloader.exe" -NewName "smd.exe"
 
       - name: Upload Windows release asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: "${{ needs.linux-build.outputs.version }}"
           files: dist/smd.exe
