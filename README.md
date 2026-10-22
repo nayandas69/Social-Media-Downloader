@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+Project Archived: This project is no longer maintained, and no further updates or bug fixes will be provided.
+Thank you to everyone who used, contributed to, and supported this project. Your support is greatly appreciated! ❤️
+
 <div align="center">
 
 # Social Media Downloader
