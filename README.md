@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 Project Archived: This project is no longer maintained, and no further updates or bug fixes will be provided.
-Thank you to everyone who used, contributed to, and supported this project. Your support is greatly appreciated! ❤️
+Thank you to everyone who used, contributed to, and supported this project. Your support is greatly appreciated! ❤️ 
 
 <div align="center">
 
@@ -142,7 +142,7 @@ Join us on [Discord](https://discord.gg/skHyssu)
 
 🙌 Special thanks to all [contributors](https://github.com/nayandas69/Social-Media-Downloader/blob/dev/docs/contributors.md)
 
-## Thank You — 7K+ Users and Growing!
+## Thank You — 21K+ Users and Growing!
 
 If this tool helped you, show some love by ⭐ starring the repo or [Support](https://www.patreon.com/nayandas69)!
 Your support keeps this project alive ❤️
